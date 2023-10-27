@@ -1,0 +1,12 @@
+  .inputan{
+    border: 1px solid red;
+  }
+
+.input1{
+  width: 75%;
+  display: flex;
+}
+
+.jenis_tiket{
+display: flex;
+}
