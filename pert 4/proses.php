@@ -41,6 +41,9 @@ $total_tiket = $harga_tiket * $jumlahorg;
 $total_harga = $total_tiket + $total_paket;
 ?>
 <div class="container">    
+    <div>
+        <h1 style="text-align: center;">Detail Pemesan</h1>
+    </div>
     <p>Nama Group: <?= $namagrup ?></p>
     <p>Jumlah Wisatawan: <?= $jumlahorg ?></p>
     <p>Jenis Paket: <?= ucfirst($jenisPaket) ?></p>
