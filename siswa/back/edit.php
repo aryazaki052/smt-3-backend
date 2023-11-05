@@ -18,12 +18,11 @@
     $nim = $_GET['NIM'];
     $qry = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
     $exec = mysqli_query($kon, $qry);
-    $data = mysqli_fetch_assoc($exec);
-    $data1 = mysqli_fetch_array($exec);
+    $edit = mysqli_fetch_assoc($exec);
     ?>
 
     
-        <form id="form" method="post">
+        <form id="form" method="post" action="update.php">
             <div class="alert alert-primary">
                 <strong>Data Diri</strong>
             </div>
@@ -32,13 +31,13 @@
 
                     <div class="form-group">
                         <label>Nama Lengkap:</label>
-                        <input type="text" name="nama" value="<?= $data['nama'] ?>" class="form-control" placeholder="Masukan Nama Lengkap" required>
+                        <input type="text" name="nama" value="<?= $edit['nama'] ?>" class="form-control" placeholder="Masukan Nama Lengkap" required>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="form-group">
                         <label>Nomor Identitas (NIK):</label>
-                        <input type="text" name="nik" value="<?= $data['nik'] ?>" class="form-control" placeholder="Masukan Nomor NIK" required>
+                        <input type="text" name="nik" value="<?= $edit['nik'] ?>" class="form-control" placeholder="Masukan Nomor NIK" required>
                     </div>
                 </div>
             </div>
@@ -46,22 +45,22 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Tempat Lahir:</label>
-                        <input type="text" name="tempat_lahir" value="<?= $data['tempat_lahir'] ?>" class="form-control" placeholder="Masukan Tempat Lahir" required>
+                        <input type="text" name="tempat_lahir" value="<?= $edit['tempat_lahir'] ?>" class="form-control" placeholder="Masukan Tempat Lahir" required>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>Tanggal Lahir:</label>
-                        <input type="date" name="tanggal_lahir" value="<?= $data['tanggal_lahir'] ?>" class="form-control" required>
+                        <input type="date" name="tanggal_lahir" value="<?= $edit['tanggal_lahir'] ?>" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="form-group">
                         <label>Jenis Kelamin:</label>
-                        <select class="form-control" name="jk" value="<?= $data['jk'] ?>">
-                            <option value="1">Laki-laki</option>
-                            <option value="2">Perempuan</option>
-                        </select>
+                        <select class="form-control" name="jk">
+                          <option value="1" <?php if ($edit['jk'] == 1) echo 'selected'; ?>>Laki-laki</option>
+                          <option value="2" <?php if ($edit['jk'] == 2) echo 'selected'; ?>>Perempuan</option>
+                      </select>
                     </div>
                 </div>
             </div>
@@ -71,29 +70,30 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Kewarganegaraan:</label>
-                        <select class="form-control" name="kewarganegaraan" value="<?= $data['kewarganegaraan'] ?>">
-                            <option value="WNI">Warga Negara Indonesia</option>
-                            <option value="WNA">Warga Negara Asing</option>
+                        <select class="form-control" name="kewarganegaraan">
+                            <option value="WNI" <?php if ($edit['kewarganegaraan'] == 'WNI') echo 'selected'; ?>>Warga Negara Indonesia</option>
+                            <option value="WNA" <?php if ($edit['kewarganegaraan'] == 'WNA') echo 'selected'; ?>>Warga Negara Asing</option>
                         </select>
+
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>Agama:</label>
-                        <select class="form-control" name="agama" value="<?= $data['agama'] ?>">
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Budha">Budha</option>
-                            <option value="Lainnya">Lainnya</option>
+                        <select class="form-control" name="agama">
+                            <option value="Islam" <?php if ($edit['agama'] == 'Islam') echo 'selected'; ?>>Islam</option>
+                            <option value="Kristen" <?php if ($edit['agama'] == 'Kristen') echo 'selected'; ?>>Kristen</option>
+                            <option value="Katolik" <?php if ($edit['agama'] == 'Katolik') echo 'selected'; ?>>Katolik</option>
+                            <option value="Hindu" <?php if ($edit['agama'] == 'Hindu') echo 'selected'; ?>>Hindu</option>
+                            <option value="Budha" <?php if ($edit['agama'] == 'Budha') echo 'selected'; ?>>Budha</option>
+                            <option value="Lainnya" <?php if ($edit['agama'] == 'Lainnya') echo 'selected'; ?>>Lainnya</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="form-group">
                         <label>Nama Ibu Kandung:</label>
-                        <input type="text" name="nama_ibu" value="<?= $data['nama_ibu'] ?>" class="form-control" placeholder="Masukan Nama Ibu Kandung" required>
+                        <input type="text" name="nama_ibu" value="<?= $edit['nama_ibu'] ?>" class="form-control" placeholder="Masukan Nama Ibu Kandung" required>
                     </div>
                 </div>
             </div>
@@ -102,13 +102,13 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Email:</label>
-                        <input type="email" name="email" value="<?= $data['email'] ?>" class="form-control" placeholder="Masukan Email" required>
+                        <input type="email" name="email" value="<?= $edit['email'] ?>" class="form-control" placeholder="Masukan Email" required>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>No Telp:</label>
-                        <input type="text" name="no_telp" value="<?= $data['no_telp'] ?>" class="form-control" placeholder="Masukan No Telp" required>
+                        <input type="text" name="no_telp" value="<?= $edit['no_telp'] ?>" class="form-control" placeholder="Masukan No Telp" required>
                     </div>
                 </div>
             </div>
@@ -119,88 +119,77 @@
                 <div class="col-sm-5">
                     <div class="form-group">
                         <label>Alamat:</label>
-                        <textarea class="form-control" name="alamat" rows="2" id="alamat"><?= $data['alamat'] ?></textarea>
+                        <textarea class="form-control" name="alamat" rows="2" id="alamat"><?= $edit['alamat'] ?></textarea>
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label>Kode Pos:</label>
-                        <input type="text" name="kode_pos" value="<?= $data['kode_pos'] ?>" class="form-control" placeholder="Kode Pos" required>
+                        <input type="text" name="kode_pos" value="<?= $edit['kode_pos'] ?>" class="form-control" placeholder="Kode Pos" required>
                     </div>
                 </div>
             </div>
 
 
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Provinsi:</label>
-                        <select class="form-control" name="provinsi" id="provinsi" required value="<?= $data['provinsi'] ?>">
-                            <?php
-                            include "koneksi.php";
-                            //Perintah sql untuk menampilkan semua data pada tabel provinsi
-                            $sql="select * from provinsi";
-                            $hasil=mysqli_query($kon,$sql);
-                            while ($data = mysqli_fetch_array($hasil)) {
-                                ?>
-                            <option value="<?php echo $data['id_prov'];?>"><?php echo $data['nama'];?></option>
-                            <?php 
-                                }
-                        ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Kabupaten:</label>
-                        <select class="form-control" name="kabupaten" id="kabupaten" required>
-                            <!-- Kabupaten akan diload menggunakan ajax, dan ditampilkan disini -->
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Kecamatan:</label>
-                        <select class="form-control" name="kecamatan" id="kecamatan" required>
-                            <!-- Kecamatan akan diload menggunakan ajax, dan ditampilkan disini -->
-                        </select>
-                    </div>
-                </div>
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Provinsi:</label>
+                      <select class="form-control" name="provinsi" id="provinsi" required>
+                          <?php
+                          include "koneksi.php";
+                          // Perintah sql untuk menampilkan semua data pada tabel provinsi
+                          $sql="select * from provinsi";
+                          $hasil=mysqli_query($kon,$sql);
+                          while ($data = mysqli_fetch_array($hasil)) {
+                              $selected = ($edit['provinsi'] == $data['id_prov']) ? 'selected' : '';
+                              ?>
+                              <option value="<?php echo $data['id_prov'];?>" <?php echo $selected; ?>><?php echo $data['nama'];?></option>
+                              <?php
+                          }
+                          ?>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Kabupaten:</label>
+                      <select class="form-control" name="kabupaten" id="kabupaten" required>
+                          <?php
+                          $id_provinsi = $edit['provinsi']; // Dapatkan ID Provinsi yang diinputkan sebelumnya
+                          $sql_kabupaten = "SELECT * FROM kabupaten WHERE id_prov = $id_provinsi";
+                          $hasil_kabupaten = mysqli_query($kon, $sql_kabupaten);
+                          while ($data_kabupaten = mysqli_fetch_array($hasil_kabupaten)) {
+                              $selected_kabupaten = ($edit['kabupaten'] == $data_kabupaten['id_kab']) ? 'selected' : '';
+                              ?>
+                              <option value="<?php echo $data_kabupaten['id_kab'];?>" <?php echo $selected_kabupaten; ?>><?php echo $data_kabupaten['nama'];?></option>
+                              <?php
+                          }
+                          ?>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Kecamatan:</label>
+                      <select class="form-control" name="kecamatan" id="kecamatan" required>
+                          <?php
+                          $id_kabupaten = $edit['kabupaten']; // Dapatkan ID Kabupaten yang diinputkan sebelumnya
+                          $sql_kecamatan = "SELECT * FROM kecamatan WHERE id_kab = $id_kabupaten";
+                          $hasil_kecamatan = mysqli_query($kon, $sql_kecamatan);
+                          while ($data_kecamatan = mysqli_fetch_array($hasil_kecamatan)) {
+                              $selected_kecamatan = ($edit['kecamatan'] == $data_kecamatan['id_kec']) ? 'selected' : '';
+                              ?>
+                              <option value="<?php echo $data_kecamatan['id_kec'];?>" <?php echo $selected_kecamatan; ?>><?php echo $data_kecamatan['nama'];?></option>
+                              <?php
+                          }
+                          ?>
+                      </select>
+                  </div>
+              </div>
+          </div>
 
-            </div>
-            <script>
-            $("#provinsi").change(function() {
-                // variabel dari nilai combo provinsi
-                var id_provinsi = $("#provinsi").val();
 
-                // Menggunakan ajax untuk mengirim dan dan menerima data dari server
-                $.ajax({
-                    type: "POST",
-                    dataType: "html",
-                    url: "ambil-data.php",
-                    data: "provinsi=" + id_provinsi,
-                    success: function(data) {
-                        $("#kabupaten").html(data);
-                    }
-                });
-            });
-
-            $("#kabupaten").change(function() {
-                // variabel dari nilai combo box kabupaten
-                var id_kabupaten = $("#kabupaten").val();
-
-                // Menggunakan ajax untuk mengirim dan dan menerima data dari server
-                $.ajax({
-                    type: "POST",
-                    dataType: "html",
-                    url: "ambil-data.php",
-                    data: "kabupaten=" + id_kabupaten,
-                    success: function(data) {
-                        $("#kecamatan").html(data);
-                    }
-                });
-            });
-            </script>
             <div class="alert alert-primary">
                 <strong>Data Pendidikan</strong>
             </div>
@@ -208,24 +197,24 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Pendidikan Terakhir:</label>
-                        <select class="form-control" name="pendidikan" required  value="<?= $data['pendidikan'] ?>">
-                            <option value="SMA-IPA">SMA - IPA</option>
-                            <option value="SMA-IPS">SMA - IPS</option>
-                            <option value="SMK-IPA">SMK - IPA</option>
-                            <option value="SMK-IPS">SMK - IPS</option>
+                        <select class="form-control" name="pendidikan">
+                            <option value="SMA-IPA" <?php if ($edit['pendidikan'] == 'SMA-IPA') echo 'selected'; ?>>SMA - IPA</option>
+                            <option value="SMA-IPS" <?php if ($edit['pendidikan'] == 'SMA-IPS') echo 'selected'; ?>>SMA - IPS</option>
+                            <option value="SMK-IPA" <?php if ($edit['pendidikan'] == 'SMK-IPA') echo 'selected'; ?>>SMK - IPA</option>
+                            <option value="SMK-IPS" <?php if ($edit['pendidikan'] == 'SMK-IPS') echo 'selected'; ?>>SMK - IPS</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Nama Sekolah:</label>
-                        <input type="text" name="sekolah" class="form-control" placeholder="Masukan Nama Sekolah" required value="<?= $data['sekolah'] ?>">
+                        <input type="text" name="sekolah" class="form-control" placeholder="Masukan Nama Sekolah" required value="<?= $edit['sekolah'] ?>">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Rata-rata Nilai Rapor Kelas 12:</label>
-                        <input type="text" name="nilai_raport"  value="<?= $data['nilai_raport'] ?>" class="form-control"
+                        <input type="text" name="nilai_raport"  value="<?= $edit['nilai_raport'] ?>" class="form-control"
                             placeholder="Masukan Rata-rata nilai raport" required>
                     </div>
                 </div>
@@ -237,30 +226,30 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Pilih Program Studi 1:</label>
-                        <select class="form-control" name="prog1"   value="<?= $data['prog1'] ?>" required>
-                            <option value="S1 - Sistem Komputer">S1 - Sistem Komputer</option>
-                            <option value="S1 - Sistem Informasi">S1 - Sistem Informasi</option>
-                            <option value="S1 - Teknologi Informasi">S1 - Teknologi Informasi</option>
-                            <option value="S1 - Bisnis Digital">S1 - Bisnis Digital</option>
-                            <option value="D3 - Manajamen Informatika">D3 - Manajamen Informatika</option>
+                        <select class="form-control" name="prog1" required>
+                            <option value="S1 - Sistem Komputer" <?php if ($edit['prog1'] === 'S1 - Sistem Komputer') echo 'selected'; ?>>S1 - Sistem Komputer</option>
+                            <option value="S1 - Sistem Informasi" <?php if ($edit['prog1'] === 'S1 - Sistem Informasi') echo 'selected'; ?>>S1 - Sistem Informasi</option>
+                            <option value="S1 - Teknologi Informasi" <?php if ($edit['prog1'] === 'S1 - Teknologi Informasi') echo 'selected'; ?>>S1 - Teknologi Informasi</option>
+                            <option value="S1 - Bisnis Digital" <?php if ($edit['prog1'] === 'S1 - Bisnis Digital') echo 'selected'; ?>>S1 - Bisnis Digital</option>
+                            <option value="D3 - Manajamen Informatika" <?php if ($edit['prog1'] === 'D3 - Manajamen Informatika') echo 'selected'; ?>>D3 - Manajamen Informatika</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>PIlihan Kelas:</label>
-                        <select class="form-control" name="kelas"  value="<?= $data['kelas'] ?>" required>
-                            <option value="Reguler">Reguler</option>
-                            <option value="Karyawan">Karyawan</option>
-                            <option value="Percepatan">Percepatan</option>
+                        <select class="form-control" name="kelas" required>
+                            <option value="Reguler" <?php if ($edit['kelas'] === 'Reguler') echo 'selected'; ?>>Reguler</option>
+                            <option value="Karyawan" <?php if ($edit['kelas'] === 'Karyawan') echo 'selected'; ?>>Karyawan</option>
+                            <option value="Percepatan" <?php if ($edit['kelas'] === 'Percepatan') echo 'selected'; ?>>Percepatan</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <button type="submit" name="Submit" id="Submit" class="btn btn-primary">Daftar</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
+                <a href="update.php?NIM=<?= $edit['NIM'] ?>" class="btn btn-primary">EDIT</a>
+
                 </div>
             </div>
         </form>
