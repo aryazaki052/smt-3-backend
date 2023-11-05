@@ -27,14 +27,19 @@
                 <strong>Data Diri</strong>
             </div>
             <div class="row">
-                <div class="col-sm-7">
-
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>NIM:</label>
+                        <input type="number" name="nim" value="<?= $edit['NIM'] ?>" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-sm-5">
                     <div class="form-group">
                         <label>Nama Lengkap:</label>
                         <input type="text" name="nama" value="<?= $edit['nama'] ?>" class="form-control" placeholder="Masukan Nama Lengkap" required>
                     </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <label>Nomor Identitas (NIK):</label>
                         <input type="text" name="nik" value="<?= $edit['nik'] ?>" class="form-control" placeholder="Masukan Nomor NIK" required>
@@ -248,7 +253,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                <a href="update.php?NIM=<?= $edit['NIM'] ?>" class="btn btn-primary">EDIT</a>
+                <button type="submit" form="form" class="btn btn-primary">EDIT</button>
 
                 </div>
             </div>

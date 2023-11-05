@@ -45,11 +45,12 @@ $exec = mysqli_query($kon, $qry);
               echo "<td>" . $data['kelas'] . "</td>";
               echo "<td  class='text-center'>
               <a href='edit.php?NIM=" . $data['NIM'] . "'><i class='fa fa-pencil primary' aria-hidden='true'></i></a> 
-              <a href='delete.php?NIM=" . $data['NIM'] . "'><i class='fa fa-trash ml-2 text-danger' aria-hidden='true'></i></a>
+              <a href='delete.php?NIM=" . $data['NIM'] . "' onclick=\"return confirm('Apakah Anda yakin ingin menghapus data ini?');\"><i class='fa fa-trash ml-2 text-danger' aria-hidden='true'></i></a>
             </td>";
               echo "</tr>";
           }
           ?>
+          
 
             </tbody>
         </table>
