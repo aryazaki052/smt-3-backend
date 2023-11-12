@@ -19,6 +19,7 @@
     $qry = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
     $exec = mysqli_query($kon, $qry);
     $edit = mysqli_fetch_assoc($exec);
+
     ?>
 
     
@@ -231,19 +232,26 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Pilih Program Studi 1:</label>
-                        <select class="form-control" name="prog1" required>
-                            <option value="S1 - Sistem Komputer" <?php if ($edit['prog1'] === 'S1 - Sistem Komputer') echo 'selected'; ?>>S1 - Sistem Komputer</option>
-                            <option value="S1 - Sistem Informasi" <?php if ($edit['prog1'] === 'S1 - Sistem Informasi') echo 'selected'; ?>>S1 - Sistem Informasi</option>
-                            <option value="S1 - Teknologi Informasi" <?php if ($edit['prog1'] === 'S1 - Teknologi Informasi') echo 'selected'; ?>>S1 - Teknologi Informasi</option>
-                            <option value="S1 - Bisnis Digital" <?php if ($edit['prog1'] === 'S1 - Bisnis Digital') echo 'selected'; ?>>S1 - Bisnis Digital</option>
-                            <option value="D3 - Manajamen Informatika" <?php if ($edit['prog1'] === 'D3 - Manajamen Informatika') echo 'selected'; ?>>D3 - Manajamen Informatika</option>
+                        <select class="form-control" name="prog1" disabled>
+                        <?php
+                        $jurusan_query = mysqli_query($kon, "SELECT * FROM jurusan");
+
+                        if (mysqli_num_rows($jurusan_query) > 0) {
+                            while ($row = mysqli_fetch_assoc($jurusan_query)) {
+                                $selected = ($edit['prog1'] == $row['id_jurusan']) ? 'selected' : ''; ?>
+                                <option value="<?= $row['id_jurusan'] ?>" <?= $selected ?> > <?= $row['nama_jurusan'] ?> </option>
+                            <?php }
+                        } else {
+                            echo "Tidak ada data yang ditemukan";
+                        }
+                        ?>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>PIlihan Kelas:</label>
-                        <select class="form-control" name="kelas" required>
+                        <select class="form-control" name="kelas" disabled>
                             <option value="Reguler" <?php if ($edit['kelas'] === 'Reguler') echo 'selected'; ?>>Reguler</option>
                             <option value="Karyawan" <?php if ($edit['kelas'] === 'Karyawan') echo 'selected'; ?>>Karyawan</option>
                             <option value="Percepatan" <?php if ($edit['kelas'] === 'Percepatan') echo 'selected'; ?>>Percepatan</option>

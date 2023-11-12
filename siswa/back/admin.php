@@ -10,8 +10,45 @@
 </head>
 <body>
 <?php
+// Mulai sesi atau dapatkan sesi yang sudah ada
+session_start();
+
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+    header("Location: login.php"); // Redirect ke halaman login jika belum login
+    exit();
+}
+
+// Set waktu timeout sesi dalam detik (contoh: 5 menit)
+$timeout = 300; // 5 menit * 60 detik
+
+// Periksa apakah sesi terakhir lebih dari waktu timeout
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+    // Sesuaikan pesan sesuai kebutuhan
+    echo "Sesi Anda telah berakhir. Silakan login kembali.";
+    
+    // Hapus semua variabel sesi
+    session_unset();
+
+    // Hancurkan sesi
+    session_destroy();
+
+    // Redirect ke halaman login atau tindakan lainnya
+    header("Location: login.php");
+    exit();
+}
+
+// Perbarui waktu terakhir akses ke sesi
+$_SESSION['last_activity'] = time();
+?>
+
+
+<?php
 include "../koneksi.php";
-$qry = "SELECT * FROM pendaftaran";
+$qry = "SELECT pendaftaran.*, jurusan.nama_jurusan 
+        FROM pendaftaran 
+        LEFT JOIN jurusan ON pendaftaran.prog1 = jurusan.id_jurusan";
+
+
 $exec = mysqli_query($kon, $qry);
 ?>
 
@@ -41,7 +78,7 @@ $exec = mysqli_query($kon, $qry);
               echo "<td>" . $data['nama'] . "</td>";
               echo "<td>" . $data['email'] . "</td>";
               echo "<td>" . $data['no_telp'] . "</td>";
-              echo "<td>" . $data['prog1'] . "</td>";
+              echo "<td>" . $data['nama_jurusan'] . "</td>";
               echo "<td>" . $data['kelas'] . "</td>";
               echo "<td  class='text-center'>
               <a href='edit.php?NIM=" . $data['NIM'] . "'><i class='fa fa-pencil primary' aria-hidden='true'></i></a> 
@@ -54,6 +91,9 @@ $exec = mysqli_query($kon, $qry);
 
             </tbody>
         </table>
+    </div>
+    <div>
+    <a href="logout.php">Logout</a>
     </div>
 </div>
 

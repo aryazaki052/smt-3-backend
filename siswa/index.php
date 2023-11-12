@@ -23,6 +23,16 @@
         $data = htmlspecialchars($data);
         return $data;
     }
+    // random pass untuk mhs
+    function generateRandomPassword($length = 8) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $password = '';
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $password;
+    }
+    
     //Cek apakah ada kiriman form dari method post
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // select name nya
@@ -48,24 +58,16 @@
         $prog1=input($_POST["prog1"]);
         $selected_program_studi = $_POST["prog1"]; // Ganti dengan sesuai input dari form
         $kelas=input($_POST["kelas"]);
-        // Tentukan kode program studi sesuai pilihan
-        switch ($selected_program_studi) {
-            case 'S1 - Sistem Komputer':
-                $kode_program_studi = '10';
-                break;
-            case 'S1 - Sistem Informasi':
-                $kode_program_studi = '11';
-                break;
-            case 'S1 - Teknologi Informasi':
-                $kode_program_studi = '12';
-                break;
-            case 'S1 - Bisnis Digital':
-                $kode_program_studi = '13';
-                break;
-            case 'D3 - Manajamen Informatika':
-                $kode_program_studi = '14';
-                break;
-        }
+
+        // ambil data kode jurusan untuk nim
+        $id_jurusan = $_POST["prog1"];
+        $query_jurusan = "SELECT * FROM jurusan WHERE id_jurusan = '$id_jurusan'";
+        $result_jurusan = mysqli_query($kon, $query_jurusan);
+
+        $row_jurusan = mysqli_fetch_assoc($result_jurusan);
+        $kode_jurusan = $row_jurusan['id_jurusan'];
+
+    
         switch ($kelas) {
             case 'Reguler':
                 $kode_kelas= '00';
@@ -86,9 +88,10 @@
 
         // Buat ID mahasiswa berdasarkan variabel yang sudah diatur
         $tahun_ajaran = '22'; // Atur tahun ajaran sesuai kebutuhan
-        $NIM = $tahun_ajaran . $kode_kelas . $kode_program_studi . $urutan_pendaftaran;
-
-
+        $NIM = $tahun_ajaran . $kode_kelas . $kode_jurusan . $urutan_pendaftaran;
+        
+        // select data dari tabel jurusan
+        // $jurusan_query = mysqli_query($kon, "SELECT * FROM jurusan");
 
         
         //eksekusi nya
@@ -97,6 +100,15 @@
         $sql="insert into pendaftaran (NIM, nama,nik,tempat_lahir,tanggal_lahir,jk,kewarganegaraan,agama,nama_ibu,email,no_telp,alamat,kode_pos,provinsi,kabupaten,kecamatan,pendidikan,sekolah,nilai_raport,prog1,kelas) values
         ('$NIM', '$nama','$nik','$tempat_lahir','$tanggal_lahir','$jk','$kewarganegaraan','$agama','$nama_ibu','$email','$no_telp','$alamat','$kode_pos','$provinsi','$kabupaten','$kecamatan','$pendidikan','$sekolah','$nilai_raport','$prog1','$kelas')";
         //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
+
+
+
+         // Simpan password langsung ke dalam database
+        $password = generateRandomPassword(); // fungsi ini untuk menghasilkan password acak
+        $insertQuery = "INSERT INTO login_mhs (NIM, pass_mhs) VALUES ('$NIM', '$password')";
+        $insertResult = mysqli_query($kon, $insertQuery);
+
+
         $hasil=mysqli_query($kon,$sql);
         if ($hasil) { 
             echo "<div class='alert alert-success'> Selamat $nama anda telah berhasil mendaftar.</div>"; 
@@ -104,6 +116,8 @@
         else {
             echo "<div class='alert alert-danger'> Pendaftaraan Gagal.</div>";
         }
+        
+            
     }
     ?>
 
@@ -326,11 +340,21 @@
                     <div class="form-group">
                         <label>Pilih Program Studi 1:</label>
                         <select class="form-control" name="prog1" required>
-                            <option value="S1 - Sistem Komputer">S1 - Sistem Komputer</option>
-                            <option value="S1 - Sistem Informasi">S1 - Sistem Informasi</option>
-                            <option value="S1 - Teknologi Informasi">S1 - Teknologi Informasi</option>
-                            <option value="S1 - Bisnis Digital">S1 - Bisnis Digital</option>
-                            <option value="D3 - Manajamen Informatika">D3 - Manajamen Informatika</option>
+                        <?php
+                        // select data dari tabel jurusan
+                        $jurusan_query = mysqli_query($kon, "SELECT * FROM jurusan");
+
+                        // Mengecek jika terdapat hasil query
+                        if(mysqli_num_rows($jurusan_query) > 0) {
+                            while ($row = mysqli_fetch_assoc($jurusan_query)) { 
+                                ?>
+                                <option  value="<?= $row['id_jurusan'] ?>"><?= $row['nama_jurusan'] ?></option>
+                                <?php 
+                            }
+                        } else {
+                            echo "Tidak ada data yang ditemukan"; // Menampilkan pesan jika tidak ada data
+                        }
+                        ?>
                         </select>
                     </div>
                 </div>
