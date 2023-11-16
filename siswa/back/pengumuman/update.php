@@ -7,6 +7,7 @@ include "../../koneksi.php"; // Pastikan file koneksi.php sudah sesuai dengan ko
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil data dari formulir
     $judul = $_POST["judul"];
+    $deskripsi = $_POST["deskripsi"];
     $tanggal_post = date("Y-m-d H:i:s"); // Gunakan waktu sekarang sebagai tanggal_post
     $id = $_POST['id_pengumuman'];
     // Cek apakah ada dokumen baru
@@ -35,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             move_uploaded_file($_FILES["dokumen"]["tmp_name"], $targetFilePath);
 
             // Perbarui data ke database dengan dokumen baru
-            $queryUpdate = "UPDATE pengumuman SET judul_pengumuman='$judul', tgl_post='$tanggal_post', dokumen='$targetFilePath' WHERE id_pengumuman=$id";
+            $queryUpdate = "UPDATE pengumuman SET judul_pengumuman='$judul', tgl_post='$tanggal_post', deskripsi='$deskripsi', dokumen='$targetFilePath' WHERE id_pengumuman=$id";
             $resultUpdate = mysqli_query($kon, $queryUpdate);
 
             if ($resultUpdate) {
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // Jika tidak ada dokumen baru, perbarui data kecuali dokumen
-        $queryUpdate = "UPDATE pengumuman SET judul_pengumuman='$judul', tgl_post='$tanggal_post' WHERE id_pengumuman=$id";
+        $queryUpdate = "UPDATE pengumuman SET judul_pengumuman='$judul',  tgl_post='$tanggal_post', deskripsi='$deskripsi'  WHERE id_pengumuman=$id";
         $resultUpdate = mysqli_query($kon, $queryUpdate);
 
         if ($resultUpdate) {

@@ -422,6 +422,10 @@
                       <label for="judul">Judul Pengumuman</label>
                       <input type="text" name="judul"  value="<?= $edit['judul_pengumuman'] ?>" class="form-control" id="text" placeholder="Masukan Judul">
                     </div>
+                    <div class="form-group">
+                      <label for="judul">Deskripsi Pengumuman</label>
+                      <input type="text" name="deskripsi"  value="<?= $edit['deskripsi'] ?>" class="form-control" id="text" placeholder="Masukan Judul">
+                    </div>
                     <div class="form-group" id="dokumenFormGroup">
                       <label for="dokumen">Dokumen Pengumuman (doc, docx, pdf)</label>
                       <input type="file" name="dokumen"  class="form-control" accept=".doc,.docx,.pdf">

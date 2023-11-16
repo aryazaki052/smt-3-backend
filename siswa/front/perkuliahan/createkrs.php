@@ -379,6 +379,12 @@ $result_kelas = mysqli_query($kon, $query_kelas);
 								<p>Perkuliahan</p>
 							</a>
 						</li>
+						<li class="nav-item">
+              <a href="../pengumuman/pengumuman.php">
+								<i class="fas fa-desktop"></i>
+								<p>Pengumuman</p>
+							</a>
+						</li>
 
 						<li class="nav-item">
 							<a href="../logout.php">
