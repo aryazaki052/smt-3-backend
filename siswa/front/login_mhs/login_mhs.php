@@ -29,8 +29,7 @@ if (isset($_POST['login'])) {
         if (mysqli_num_rows($result) == 1) {
             // Mahasiswa ditemukan, set session dan arahkan ke halaman index.php
             $_SESSION['NIM'] = $nim;
-
-            header("Location: ../sion.php");
+            header("Location: ../index.php");
             exit();
         } else {
             echo "Login gagal. NIM atau password salah.";

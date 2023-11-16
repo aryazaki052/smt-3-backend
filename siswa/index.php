@@ -101,14 +101,18 @@
         ('$NIM', '$nama','$nik','$tempat_lahir','$tanggal_lahir','$jk','$kewarganegaraan','$agama','$nama_ibu','$email','$no_telp','$alamat','$kode_pos','$provinsi','$kabupaten','$kecamatan','$pendidikan','$sekolah','$nilai_raport','$prog1','$kelas')";
         //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
 
+        
+?>
 
+<?php
 
          // Simpan password langsung ke dalam database
         $password = generateRandomPassword(); // fungsi ini untuk menghasilkan password acak
         $insertQuery = "INSERT INTO login_mhs (NIM, pass_mhs) VALUES ('$NIM', '$password')";
         $insertResult = mysqli_query($kon, $insertQuery);
 
-
+?>
+<?php
         $hasil=mysqli_query($kon,$sql);
         if ($hasil) { 
             echo "<div class='alert alert-success'> Selamat $nama anda telah berhasil mendaftar.</div>"; 
@@ -116,8 +120,6 @@
         else {
             echo "<div class='alert alert-danger'> Pendaftaraan Gagal.</div>";
         }
-        
-            
     }
     ?>
 

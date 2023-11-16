@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
     if ($result) {
         if (mysqli_num_rows($result) == 1) {
             // Admin ditemukan, set session dan arahkan ke halaman admin.php
-            $_SESSION['admin'] = true;
+            $_SESSION['admin'] = $username;
             header("Location: admin.php");
             exit();
         } else {

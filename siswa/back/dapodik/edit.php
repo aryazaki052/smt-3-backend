@@ -4,9 +4,9 @@
     <title>Pendaftaran Mahasiswa Baru</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <script src="../jquery/jquery-3.4.1.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <script src="../../jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -14,7 +14,7 @@
     <h1 class="text-center">Edit Data Mahasiswa Baru</h1>
     <?php
     //Include file koneksi, untuk koneksikan ke database
-    include "../koneksi.php";
+    include "../../koneksi.php";
     $nim = $_GET['NIM'];
     $qry = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
     $exec = mysqli_query($kon, $qry);
@@ -72,7 +72,6 @@
             </div>
 
             <div class="row">
-
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Kewarganegaraan:</label>
@@ -232,7 +231,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Pilih Program Studi 1:</label>
-                        <select class="form-control" name="prog1" disabled>
+                        <select class="form-control" name="prog1">
                         <?php
                         $jurusan_query = mysqli_query($kon, "SELECT * FROM jurusan");
 
@@ -251,7 +250,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>PIlihan Kelas:</label>
-                        <select class="form-control" name="kelas" disabled>
+                        <select class="form-control" name="kelas" >
                             <option value="Reguler" <?php if ($edit['kelas'] === 'Reguler') echo 'selected'; ?>>Reguler</option>
                             <option value="Karyawan" <?php if ($edit['kelas'] === 'Karyawan') echo 'selected'; ?>>Karyawan</option>
                             <option value="Percepatan" <?php if ($edit['kelas'] === 'Percepatan') echo 'selected'; ?>>Percepatan</option>

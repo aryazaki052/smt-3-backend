@@ -1,5 +1,5 @@
 <?php
-include "../koneksi.php";
+include "../../koneksi.php";
 
 if (isset($_GET['NIM']) && !empty($_GET['NIM'])) {
     $nim = $_GET['NIM'];
@@ -13,7 +13,7 @@ if (isset($_GET['NIM']) && !empty($_GET['NIM'])) {
     if ($result) {
         // Jika query berhasil dieksekusi
         echo "Data berhasil dihapus!";
-        header("Location: admin.php"); // Arahkan kembali ke halaman admin.php setelah proses selesai
+        header("Location: dapodik.php"); // Arahkan kembali ke halaman admin.php setelah proses selesai
     } else {
         // Jika terjadi kesalahan
         echo "Gagal menghapus data: " . mysqli_error($kon);

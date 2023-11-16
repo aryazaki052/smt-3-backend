@@ -22,7 +22,7 @@ $nilai_raport = $_POST["nilai_raport"];
 $prog1 = $_POST["prog1"];
 $kelas = $_POST["kelas"];
 
-include "../koneksi.php";
+include "../../koneksi.php";
 
 // Query untuk update data
 $qry = "UPDATE pendaftaran SET 
@@ -54,7 +54,7 @@ $result = mysqli_query($kon, $qry);
 if ($result) {
   // Jika query berhasil dieksekusi
   echo "Data berhasil diperbarui!";
-  header("Location: admin.php"); // Arahkan kembali ke halaman admin.php setelah proses selesai
+  header("Location: dapodik.php"); // Arahkan kembali ke halaman admin.php setelah proses selesai
 } else {
   // Jika terjadi kesalahan
   echo "Gagal memperbarui data: " . mysqli_error($kon);

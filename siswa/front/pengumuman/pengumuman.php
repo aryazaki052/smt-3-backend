@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Admin</title>
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <title>Perkulian</title>
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- Fonts and icons -->
-<script src="../front/assets/js/plugin/webfont/webfont.min.js"></script>
+<script src="../../front/assets/js/plugin/webfont/webfont.min.js"></script>
 <script>
     WebFont.load({
         google: {"families":["Lato:300,400,700,900"]},
-        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../front/assets/css/fonts.min.css']},
+        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../front/assets/css/fonts.min.css']},
         active: function() {
             sessionStorage.fonts = true;
         }
@@ -21,62 +21,61 @@
 </script>
 
 <!-- CSS Files -->
-<link rel="stylesheet" href="../front/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../front/assets/css/atlantis.min.css">
+<link rel="stylesheet" href="../../front/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../front/assets/css/atlantis.min.css">
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
-<link rel="stylesheet" href="../front/assets/css/demo.css">
+<link rel="stylesheet" href="../../front/assets/css/demo.css">
 </head>
 <body>
-    <!-- kode php -->
- <div>
-    <?php
-		session_start();
+<!-- session -->
+<div>
+	<?php
+	include "../../koneksi.php";
+	// Mulai sesi atau dapatkan sesi yang sudah ada
+	session_start();
 
-		include "../koneksi.php";
-		
+	if (!isset($_SESSION['NIM']) || empty($_SESSION['NIM'])) {
+		header("Location: ../login_mhs/login_mhs.php"); // Redirect ke halaman login jika belum login
+		exit();
+	}
 
-		if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
-			header("Location: login.php"); // Redirect ke halaman login jika belum login
-			exit();
-		}
-		
+	
+		// Set waktu timeout sesi dalam detik (contoh: 5 menit)
+		$timeout = 300; // 5 menit * 60 detik
 
-		// // Set waktu timeout sesi dalam detik (contoh: 5 menit)
-		// $timeout = 300; // 5 menit * 60 detik
-
-		// // Periksa apakah sesi terakhir lebih dari waktu timeout
-		// if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
-		// 		// Sesuaikan pesan sesuai kebutuhan
-		// 		echo "Sesi Anda telah berakhir. Silakan login kembali.";
+		// Periksa apakah sesi terakhir lebih dari waktu timeout
+		if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+				// Sesuaikan pesan sesuai kebutuhan
+				echo "Sesi Anda telah berakhir. Silakan login kembali.";
 				
-		// 		// Hapus semua variabel sesi
-		// 		session_unset();
+				// Hapus semua variabel sesi
+				session_unset();
 
-		// 		// Hancurkan sesi
-		// 		session_destroy();
+				// Hancurkan sesi
+				session_destroy();
 
-		// 		// Redirect ke halaman login atau tindakan lainnya
-		// 		header("Location: login.php");
-		// 		exit();
-		// }
+				// Redirect ke halaman login atau tindakan lainnya
+				header("Location: ../login_mhs/login_mhs.php");
+				exit();
+		}
+			// Perbarui waktu terakhir akses ke sesi
+			$_SESSION['last_activity'] = time();
 
-		// // Perbarui waktu terakhir akses ke sesi
-		// $_SESSION['last_activity'] = time();
-
-		// Ambil id admin dari sesi yang sudah login
-		$username = $_SESSION['admin'];
-
-
-		// Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM
-		$query = "SELECT * FROM admin_user WHERE usname_admin = '$username'";
-		$result = mysqli_query($kon, $query);
-		?>
-    </div>
-<!-- end kode php -->
+	// Ambil NIM dari sesi yang sudah login
+	$nim = $_SESSION['NIM'];
 
 
-    <!-- header -->
+	// Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM
+	$query = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
+	$result = mysqli_query($kon, $query);
+	?>
+
+</div>
+<!-- end session -->
+
+
+<!-- header -->
 <div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
@@ -338,12 +337,11 @@
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 									<span>
-                                    <?php
+									<?php
 									if ($data = mysqli_fetch_assoc($result)) {
 										// Menampilkan Nama dan NIM dari data mahasiswa
-										echo $data['usname_admin']; // Gantilah 'NIM' dengan nama kolom yang sesuai di database
-										echo "<br>";
-										echo "Admin";
+										echo $data['NIM']; // Gantilah 'NIM' dengan nama kolom yang sesuai di database
+										echo "<span class='user-level'>" . $data['nama'] . "</span>";
 								}
 								?>
 									</span>
@@ -352,13 +350,11 @@
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item active">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
+					<li class="nav-item">
+               <a href="../index.php">
+								<i class="fas fa-desktop"></i>
 								<p>Dashboard</p>
-						
 							</a>
-
 						</li>
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
@@ -366,21 +362,21 @@
 							</span>
 							<h4 class="text-section">MENU</h4>
 						</li>
-						<li class="nav-item">
-                            <a href="dapodik/dapodik.php">
+						<li class="nav-item ">
+              <a href="../perkuliahan/perkuliahan.php">
 								<i class="fas fa-desktop"></i>
-								<p>Data Pokok Mahasiswa</p>
+								<p>Perkuliahan</p>
 							</a>
 						</li>
-						<li class="nav-item">
-                            <a href="pengumuman/pengumuman.php">
+            <li class="nav-item active">
+              <a href="">
 								<i class="fas fa-desktop"></i>
 								<p>Pengumuman</p>
 							</a>
 						</li>
 
 						<li class="nav-item">
-							<a href="../back/logout.php">
+							<a href="../login_mhs/logout_mhs.php">
 									<i class="fas fa-undo"></i>
 									<p>Logout</p>
 							</a>
@@ -397,159 +393,57 @@
 		<!-- content -->
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header bg-primary-gradient">
-					<div class="page-inner py-5">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-							<div>
-								<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-								<h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
-							</div>
-							<div class="ml-md-auto py-2 py-md-0">
-								<a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
-								<a href="#" class="btn btn-secondary btn-round">Add Customer</a> --}}
-							</div>
-						</div>
-					</div>
-				</div>
+        <div class="panel-header bg-primary-gradient">
+          <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+            </div>
+          </div>
+        </div>
 				<div class="page-inner mt--5">
-					<div class="row">
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body ">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-primary bubble-shadow-small">
-												<i class="fas fa-users"></i>
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">User</p>
-												<h4 class="card-title">isi</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-info bubble-shadow-small">
-												<i class="far fa-newspaper"></i>
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">Article</p>
-												<h4 class="card-title">70</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-success bubble-shadow-small">
-												<i class="fas fa-tags"></i>
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">Kategori</p>
-												<h4 class="card-title">80</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-secondary bubble-shadow-small">
-												<i class="fas fa-file-video"></i>
-				
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">Vidoe</p>
-												<h4 class="card-title">90</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Materi Video</div>
-									</div>
-								</div>
-								<div class="card-body">
-								
-				
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Playlist Video</div>
-									</div>
-								</div>
-								<div class="card-body">
-									
-				
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Draft Artikel</div>
-									</div>
-								</div>
-								<div class="card-body">
-								
-				
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Artikel Terpopuler</div>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="table-responsive">
-									
-									</div>
-				
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card full-height">
+                        <div class="card-header">
+                            <div class="card-head-row">
+                                <div class="card-title">Pengumuman</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                        
+                            <?php
+                            // Lakukan koneksi ke database atau tambahkan sesuai dengan struktur koneksi yang Anda gunakan
+                            // Query untuk mendapatkan data pengumuman
+                            $query_pengumuman = "SELECT * FROM pengumuman";
+                            $result_pengumuman = mysqli_query($kon, $query_pengumuman);
+
+                            if ($result_pengumuman) {
+                                while ($row_pengumuman = mysqli_fetch_assoc($result_pengumuman)) {
+                                    $judul_pengumuman = $row_pengumuman['judul_pengumuman'];
+																		$deskripsi = $row_pengumuman['deskripsi'];
+                                    $nama_file = $row_pengumuman['dokumen'];
+                            ?>
+                                    <div class="bg-danger p-3">
+                                        <div class="toast-header text-center" style="display: flex; justify-content:center; align-items:center; flex-direction:column;">
+                                            <h1 class="text-strong text-dark" style="margin-right: 20px;"><?php echo $judul_pengumuman; ?></h1>
+                                            <h3 class="text-strong text-dark" style="margin-right: 20px;"><?php echo $deskripsi; ?></h3>
+                                            <a class="has-arrow waves-effect waves-dark text-dark" target="_blank" href="../../back/pengumuman/unggah/<?php echo $nama_file; ?>">
+                                                <i class="mdi mdi-download"></i><span class="hide-menu">&nbsp;Download</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                            } else {
+                                echo "Tidak ada pengumuman.";
+                            }
+                            ?>
+
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 			</div>
 
 		</div>
@@ -563,46 +457,46 @@
 
 	<!--   Core JS Files   -->
 	<div>
-		<script src="../front/assets/js/core/jquery.3.2.1.min.js"></script>
-		<script src="../front/assets/js/core/popper.min.js"></script>
-		<script src="../front/assets/js/core/bootstrap.min.js"></script>
+		<script src="../../front/assets/js/core/jquery.3.2.1.min.js"></script>
+		<script src="../../front/assets/js/core/popper.min.js"></script>
+		<script src="../../front/assets/js/core/bootstrap.min.js"></script>
 
 		<!-- jQuery UI -->
-		<script src="../front/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-		<script src="../front/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
 		<!-- jQuery Scrollbar -->
-		<script src="../front/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
 		<!-- Chart JS -->
-		<script src="../front/assets/js/plugin/chart.js/chart.min.js"></script>
+		<script src="../../front/assets/js/plugin/chart.js/chart.min.js"></script>
 
 		<!-- jQuery Sparkline -->
-		<script src="../front/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
 		<!-- Chart Circle -->
-		<script src="../front/assets/js/plugin/chart-circle/circles.min.js"></script>
+		<script src="../../front/assets/js/plugin/chart-circle/circles.min.js"></script>
 
 		<!-- Datatables -->
-		<script src="../front/assets/js/plugin/datatables/datatables.min.js"></script>
+		<script src="../../front/assets/js/plugin/datatables/datatables.min.js"></script>
 
 		<!-- Bootstrap Notify -->
-		<script src="../front/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+		<script src="../../front/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
 		<!-- jQuery Vector Maps -->
-		<script src="../front/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-		<script src="../front/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+		<script src="../../front/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+		<script src="../../front/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
 		<!-- Sweet Alert -->
-		<script src="../front/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+		<script src="../../front/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 		<!-- Atlantis JS -->
-		<script src="../front/assets/js/atlantis.min.js"></script>
+		<script src="../../front/assets/js/atlantis.min.js"></script>
 
 		<!-- Atlantis DEMO methods, don't include it in your project! -->
-		<script src="../front/assets/js/setting-demo.js"></script>
-		<script src="../front/assets/js/demo.js"></script>
+		<script src="../../front/assets/js/setting-demo.js"></script>
+		<script src="../../front/assets/js/demo.js"></script>
 		<script>
 			Circles.create({
 				id:'circles-1',

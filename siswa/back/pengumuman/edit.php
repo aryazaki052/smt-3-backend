@@ -1,78 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>BACKEND</title>
-	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Admin</title>
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-	<!-- Fonts and icons -->
-	<script src="assets/js/plugin/webfont/webfont.min.js"></script>
-	<script>
-		WebFont.load({
-			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['assets/css/fonts.min.css']},
-			active: function() {
-				sessionStorage.fonts = true;
-			}
-		});
-	</script>
+<!-- Fonts and icons -->
+<script src="../../front/assets/js/plugin/webfont/webfont.min.js"></script>
+<script>
+    WebFont.load({
+        google: {"families":["Lato:300,400,700,900"]},
+        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../front/assets/css/fonts.min.css']},
+        active: function() {
+            sessionStorage.fonts = true;
+        }
+    });
+</script>
 
-	<!-- CSS Files -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/atlantis.min.css">
+<!-- CSS Files -->
+<link rel="stylesheet" href="../../front/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../front/assets/css/atlantis.min.css">
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="assets/css/demo.css">
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" href="../../front/assets/css/demo.css">
 </head>
 <body>
+<!-- session -->
+<div>
+	<?php
+	include "../../koneksi.php";
+	// Mulai sesi atau dapatkan sesi yang sudah ada
+	session_start();
 
-<!-- kode php -->
-	<div>
-		<?php
+	if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
+		header("Location: ../login.php"); // Redirect ke halaman login jika belum login
+		exit();
+	}
 
-		include "../koneksi.php";
-		// Mulai sesi atau dapatkan sesi yang sudah ada
-		session_start();
+	// // Set waktu timeout sesi dalam detik (contoh: 5 menit)
+	// $timeout = 300; // 5 menit * 60 detik
 
-		if (!isset($_SESSION['mahasiswa']) || $_SESSION['mahasiswa'] !== true) {
-			header("Location: login_mhs/login_mhs.php"); // Redirect ke halaman login jika belum login
-			exit();
-		}
+	// // Periksa apakah sesi terakhir lebih dari waktu timeout
+	// if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+	// 		// Sesuaikan pesan sesuai kebutuhan
+	// 		echo "Sesi Anda telah berakhir. Silakan login kembali.";
+			
+	// 		// Hapus semua variabel sesi
+	// 		session_unset();
 
-		// Set waktu timeout sesi dalam detik (contoh: 5 menit)
-		$timeout = 300; // 5 menit * 60 detik
+	// 		// Hancurkan sesi
+	// 		session_destroy();
 
-		// Periksa apakah sesi terakhir lebih dari waktu timeout
-		if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
-				// Sesuaikan pesan sesuai kebutuhan
-				echo "Sesi Anda telah berakhir. Silakan login kembali.";
-				
-				// Hapus semua variabel sesi
-				session_unset();
+	// 		// Redirect ke halaman login atau tindakan lainnya
+	// 		header("Location: ../login.php");
+	// 		exit();
+	// }
 
-				// Hancurkan sesi
-				session_destroy();
+	// // Perbarui waktu terakhir akses ke sesi
+	// $_SESSION['last_activity'] = time();
 
-				// Redirect ke halaman login atau tindakan lainnya
-				header("Location: login_mhs/login_mhs.php");
-				exit();
-		}
+	$username = $_SESSION['admin'];
 
-		// Perbarui waktu terakhir akses ke sesi
-		$_SESSION['last_activity'] = time();
 
-		// Ambil NIM dari sesi yang sudah login
-		$nim = $_SESSION['NIM'];
+	// Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM
+	$query = "SELECT * FROM admin_user WHERE usname_admin = '$username'";
+	$result = mysqli_query($kon, $query);
 
-		// Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM
-		$query = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
-		$result = mysqli_query($kon, $query);
-		?>
-	</div>
+  $id = $_GET['id'];
+  $qry = "SELECT * FROM pengumuman WHERE id_pengumuman = '$id'";
+  $exec = mysqli_query($kon, $qry);
+  $edit = mysqli_fetch_assoc($exec);
+	?>
+
+</div>
+<!-- end session -->
 
 <!-- header -->
-	<div class="wrapper">
+<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
@@ -328,7 +335,7 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="../front/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -336,55 +343,48 @@
 									<?php
 									if ($data = mysqli_fetch_assoc($result)) {
 										// Menampilkan Nama dan NIM dari data mahasiswa
-										echo $data['NIM']; // Gantilah 'NIM' dengan nama kolom yang sesuai di database
-										echo "<span class='user-level'>" . $data['nama'] . "</span>";
+										echo $data['usname_admin']; // Gantilah 'NIM' dengan nama kolom yang sesuai di database
+										echo "<span class='user-level'>" . $data['id_admin'] . "</span>";
 								}
 								?>
 									</span>
 							</a>
 							<div class="clearfix"></div>
-							<!-- <div class="collapse in" id="collapseExample">
-								<ul class="nav">
-									<li>
-										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
-									</li>
-								</ul>
-							</div> -->
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item active">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
+					<li class="nav-item">
+               <a href="../admin.php">
+								<i class="fas fa-desktop"></i>
 								<p>Dashboard</p>
-						
 							</a>
-
 						</li>
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
-							<h4 class="text-section">Components</h4>
+							<h4 class="text-section">MENU</h4>
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
-								<p>Base</p>
+						<li class="nav-item ">
+						<a href="../dapodik/dapodik.php">
+								<i class="fas fa-desktop"></i>
+								<p>Data Pokok Mahasiswa</p>
 							</a>
 						</li>
+            <li class="nav-item active">
+                <a href="pengumuman.php">
+								<i class="fas fa-desktop"></i>
+								<p>Pengumuman</p>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="../logout.php">
+									<i class="fas fa-undo"></i>
+									<p>Logout</p>
+							</a>
+					</li>
+
 
 						
 					</ul>
@@ -396,209 +396,109 @@
 		<!-- content -->
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header bg-primary-gradient">
-					<div class="page-inner py-5">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-							<div>
-								<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-								<h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
-							</div>
-							<div class="ml-md-auto py-2 py-md-0">
-								<a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
-								<a href="#" class="btn btn-secondary btn-round">Add Customer</a> --}}
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="page-inner mt--5">
-					<div class="row">
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body ">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-primary bubble-shadow-small">
-												<i class="fas fa-users"></i>
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">User</p>
-												<h4 class="card-title">isi</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-info bubble-shadow-small">
-												<i class="far fa-newspaper"></i>
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">Article</p>
-												<h4 class="card-title">70</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-success bubble-shadow-small">
-												<i class="fas fa-tags"></i>
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">Kategori</p>
-												<h4 class="card-title">80</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="card card-stats card-round">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col-icon">
-											<div class="icon-big text-center icon-secondary bubble-shadow-small">
-												<i class="fas fa-file-video"></i>
-				
-											</div>
-										</div>
-										<div class="col col-stats ml-3 ml-sm-0">
-											<div class="numbers">
-												<p class="card-category">Vidoe</p>
-												<h4 class="card-title">90</h4>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Materi Video</div>
-									</div>
-								</div>
-								<div class="card-body">
-								
-				
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Playlist Video</div>
-									</div>
-								</div>
-								<div class="card-body">
-									
-				
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Draft Artikel</div>
-									</div>
-								</div>
-								<div class="card-body">
-								
-				
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card full-height">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Artikel Terpopuler</div>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="table-responsive">
-									
-									</div>
-				
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+        <div class="panel-header bg-primary-gradient">
+          <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+            </div>
+          </div>
+        </div>
+        <div class="page-inner mt--5">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card full-height">
+                <div class="card-header">
+                <div class="card-head-row">
+                  <div class="card-title">Tambah Pengumuman</div>
+                  <a href="pengumuman.php" class="btn btn-primary btn-sm ml-auto">Back</a>
+                </div>
+                </div>
+                <div class="card-body">
+                  <form action="update.php" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label for="judul">ID Pengumuman</label>
+                      <input type="text" name="id_pengumuman"  value="<?= $edit['id_pengumuman'] ?>" class="form-control" id="text" placeholder="Masukan Judul" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="judul">Judul Pengumuman</label>
+                      <input type="text" name="judul"  value="<?= $edit['judul_pengumuman'] ?>" class="form-control" id="text" placeholder="Masukan Judul">
+                    </div>
+                    <div class="form-group" id="dokumenFormGroup">
+                      <label for="dokumen">Dokumen Pengumuman (doc, docx, pdf)</label>
+                      <input type="file" name="dokumen"  class="form-control" accept=".doc,.docx,.pdf">
+                    </div>
+                    <div class="form-group" id="dokumenFormGroup">
+                    <label for="dokumen">Dokumen Saat ini</label>
+                    <div>
+                        <?php
+                        if (!empty($edit['dokumen'])) {
+                            echo "<a href='{$edit['dokumen']}' target='_blank'>Lihat Dokumen</a>";
+                        }
+                        ?>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                      <button class="btn btn-danger btn-sm" type="reset">Reset</button>
+                    </div>
+                  </form>
+				        </div>
+              </div>
+            </div>
+          </div>
+        </div>
 			</div>
 
 		</div>
 		<!-- End content -->
-	</div>
+
+
+
+
 
 
 
 	<!--   Core JS Files   -->
 	<div>
-		<script src="assets/js/core/jquery.3.2.1.min.js"></script>
-		<script src="assets/js/core/popper.min.js"></script>
-		<script src="assets/js/core/bootstrap.min.js"></script>
+		<script src="../../front/assets/js/core/jquery.3.2.1.min.js"></script>
+		<script src="../../front/assets/js/core/popper.min.js"></script>
+		<script src="../../front/assets/js/core/bootstrap.min.js"></script>
 
 		<!-- jQuery UI -->
-		<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-		<script src="assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
 		<!-- jQuery Scrollbar -->
-		<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
 		<!-- Chart JS -->
-		<script src="assets/js/plugin/chart.js/chart.min.js"></script>
+		<script src="../../front/assets/js/plugin/chart.js/chart.min.js"></script>
 
 		<!-- jQuery Sparkline -->
-		<script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+		<script src="../../front/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
 		<!-- Chart Circle -->
-		<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+		<script src="../../front/assets/js/plugin/chart-circle/circles.min.js"></script>
 
 		<!-- Datatables -->
-		<script src="assets/js/plugin/datatables/datatables.min.js"></script>
+		<script src="../../front/assets/js/plugin/datatables/datatables.min.js"></script>
 
 		<!-- Bootstrap Notify -->
-		<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+		<script src="../../front/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
 		<!-- jQuery Vector Maps -->
-		<script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-		<script src="assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+		<script src="../../front/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+		<script src="../../front/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
 		<!-- Sweet Alert -->
-		<script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+		<script src="../../front/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 		<!-- Atlantis JS -->
-		<script src="assets/js/atlantis.min.js"></script>
+		<script src="../../front/assets/js/atlantis.min.js"></script>
 
 		<!-- Atlantis DEMO methods, don't include it in your project! -->
-		<script src="assets/js/setting-demo.js"></script>
-		<script src="assets/js/demo.js"></script>
+		<script src="../../front/assets/js/setting-demo.js"></script>
+		<script src="../../front/assets/js/demo.js"></script>
 		<script>
 			Circles.create({
 				id:'circles-1',
@@ -694,5 +594,6 @@
 			});
 		</script>
 	</div>
+
 </body>
 </html>
