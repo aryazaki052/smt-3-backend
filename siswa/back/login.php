@@ -13,6 +13,21 @@
 <body>
 
 <?php
+		function logLogin($username, $status) {
+			$logFile = 'login_log.txt';
+			date_default_timezone_set('Asia/Makassar');
+			$currentTime = date('Y-m-d H:i:s ');
+			$logData = "$currentTime - Username: $username, Status: $status\n";
+	
+			$fileHandler = fopen($logFile, 'a'); 
+			if ($fileHandler) {
+					fwrite($fileHandler, $logData);
+					fclose($fileHandler);
+					return true;
+			} else {
+					return false;
+			}
+	}
 session_start(); // Mulai sesi
 
 // Koneksi ke database (sesuaikan dengan detail koneksi Anda)
@@ -28,11 +43,15 @@ if (isset($_POST['login'])) {
 
     if ($result) {
         if (mysqli_num_rows($result) == 1) {
+            $statusLogin = 'Berhasil Login';
+			logLogin($username, $statusLogin);
             // Admin ditemukan, set session dan arahkan ke halaman admin.php
             $_SESSION['admin'] = $username;
             header("Location: admin.php");
             exit();
         } else {
+            $statusLogin = 'Gagal Login';
+			logLogin($username, $statusLogin);
             echo "Login gagal. Username atau password salah.";
         }
     } else {

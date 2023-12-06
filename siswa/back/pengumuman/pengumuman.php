@@ -431,7 +431,7 @@
                           echo "<td>" . $data['id_pengumuman'] . "</td>";
                           echo "<td>" . $data['judul_pengumuman'] . "</td>";
                           echo "<td>" . $data['tgl_post'] . "</td>";
-                          echo "<td><a href='" . $data['dokumen'] . "' target='_blank'>" . basename($data['dokumen']) . "</a></td>";
+                          echo "<td><a href='../../back/pengumuman/unggah/" . $data['dokumen'] . "' target='_blank'>" . basename($data['dokumen']) . "</a></td>";
                           echo "<td  class='text-center'>
                                 <a href='edit.php?id=" . $data['id_pengumuman'] . "'><i class='fa fa-pencil primary' aria-hidden='true'></i></a> 
                                 <a href='delete.php?id=" . $data['id_pengumuman'] . "' onclick=\"return confirm('Apakah Anda yakin ingin menghapus data ini?');\"><i class='fa fa-trash ml-2 text-danger' aria-hidden='true'></i></a>

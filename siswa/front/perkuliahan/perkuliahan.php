@@ -77,8 +77,8 @@
 
 <!-- header -->
 <div class="wrapper">
-		<div class="main-header">
-			<!-- Logo Header -->
+	<div class="main-header">
+		<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 				
 				<!-- <a href="index.html" class="logo" style="display: flex; justify-content:center; align-items:center;">
@@ -112,7 +112,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-envelope"></i>
 							</a>
-							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
+							<!-- <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
 								<li>
 									<div class="dropdown-title d-flex justify-content-between align-items-center">
 										Messages 									
@@ -176,14 +176,14 @@
 								<li>
 									<a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
 								</li>
-							</ul>
+							</ul> -->
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-bell"></i>
-								<span class="notification">4</span>
+								<!-- <span class="notification">4</span> -->
 							</a>
-							<ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+							<!-- <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
 								<li>
 									<div class="dropdown-title">You have 4 new notification</div>
 								</li>
@@ -234,13 +234,13 @@
 								<li>
 									<a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
 								</li>
-							</ul>
+							</ul> -->
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
 								<i class="fas fa-layer-group"></i>
 							</a>
-							<div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
+							<!-- <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
 								<div class="quick-actions-header">
 									<span class="title mb-1">Quick Actions</span>
 									<span class="subtitle op-8">Shortcuts</span>
@@ -287,33 +287,85 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-								</div>
-							</a>
-							<ul class="dropdown-menu dropdown-user animated fadeIn">
-								<div class="dropdown-user-scroll scrollbar-outer">
-									<li>
-										<div class="user-box">
-											<div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+									<?php
+									if ($data = mysqli_fetch_assoc($result)) {
+											// Menampilkan foto profil jika ada
+											$foto_profil = $data['foto_profil'];
+											if ($foto_profil != null) {
+													$foto_path = "../profile/unggah/" . $foto_profil; // Sesuaikan dengan lokasi penyimpanan foto
+
+													// Tampilkan gambar dengan tag img
+													echo '<img src="' . $foto_path . '" alt="..." class="avatar-img rounded-circle">';
+											} else {
+													// Jika tidak ada foto profil, tampilkan foto placeholder atau pesan kosong
+													echo '<img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">';
+											}
+									}
+									?>
+									</div>
+								</a>
+								<ul class="dropdown-menu dropdown-user animated fadeIn">
+									<div class="dropdown-user-scroll scrollbar-outer">
+										<li>
+											<div class="user-box">
+												<div class="avatar-lg">
+												<?php
+												$query = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
+												$result = mysqli_query($kon, $query);
+											if ($data = mysqli_fetch_assoc($result)) {
+													// Menampilkan foto profil jika ada
+													$foto_profil = $data['foto_profil'];
+													if ($foto_profil != null) {
+															$foto_path = "../profile/unggah/" . $foto_profil; // Sesuaikan dengan lokasi penyimpanan foto
+
+															// Tampilkan gambar dengan tag img
+															echo '<img src="' . $foto_path . '" alt="image profile" class="avatar-img rounded">';
+													} else {
+															// Jika tidak ada foto profil, tampilkan foto placeholder atau pesan kosong
+															echo '<img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded">';
+													}
+											}
+											?>
+											</div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+											<?php
+											$query = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
+											$result = mysqli_query($kon, $query);
+									if ($data = mysqli_fetch_assoc($result)) {
+										// Menampilkan Nama dan NIM dari data mahasiswa
+										echo $data['NIM'] . "<br>"; // Gantilah 'NIM' dengan nama kolom yang sesuai di database
+										echo "<span class='user-level'>" . $data['nama'] . "</span>";
+								}
+								?>
+												<!-- <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a> -->
 											</div>
 										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">My Profile</a>
-										<a class="dropdown-item" href="#">My Balance</a>
+										<form id="uploadForm" action="profile/upload.php" method="post" enctype="multipart/form-data">
+												<label for="profile_photo" style="cursor: pointer;" class="dropdown-item">Change Photo</label>
+												<input type="file" id="profile_photo" name="profile_photo" style="display: none;">
+												<!-- Tambahkan elemen hidden untuk menandai bahwa file telah dipilih -->
+												<input type="hidden" id="fileSelected" name="fileSelected" value="0">
+												<input type="submit" value="Upload" style="display: none;">
+										</form>
+												<!-- <form id="uploadForm" action="profile/upload.php" method="post" enctype="multipart/form-data">
+														<label for="profile_photo" style="cursor: pointer;" class="dropdown-item">Change Photo</label>
+														<input type="file" id="profile_photo" name="profile_photo" style="display: none;">
+														<input type="submit" value="Upload" style="display: none;">
+												</form> -->
+
+										<!-- <a class="dropdown-item" href="#">My Balance</a>
 										<a class="dropdown-item" href="#">Inbox</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Account Setting</a>
-										<div class="dropdown-divider"></div>
+										<div class="dropdown-divider"></div> -->
 										<a class="dropdown-item" href="#">Logout</a>
 									</li>
 								</div>
@@ -330,25 +382,43 @@
 		<div class="sidebar sidebar-style-2">			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
-					<div class="user">
-						<div class="avatar-sm float-left mr-2">
-							<img src="../front/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-						</div>
-						<div class="info">
-							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-									<span>
-									<?php
-									if ($data = mysqli_fetch_assoc($result)) {
-										// Menampilkan Nama dan NIM dari data mahasiswa
-										echo $data['NIM']; // Gantilah 'NIM' dengan nama kolom yang sesuai di database
-										echo "<span class='user-level'>" . $data['nama'] . "</span>";
-								}
-								?>
-									</span>
-							</a>
-							<div class="clearfix"></div>
-						</div>
-					</div>
+				<div class="user">
+						<?php
+                // Ambil NIM dari sesi yang sudah login
+                $nim = $_SESSION['NIM'];
+                // Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM
+                $query = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
+                $result = mysqli_query($kon, $query);
+                // Check apakah query berhasil dijalankan dan hasilnya ada
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $data = mysqli_fetch_assoc($result);
+                    // Menampilkan foto profil jika ada
+                    $foto_profil = $data['foto_profil'];
+                    if ($foto_profil != null) {
+                        $foto_path = "../profile/unggah/" . $foto_profil; // Ubah ini sesuai dengan lokasi penyimpanan foto
+                        // Tampilkan gambar dengan tag img
+                        echo '<div class="avatar-sm float-left mr-2">
+                                    <img src="' . $foto_path . '" alt="Foto Profil" class="avatar-img rounded-circle">
+                                </div>';
+                    } else {
+                        // Jika tidak ada foto profil, tampilkan foto placeholder atau pesan kosong
+                        echo '<div class="avatar-sm float-left mr-2">
+                                    <img src="assets/img/profile.jpg" alt="Foto Profil Default" class="avatar-img rounded-circle">
+                                </div>';
+                    }
+                    // Menampilkan Nama dan NIM dari data mahasiswa
+                    echo '<div class="info">';
+                    echo '<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">';
+                    echo '<span>' . $data['NIM'] . '</span>';
+                    echo '<span class="user-level">' . $data['nama'] . '</span>';
+                    echo '</a>';
+                    echo '</div>';
+                } else {
+                    // Handle ketika tidak ada hasil dari query atau ada kesalahan
+                    echo "Gagal memuat foto profil.";
+                }
+                ?>
+				</div>
 					<ul class="nav nav-primary">
 					<li class="nav-item">
                <a href="../index.php">

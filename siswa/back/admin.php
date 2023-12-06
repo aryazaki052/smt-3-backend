@@ -31,6 +31,23 @@
     <!-- kode php -->
  <div>
     <?php
+	// 	function logLogin($username, $status) {
+	// 		$logFile = 'login_log.txt';
+	// 		date_default_timezone_set('Asia/Makassar');
+	// 		$currentTime = date('Y-m-d H:i:s ');
+	// 		$logData = "$currentTime - Username: $username, Status: $status\n";
+	
+	// 		$fileHandler = fopen($logFile, 'a'); 
+	// 		if ($fileHandler) {
+	// 				fwrite($fileHandler, $logData);
+	// 				fclose($fileHandler);
+	// 				return true;
+	// 		} else {
+	// 				return false;
+	// 		}
+	// }
+
+
 		session_start();
 
 		include "../koneksi.php";
@@ -42,27 +59,27 @@
 		}
 		
 
-		// // Set waktu timeout sesi dalam detik (contoh: 5 menit)
-		// $timeout = 300; // 5 menit * 60 detik
+		// Set waktu timeout sesi dalam detik (contoh: 5 menit)
+		$timeout = 300; // 5 menit * 60 detik
 
-		// // Periksa apakah sesi terakhir lebih dari waktu timeout
-		// if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
-		// 		// Sesuaikan pesan sesuai kebutuhan
-		// 		echo "Sesi Anda telah berakhir. Silakan login kembali.";
+		// Periksa apakah sesi terakhir lebih dari waktu timeout
+		if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+				// Sesuaikan pesan sesuai kebutuhan
+				echo "Sesi Anda telah berakhir. Silakan login kembali.";
 				
-		// 		// Hapus semua variabel sesi
-		// 		session_unset();
+				// Hapus semua variabel sesi
+				session_unset();
 
-		// 		// Hancurkan sesi
-		// 		session_destroy();
+				// Hancurkan sesi
+				session_destroy();
 
-		// 		// Redirect ke halaman login atau tindakan lainnya
-		// 		header("Location: login.php");
-		// 		exit();
-		// }
+				// Redirect ke halaman login atau tindakan lainnya
+				header("Location: login.php");
+				exit();
+		}
 
-		// // Perbarui waktu terakhir akses ke sesi
-		// $_SESSION['last_activity'] = time();
+		// Perbarui waktu terakhir akses ke sesi
+		$_SESSION['last_activity'] = time();
 
 		// Ambil id admin dari sesi yang sudah login
 		$username = $_SESSION['admin'];
@@ -71,6 +88,17 @@
 		// Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM
 		$query = "SELECT * FROM admin_user WHERE usname_admin = '$username'";
 		$result = mysqli_query($kon, $query);
+
+		// // Log-in saat pengguna terautentikasi
+		// if ($result) {
+		// 	$statusLogin = 'Berhasil Login';
+		// 	logLogin($username, $statusLogin);
+		// }else{
+		// 	$statusLogin = 'Gagal Login';
+		// 	logLogin($username, $statusLogin);
+		// }
+
+
 		?>
     </div>
 <!-- end kode php -->
@@ -395,7 +423,7 @@
 		<!-- End Sidebar -->
 
 		<!-- content -->
-		<div class="main-panel">
+		<!-- <div class="main-panel">
 			<div class="content">
 				<div class="panel-header bg-primary-gradient">
 					<div class="page-inner py-5">
@@ -552,7 +580,8 @@
 				</div>
 			</div>
 
-		</div>
+		</div> -->
+		
 		<!-- End content -->
 
 
