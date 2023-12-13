@@ -500,37 +500,35 @@
                            </tr>
                          </thead>
                          <tbody>
-                            <?php
-														// Ambil NIM dari sesi yang sudah login
-														$nim = $_SESSION['NIM'];
-														// Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM
-														$query = "SELECT * FROM pendaftaran WHERE NIM = '$nim'";
-														$result = mysqli_query($kon, $query);
-														if (mysqli_num_rows($result) > 0) {
+                         <?php
+													// Ambil NIM dari sesi yang sudah login
+													$nim = $_SESSION['NIM'];
+
+													// Query SELECT untuk menampilkan data mahasiswa berdasarkan NIM dan menggabungkan tabel pendaftaran dengan tabel jurusan menggunakan JOIN
+													$query = "SELECT pendaftaran.NIM, pendaftaran.nama, pendaftaran.email, pendaftaran.no_telp, 
+																					jurusan.nama_jurusan, pendaftaran.kelas
+																		FROM pendaftaran
+																		JOIN jurusan ON pendaftaran.prog1 = jurusan.id_jurusan
+																		WHERE pendaftaran.NIM = '$nim'";
+
+													$result = mysqli_query($kon, $query);
+
+													if (mysqli_num_rows($result) > 0) {
 															while ($row = mysqli_fetch_assoc($result)) {
-																echo "<tr>";
-																echo "<td>" . $row['NIM'] . "</td>";
-																echo "<td>" . $row['nama'] . "</td>";
-																echo "<td>" . $row['email'] . "</td>";
-																echo "<td>" . $row['no_telp'] . "</td>";
-																echo "<td>" . $row['prog1'] . "</td>";
-																echo "<td>" . $row['kelas'] . "</td>";
-																echo "</tr>";
+																	echo "<tr>";
+																	echo "<td>" . $row['NIM'] . "</td>";
+																	echo "<td>" . $row['nama'] . "</td>";
+																	echo "<td>" . $row['email'] . "</td>";
+																	echo "<td>" . $row['no_telp'] . "</td>";
+																	echo "<td>" . $row['nama_jurusan'] . "</td>";
+																	echo "<td>" . $row['kelas'] . "</td>";
+																	echo "</tr>";
 															}
 													} else {
 															echo "Tidak ada data yang ditemukan.";
 													}
-                            // while ($row = mysqli_fetch_assoc($result)) {
-                            //   echo "<tr>";
-                            //   echo "<td>" . $row['NIM'] . "</td>";
-                            //   echo "<td>" . $row['nama'] . "</td>";
-                            //   echo "<td>" . $row['email'] . "</td>";
-                            //   echo "<td>" . $row['no_hp'] . "</td>";
-                            //   echo "<td>" . $row['prog1'] . "</td>";
-                            //   echo "<td>" . $row['kelas'] . "</td>";
-                            //   echo "</tr>";
-                            //  }
-                            ?>
+													?>
+
                           </tbody>
                         </table>
 											</div>

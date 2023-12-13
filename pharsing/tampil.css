@@ -1,0 +1,16 @@
+.gambar{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.row{
+  background-color:lightblue;
+}
+
+.biodata{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -3,3 +3,6 @@
 2023-11-30 16:53:41  - Username: arya_zaki, Status: Berhasil Login
 2023-11-30 21:12:48  - Username: arya_zaki, Status: Berhasil Login
 2023-11-30 21:13:06  - Username: arya_zaki, Status: Gagal Login
+2023-12-06 21:43:30  - Username: arya_zaki, Status: Berhasil Login
+2023-12-07 14:51:23  - Username: 220010001, Status: Gagal Login
+2023-12-07 14:51:48  - Username: 220010001, Status: Gagal Login
