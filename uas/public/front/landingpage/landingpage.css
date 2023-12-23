@@ -1,0 +1,332 @@
+/* tulisan slider */
+.carousel-item {
+  height: 32rem;
+  position: relative;
+  color: black;
+}
+
+.container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 56px;
+}
+
+.book {
+  background-color: rgb(218, 159, 32);
+  border: none;
+}
+
+.book:hover {
+  background-color: rgb(218, 159, 32);
+  opacity: 0.8;
+  filter: brightness(90%);
+}
+
+/* slider */
+.carousel {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  top: -24px;
+  /* border: 1px solid red; */
+}
+
+.carousel img {
+  /* border: 1px solid rebeccapurple; */
+  width: 100%;
+  height: 700px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.carousel img.active {
+  opacity: 1;
+}
+
+.carousel-indicators {
+  text-align: center;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
+
+.carousel-indicators span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-indicators span.active {
+  background-color: black;
+}
+
+
+.batur {
+  font-family: 'Bagel Fat One', cursive;
+  font-size: 70px;
+}
+
+
+
+/* card */
+.teks1 {
+  font-family: 'Bacasime Antique', serif;
+  font-weight: 900;
+}
+
+.teks2 {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+}
+
+.kartu {
+  position: relative;
+  top: 110px;
+}
+
+.kartu1 h1 {
+  display: flex;
+  position: absolute;
+  /* border: 1px solid blue; */
+  z-index: 1;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 20px);
+  margin: 0;
+  padding: 10px;
+  justify-content: center;
+  font-size: 35px;
+  color: aliceblue;
+  font-family: 'Caveat', cursive;
+  font-weight: 900;
+}
+
+.kartu1 p {
+  display: flex;
+  position: absolute;
+  /* border: 1px solid rgb(75, 153, 2); */
+  z-index: 1;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 20px);
+  margin: 0;
+  padding: 10px;
+  justify-content: center;
+  color: aliceblue;
+  font-family: 'Kalam', cursive;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.kartu1 a {
+  display: flex;
+  position: absolute;
+  /* border: 1px solid blue; */
+  z-index: 1;
+  top: 93%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 20px);
+  margin: 0;
+  padding: 10px;
+  justify-content: center;
+  color: rgb(40, 40, 41);
+  font-family: 'Bagel Fat One', cursive;
+  background-color: rgba(247, 251, 255, 0.74);
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.kartu1 a h5 {
+  font-size: 15px;
+}
+
+.link1 a {
+  width: 40%;
+}
+
+.link2 a {
+  width: 35%;
+}
+
+.link3 a {
+  width: 60%;
+}
+
+
+.kartu1 img {
+  filter: brightness(70%);
+  box-shadow: 0px 8px 10px grey;
+  border-radius: 10px;
+}
+
+.kartu1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.kartu1:hover img {
+  opacity: 0.7;
+  margin-bottom: 3px;
+  margin-left: 5px;
+  transition: 0.2s;
+}
+
+.kartu1:hover h1,
+.kartu1:hover p,
+.kartu1:hover h5 {
+  color: black;
+}
+
+/* reason */
+.reason {
+  position: relative;
+  top: 200px;
+  background-color: rgba(143, 143, 143, 0.103);
+  border-radius: 20px;
+}
+
+.alasan1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  /* border: 1px solid red; */
+  font-family: 'Ysabeau Infant', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.alasan2 {
+  display: flex;
+  justify-content: center;
+  font-family: 'EB Garamond', serif;
+  font-size: 23px;
+  text-align: center;
+}
+
+.alasan3 {
+  /* border: 1px solid rgb(98, 0, 255); */
+  margin-bottom: 30px;
+}
+
+.kotak {
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: center;
+}
+
+.ceklist {
+  display: flex;
+  align-items: center;
+  margin-bottom: -8px;
+  font-family: 'Crimson Text', serif;
+}
+
+.als1 {
+  /* border: 1px solid brown; */
+  margin-left: 40px;
+  margin-bottom: 20px;
+  font-family: 'Crimson Text', serif;
+  font-family: 'Frank Ruhl Libre', serif;
+}
+
+
+/* wa */
+.whatsapp {
+  border: 1px solid red;
+  display: flex;
+  justify-content: end;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.wa {
+  width: 60px;
+  /* border: 1px solid red; */
+  background-color: rgb(6, 94, 75);
+  fill: white;
+  border-radius: 10px;
+}
+
+.wa1 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.wa1 a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.wa1 a:hover {
+  opacity: 0.8;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+
+
+  .navbarb {
+    right: 20px;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .navbara {
+    background-color: rgba(255, 255, 255, 0.842);
+    border-radius: 20px;
+  }
+
+  .batur {
+    font-size: 40px;
+  }
+
+  .container {
+    padding-bottom: 0px;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 992px) {
+  .kartu h1 {
+    top: 30%;
+  }
+
+  .kartu p {
+    top: 60%;
+  }
+
+  .kartu2 {
+    display: flex;
+    gap: 20px;
+  }
+
+}

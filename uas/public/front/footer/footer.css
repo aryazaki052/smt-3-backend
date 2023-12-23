@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container-fluid.footer {
+  flex: 1;
+}
+
+.footer {
+  background-color: #65c18c;
+  margin-bottom: 0px;
+}
+
+.footer-isi {
+  display: flex;
+  gap: 20px;
+}
+
+.alamat {
+  width: 29%;
+  color: beige;
+  font-family: "Dosis", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Ysabeau Infant", sans-serif;
+}
+
+.alamat h3 {
+  border-bottom: 2px solid rgb(172, 175, 164);
+  padding-bottom: 5px;
+  width: 75%;
+  font-family: "Inter", sans-serif;
+  font-family: "Ysabeau Infant", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.company {
+  width: 50%;
+  color: beige;
+  font-family: "Dosis", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Ysabeau Infant", sans-serif;
+}
+
+.company h3 {
+  border-bottom: 2px solid rgb(172, 175, 164);
+  padding-bottom: 5px;
+  width: 60%;
+  font-family: "Inter", sans-serif;
+  font-family: "Ysabeau Infant", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.medsos {
+  color: beige;
+  font-family: "Dosis", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Ysabeau Infant", sans-serif;
+}
+
+.medsos1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.medsos1 a {
+  color: beige;
+  fill: beige;
+}
+
+.medsos h3 {
+  border-bottom: 2px solid rgb(172, 175, 164);
+  padding-bottom: 5px;
+  font-family: "Inter", sans-serif;
+  font-family: "Ysabeau Infant", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.medsos2 a {
+  text-decoration: none;
+}
+
+.copy {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.copyright {
+  position: relative;
+  color: rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 768px) {
+  .footer-isi {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .alamat {
+    width: 100%;
+  }
+
+  .company {
+    width: 100%;
+  }
+}

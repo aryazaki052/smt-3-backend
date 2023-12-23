@@ -1,0 +1,234 @@
+body {
+  background-color: rgba(219, 233, 233, 0.719);
+}
+
+
+.atas {
+  /* border: 1px solid red; */
+  position: relative;
+  margin-top: 100px;
+  z-index: 2;
+  height: 450px;
+
+}
+
+.card img {
+  width: auto;
+  height: 170px;
+}
+
+/* keterangan */
+.ket1 {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ket h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.ket p {
+  margin-left: 3px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.icon {
+  fill: rgb(133, 127, 127);
+  width: 50px;
+}
+
+
+.keterangan {
+  /* border: 2px solid rgb(83, 27, 27); */
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: -40px;
+
+}
+
+
+
+/* garis */
+.garis {
+  display: flex;
+  justify-content: center;
+}
+
+.garis span {
+  border: 1px solid rgb(163, 161, 161);
+  position: relative;
+  margin-top: 30px;
+  width: 85%;
+}
+
+.garis1 {
+  display: flex;
+  justify-content: center;
+}
+
+.garis1 span {
+  border: 1px solid rgb(163, 161, 161);
+  position: relative;
+  width: 85%;
+  margin-top: 40px;
+}
+
+
+/* overview */
+.overview {
+  position: relative;
+  margin-top: 20px;
+  /* border: 1px solid red; */
+}
+
+.desk h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.desk p {
+  font-family: 'El Messiri', sans-serif;
+  font-size: 18px;
+}
+
+/* highlight */
+.kegiatan {
+  /* border: 1px solid red; */
+  position: relative;
+}
+
+.kegiatan1 {
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  align-items: center;
+}
+
+.highlight h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.highlight p {
+  font-family: 'El Messiri', sans-serif;
+  font-size: 18px;
+}
+
+.pickup h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.pickup p {
+  font-family: 'El Messiri', sans-serif;
+  font-size: 18px;
+}
+
+
+/* include & price */
+.include_price {
+  position: relative;
+}
+
+.include-price {
+  display: flex;
+  gap: 200px;
+}
+
+.include h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.include p {
+  font-family: 'El Messiri', sans-serif;
+  font-size: 18px;
+}
+
+.price h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.price p {
+  font-family: 'El Messiri', sans-serif;
+  font-size: 18px;
+}
+
+.price-wa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wa-tracking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wa-tracking h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-family: 'El Messiri', sans-serif;
+  font-family: 'Lemonada', cursive;
+}
+
+.wa-tracking h5 {
+  border: 1px solid rgb(55, 78, 29);
+  padding: 10px;
+}
+
+
+
+.wa-tracking a {
+  text-decoration: none;
+  color: rgb(55, 78, 29);
+  font-family: 'Cormorant Garamond', serif;
+  font-family: 'El Messiri', sans-serif;
+}
+
+.wa-tracking h5 a:hover {
+  color: rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 768px) {
+  .ket h4 {
+    font-size: 11px;
+  }
+
+  .ket p {
+    font-size: 10px;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .keterangan {
+    margin-bottom: 0px;
+
+  }
+
+  .kegiatan1 {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .include-price {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .garis1 span {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {}
