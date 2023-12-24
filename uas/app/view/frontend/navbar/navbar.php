@@ -16,10 +16,10 @@
             <a href="<?=BASEURL; ?>/Tracking">Bali Tracking</a>
           </li>
           <li>
-            <a href="#">Bali Transport</a>
+            <a href="<?=BASEURL; ?>/Transport">Bali Transport</a>
           </li>
           <li>
-            <a href="#">Bali Tour</a>
+            <a href="<?=BASEURL; ?>/Tour">Bali Tour</a>
           </li>
         </ul>
       </div>

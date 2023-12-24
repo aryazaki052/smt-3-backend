@@ -6,8 +6,15 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <link rel="stylesheet" href="<?= BASEURL; ?>/front/navbar/navbar.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/front/footer/footer.css" />
-  <link rel="stylesheet" href="<?= BASEURL; ?>/front/landingpage/landingpage.css" />
-  <link rel="stylesheet" href="<?= BASEURL; ?>/front/tracking/tracking.css">
+
+    <link rel="stylesheet" href="<?= BASEURL; ?>/front/detailtour/post.css">
+
+    <link rel="stylesheet" href="<?= BASEURL; ?>/fa/css/all.min.css">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/front/detailtour/card3.css">
+
+
+  <link rel="stylesheet" href="<?= BASEURL; ?>/front/transport/trans.css" />
+
   
   <!-- navbar -->
   <div>
@@ -48,7 +55,7 @@
   </div>
 
   <!-- tracking -->
-  <div>
+<div>
      <!-- owl carousel -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
     integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
@@ -73,7 +80,20 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=El+Messiri&family=Lemonada&display=swap"
     rel="stylesheet">
 
-  </div>
+</div>
+
+<!-- transport -->
+<div>
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+</div>
 
 
 </head>

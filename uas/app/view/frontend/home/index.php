@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?= BASEURL; ?>/front/landingpage/landingpage.css" />  
+  
   <!-- carousel item -->
   <div class="carousel">
     <img src="<?= BASEURL; ?>/img/4.jpg" alt=" 1" class="active" />
@@ -51,7 +53,7 @@
         <p>
           Explore Bali with our transport vehicle to acces many place in Bali.
         </p>
-        <a href="Transport/transport.html">
+        <a href="<?=BASEURL; ?>/Transport">
           <h5>Let's Join Us</h5>
         </a>
         <img src="<?= BASEURL; ?>/img/kartu2.jpg" alt="" width="100%" />

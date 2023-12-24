@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="<?= BASEURL; ?>/front/tracking/tracking.css">
   <!-- card slider -->
   <div class="container atas">
     <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);">Batur <span

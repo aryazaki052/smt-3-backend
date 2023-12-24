@@ -1,0 +1,21 @@
+.itinerary ul li::before {
+  content: "\f017";
+  font: var(--fa-font-solid);
+  padding: 0 10px 0 0;
+  color: #a8c3c2;
+}
+.itinerary ul li {
+  list-style-type: none;
+  text-align: left;
+}
+#gList ul li:before {
+  content: "\f138";
+  font-family: "FontAwesome";
+  font-display: swap;
+  padding: 0 10px 0 0;
+  color: #a8c3c2;
+}
+#gList ul li {
+  list-style-type: none;
+  display: flex;
+}
