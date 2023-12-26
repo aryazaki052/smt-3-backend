@@ -35,6 +35,13 @@ class App {
     // jalankan controller, method dan param jika ada
     call_user_func_array([$this->controller, $this->method], $this->params);
 
+
+// Setelah menjalankan method, cek apakah controller memiliki method authenticate dan jalankan jika ada
+if (!empty($url) && method_exists($this->controller, 'authenticate')) {
+  $this->method = 'authenticate';
+  call_user_func_array([$this->controller, $this->method], []);
+}
+
   }
 
   public function parseURL () {
@@ -50,3 +57,5 @@ class App {
 }
 
 ?>
+
+
