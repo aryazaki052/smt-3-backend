@@ -1,0 +1,5 @@
+ini adalah folder untuk tampilan front atau yang akan dilihat oleh user. 
+
+folder ini untuk menyimpan file dari tampilan user yang akan terhubung dengan halaman admin
+
+buat dalam satu folder setiap masing - masing fitur. contoh adalah halaman tracking yang ada beberapa file .php, .js dan .css

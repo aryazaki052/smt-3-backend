@@ -1,0 +1,17 @@
+ini adalah folder backend_uas.
+folder ini akan terdiri dari 3 folder didalamnya yaitu backview, class dan front
+
+bakview adalah tempat menyimpan tampilan dari halaman admin
+
+class adalah tempat untuk menyimpan class dari method dari fitur terkait
+
+front adlah tempat untuk menyimpan file tampilan user. 
+
+untuk akses awal ke halaman admin bisa menggunakan url localhost/backend_uas/backview/authadmin/LoginView.php atau dengan mengakses localhost/backend_uas/backview/dashboard.php (untuk tampilan admin)
+untuk login bisa import db nya dulu lalu masukan username dan sandi
+
+usname:arya@gmail.php
+pass: 1111
+
+
+untuk akses awal ke halaman front bisa menggunakan localhost/backend_uas/index.php

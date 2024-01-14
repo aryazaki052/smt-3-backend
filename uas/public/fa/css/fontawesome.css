@@ -1,7 +1,7 @@
 /*!
  * Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- * Copyright 2023 Fonticons, Inc.
+ * License - https://fontawesome.com/license/free (s: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ * Copyright 2023 Fonts, Inc.
  */
 .fa {
   font-family: var(--fa-style-family, "Font Awesome 6 Free");
@@ -492,7 +492,7 @@
   color: var(--fa-inverse, #fff); }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-readers do not read off random characters that represent icons */
+readers do not read off random characters that represent s */
 
 .fa-0::before {
   content: "\30"; }
@@ -644,7 +644,7 @@ readers do not read off random characters that represent icons */
 .fa-soap::before {
   content: "\e06e"; }
 
-.fa-icons::before {
+.fa-s::before {
   content: "\f86d"; }
 
 .fa-heart-music-camera-bolt::before {
@@ -1082,7 +1082,7 @@ readers do not read off random characters that represent icons */
 .fa-bars::before {
   content: "\f0c9"; }
 
-.fa-navicon::before {
+.fa-nav::before {
   content: "\f0c9"; }
 
 .fa-people-group::before {

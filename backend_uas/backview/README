@@ -1,0 +1,12 @@
+ini adalah file tempat untuk menyimpan view atau tampilan dari halaman admin. 
+buatkan folder untuk menyimpan masing - masing view dari satu fitur. 
+contoh nya folder tracking untuk menyimpan tampilan dari berbagai fungsi do tracking (tampilan awal, edit halaman nya, delete)
+
+
+untuk fungsi nya buatkan menjadi class yang akan tersimpan di folder class
+jangan menggunakan sintaks php secara manual (harus menggunakan class yang didalamnya ada method)
+
+untuk contoh tampilan nya bisa diliat di folder tracking, akan ada beberapa file yaitu trackingview, tracking edit dan tracking delete. 
+untuk style nya bisa disimpan di folder assets. (untuk tampilan admin ini tidak usah menggunakan css eksternal karena sudah ada template nya.), copy saja yang ada di halaman tracking. 
+
+INGAT PANGGIL KELAS DATABASE NYA JUGA!!

@@ -5,7 +5,7 @@
           width="105px"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-"></span>
       </button>
       <div class="container-lg collapse navbar-collapse justify-content-end navbara" id="navbarNavDropdown">
         <ul class="navbar-nav navbarb">

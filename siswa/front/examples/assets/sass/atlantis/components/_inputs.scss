@@ -521,11 +521,11 @@
 }
 
 .input-group {
-  &.has-icon {
+  &.has- {
     border-radius: .25rem;
     border: 1px solid #ced4da;
   }
-  &.has-success, &.has-icon.has-success {
+  &.has-success, &.has-.has-success {
     border: 1px solid $success-color !important;
     color: $success-color;
   }
@@ -533,7 +533,7 @@
     border: 1px solid $danger-color !important;
     color: $danger-color;
   }
-  &.has-icon {
+  &.has- {
     &.has-error {
       border: 1px solid $danger-color !important;
       color: $danger-color;
@@ -543,7 +543,7 @@
       border: 0px;
       position: relative;
     }
-    .input-group-icon {
+    .input-group- {
       background: $transparent-bg;
       border: 0px;
     }
@@ -621,13 +621,13 @@
   i.la{
     font-size:  21px;
   }
-  i[class*="flaticon"]{
+  i[class*="flat"]{
     font-size: 17px;
   }
 }
 
-/*    Input Icon */
-.input-icon {
+/*    Input  */
+.input- {
   position: relative;
   .form-control {
     &:not(:first-child) {
@@ -637,7 +637,7 @@
       padding-right: 2.5rem;
     }
   }
-  .input-icon-addon {
+  .input--addon {
     position: absolute;
     left: 1rem;
     top: 0;
@@ -684,7 +684,7 @@ label {
     transition: all .5s !important;
   }
   .dz-message {
-    .icon{
+    .{
       margin-bottom: 15px;
       font-size: 39px;
     }

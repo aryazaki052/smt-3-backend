@@ -120,7 +120,7 @@ body {
     padding-right: 0px;
     opacity: 0;
     display: none;
-    .navbar-toggler-icon {
+    .navbar-toggler- {
       height: 1em;
       width: 1em;
       color: #545454;
@@ -248,7 +248,7 @@ body {
     margin-top: 20px;
     .nav-section{
       margin: 15px 0 0 0;
-      .sidebar-mini-icon{
+      .sidebar-mini-{
         text-align: center;
         font-size: 15px;
         color: rgb(144, 144, 147);
@@ -322,7 +322,7 @@ body {
         }
       }
       a {
-        .letter-icon{
+        .letter-{
           color: #a1a2a6;
           margin-right: 15px;
           width: 25px;
@@ -341,7 +341,7 @@ body {
           float: left;
           font-size: 18px;
           line-height: 30px;
-          &[class^="flaticon-"]{
+          &[class^="flat-"]{
             font-size: 20px;
           }
         }
@@ -460,7 +460,7 @@ body {
             opacity: 1;
           }
         }
-        .sidebar-mini-icon {
+        .sidebar-mini- {
           font-size: 18px;
           color: #C3C5CA;
           margin-right: 15px;
@@ -906,7 +906,7 @@ body {
         .nav-item {
           position : relative;
           a {
-            .letter-icon {
+            .letter- {
               display: block !important;
             }
             i {
@@ -916,7 +916,7 @@ body {
               display: none;
               transition: all .3s;
             }
-            .sidebar-mini-icon{
+            .sidebar-mini-{
               display: block !important;
               margin-right: 0px;
             }
@@ -931,7 +931,7 @@ body {
           .text-section{
             display: none;
           }
-          .sidebar-mini-icon{
+          .sidebar-mini-{
             display: block;
           }
         }
@@ -963,7 +963,7 @@ body {
             .badge, span, .caret, p {
               display: block;
             }
-            .sidebar-mini-icon{
+            .sidebar-mini-{
               display: block !important;
               margin-right: 15px;
             }
@@ -975,7 +975,7 @@ body {
           }
         }
         .nav-section{
-          .sidebar-mini-icon {
+          .sidebar-mini- {
             display: none;
           }
           .text-section{

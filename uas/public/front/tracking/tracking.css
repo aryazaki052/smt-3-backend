@@ -36,7 +36,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.icon {
+. {
   fill: rgb(133, 127, 127);
   width: 50px;
 }
@@ -205,7 +205,7 @@ body {
     font-size: 10px;
   }
 
-  .icon {
+  . {
     display: none;
   }
 

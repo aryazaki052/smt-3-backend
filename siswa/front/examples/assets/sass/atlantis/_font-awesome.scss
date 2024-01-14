@@ -1,6 +1,6 @@
 /*!
  * Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ * License - https://fontawesome.com/license (s: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
 .fa, .fas, .far, .fal, .fab {
@@ -219,13 +219,13 @@
 }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-readers do not read off random characters that represent icons */
+readers do not read off random characters that represent s */
 
 .fa-500px:before {
   content: "\f26e";
 }
 
-.fa-accessible-icon:before {
+.fa-accessible-:before {
   content: "\f368";
 }
 
@@ -1877,11 +1877,11 @@ readers do not read off random characters that represent icons */
   content: "\f4e6";
 }
 
-.fa-fonticons:before {
+.fa-fonts:before {
   content: "\f280";
 }
 
-.fa-fonticons-fi:before {
+.fa-fonts-fi:before {
   content: "\f3a2";
 }
 

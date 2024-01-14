@@ -8,12 +8,12 @@
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Fonts and icons -->
+<!-- Fonts and s -->
 <script src="../../front/assets/js/plugin/webfont/webfont.min.js"></script>
 <script>
     WebFont.load({
         google: {"families":["Lato:300,400,700,900"]},
-        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../front/assets/css/fonts.min.css']},
+        custom: {"families":["Flat", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-s"], urls: ['../../front/assets/css/fonts.min.css']},
         active: function() {
             sessionStorage.fonts = true;
         }
@@ -86,14 +86,14 @@
 					<p style="margin-top: 20px; color:black;"><b>ITB STIKOM BALI</b></p>
 				</a> -->
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon">
-						<i class="icon-menu"></i>
+					<span class="navbar-toggler-">
+						<i class="-menu"></i>
 					</span>
 				</button>
-				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<button class="topbar-toggler more"><i class="-options-vertical"></i></button>
 				<div class="nav-toggle">
 					<button class="btn btn-toggle toggle-sidebar">
-						<i class="icon-menu"></i>
+						<i class="-menu"></i>
 					</button>
 				</div>
 			</div>
@@ -191,7 +191,7 @@
 									<div class="notif-scroll scrollbar-outer">
 										<div class="notif-center">
 											<a href="#">
-												<div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
+												<div class="notif- notif-primary"> <i class="fa fa-user-plus"></i> </div>
 												<div class="notif-content">
 													<span class="block">
 														New user registered
@@ -200,7 +200,7 @@
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
+												<div class="notif- notif-success"> <i class="fa fa-comment"></i> </div>
 												<div class="notif-content">
 													<span class="block">
 														Rahmad commented on Admin
@@ -220,7 +220,7 @@
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
+												<div class="notif- notif-danger"> <i class="fa fa-heart"></i> </div>
 												<div class="notif-content">
 													<span class="block">
 														Farrah liked Admin
@@ -250,37 +250,37 @@
 										<div class="row m-0">
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
-													<i class="flaticon-file-1"></i>
+													<i class="flat-file-1"></i>
 													<span class="text">Generated Report</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
-													<i class="flaticon-database"></i>
+													<i class="flat-database"></i>
 													<span class="text">Create New Database</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
-													<i class="flaticon-pen"></i>
+													<i class="flat-pen"></i>
 													<span class="text">Create New Post</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
-													<i class="flaticon-interface-1"></i>
+													<i class="flat-interface-1"></i>
 													<span class="text">Create New Task</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
-													<i class="flaticon-list"></i>
+													<i class="flat-list"></i>
 													<span class="text">Completed Tasks</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
-													<i class="flaticon-file"></i>
+													<i class="flat-file"></i>
 													<span class="text">Create New Invoice</span>
 												</div>
 											</a>
@@ -427,7 +427,7 @@
 							</a>
 						</li>
 						<li class="nav-section">
-							<span class="sidebar-mini-icon">
+							<span class="sidebar-mini-">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
 							<h4 class="text-section">MENU</h4>

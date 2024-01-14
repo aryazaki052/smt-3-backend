@@ -1,0 +1,7 @@
+ini adalah folder class. 
+folder ini berguna untuk menyimpan class dari setiap fungsi dari fitur yang ada
+
+gunakan folder class ini dengan membuat folder di dalam folder back dengan membuat file baru. 
+contohnya adalah TrackingClass. diasana akan ada beberapa class untuk mengatur fungsi dari Tracking
+
+INGAT UNTUK MEMBERIKAN NAMA FILE DENGAN FORMAT FiturClass.php (harus menggunakan Class.php)

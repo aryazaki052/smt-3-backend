@@ -1,11 +1,11 @@
 <?php
-session_start(); // Mulai sesi di awal
-if (isset($_SESSION["error"])) {
-    echo $_SESSION["error"];
-    unset($_SESSION["error"]); // Hapus pesan kesalahan dari sesi setelah ditampilkan
-}
+// session_start(); // Mulai sesi di awal
+// if (isset($_SESSION["error"])) {
+//     echo $_SESSION["error"];
+//     unset($_SESSION["error"]); // Hapus pesan kesalahan dari sesi setelah ditampilkan
+// }
 ?>
-
+<!-- 
 <div class="wrapper">
         <div class="d-flex justify-content-center">
             <img src="<?=BASEURL; ?>/img/logonew.png" alt="">
@@ -25,7 +25,20 @@ if (isset($_SESSION["error"])) {
             </div>
             <button type="submit" class="btn mt-3" name="login">Login</button>
         </form>
-        <!-- <div class="text-center fs-6">
+        <a href="<?=BASEURL; ?>/register">
+          <button type="submit" class="btn mt-3" name="login">Register</button>
+        </a>
+        <div class="text-center fs-6">
             <a href="#">Forget password?</a> or <a href="#">Sign up</a>
-        </div> -->
-    </div>
+        </div>
+    </div> -->
+    
+    <!-- app/views/auth/login.php -->
+
+<h1>Login Form</h1>
+<form action="index.php?page=login" method="post">
+    Username: <input type="text" name="username" required><br>
+    Password: <input type="password" name="password" required><br>
+    <input type="hidden" name="action" value="login">
+    <input type="submit" value="Login">
+</form>

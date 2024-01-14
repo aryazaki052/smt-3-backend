@@ -22,7 +22,7 @@
 					opacity: 1;
 				}
 			}
-			.search-icon {
+			.search- {
 				color: $white-color !important;
 			}
 			&.focus {
@@ -42,7 +42,7 @@
 						color: #bfbfbf !important;
 					}
 				}
-				.search-icon {
+				.search- {
 					color: #bfbfbf !important;
 				}
 			}
@@ -94,7 +94,7 @@
 					.form-control {
 						color: #8d9498 !important;
 					}
-					.search-icon {
+					.search- {
 						color: #8d9498 !important;
 					}
 				}
@@ -122,7 +122,7 @@
 .logo-header{
 	&[data-background-color]{
 		.navbar-toggler {
-			.navbar-toggler-icon {
+			.navbar-toggler- {
 				color: $white-color !important;
 			}
 		}
@@ -131,7 +131,7 @@
 		}
 	}
 	&[data-background-color="white"] {
-		.navbar-toggler .navbar-toggler-icon, .more, .btn-toggle {
+		.navbar-toggler .navbar-toggler-, .more, .btn-toggle {
 			color: #8d9498 !important;
 		}
 	}
@@ -250,7 +250,7 @@
 			}
 		}
 		.nav-section {
-			.text-section, .sidebar-mini-icon {
+			.text-section, .sidebar-mini- {
 				color: #eaeaea;
 			}
 		}

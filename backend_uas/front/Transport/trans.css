@@ -1,0 +1,165 @@
+.entry-title {
+  border-bottom: 1px dotted #ccc;
+  color: #292929;
+  font-size: 1.6em;
+  margin: 10px 0 5px;
+  text-align: center;
+}
+
+.entry-header h1 {
+  font-family: 'Bree Serif', serif;
+  color: black;
+}
+
+.entry-content h2 {
+  font-family: 'Bree Serif', serif;
+  color: black;
+}
+
+.list-car {
+  float: left;
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.card-mobil {
+  background-color: rgba(163, 219, 241, 0.644); 
+  border-radius: 8px;
+
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.card-mobil h2 {
+  font-size: 25px;
+  font-family: 'Bree Serif', serif;
+  color: black;
+}
+
+.bungkus {
+  /* border: 1px solid blue; */
+  display: flex;
+  position: relative;
+}
+
+
+
+
+.gambar img {
+  border-radius: 8px 0px 0px 0px;
+}
+
+
+
+.harga1 {
+  margin: 0;
+  text-align: center;
+  /* border: 1px solid red; */
+  background-color: rgba(247, 247, 253, 0.589);
+  font-size: 15px;
+  font-family: 'Domine', serif;
+}
+
+.harga2 {
+  margin: 0;
+  text-align: center;
+  /* border: 1px solid red; */
+  font-size: 15px;
+  font-family: 'Domine', serif;
+}
+
+.harga3 {
+  margin: 0;
+  text-align: center;
+  /* border: 1px solid red; */
+  background-color: rgba(247, 247, 253, 0.589);
+  font-size: 15px;
+  font-family: 'Domine', serif;
+}
+
+.deskripsi p {
+  /* border: 1px solid red; */
+  font-family: 'Zilla Slab', serif;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  
+  text-align: justify;
+}
+
+.book-wa a {
+  text-decoration: none;
+  color: black;
+
+}
+
+.book-wa {
+  /* border: 1px solid red; */
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  background-color: beige;
+  /* border-radius: 0px 0px 8px 8px; */
+  bottom: 0;
+}
+
+.book-wa a {
+  font-family: 'Lilita One', cursive;
+}
+
+.book-wa a:hover {
+  color: #929292;
+}
+
+.mobil9 {
+  width: 45.9%;
+}
+
+.sk h3 {
+  font-family: 'Bree Serif', serif;
+  color: black;
+  margin-top: 50px;
+}
+
+
+@media screen and (max-width: 540px) {
+  .gap {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .bungkus {
+    flex-direction: column;
+  }
+
+  .card-mobil {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .card-mobil {
+    width: 100%;
+  }
+
+  .gap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+}
+
+@media screen and (max-width: 992px) {
+
+
+  .card-mobil {
+    width: 100%;
+  }
+}

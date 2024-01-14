@@ -152,7 +152,7 @@
 	color: #333;
 }
 
-.demo-icon {
+.demo- {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -161,29 +161,29 @@
 	transition: all .2s;
 }
 
-.demo-icon:hover{
+.demo-:hover{
 	background-color: #f4f5f8;
 	border-radius: 3px;
 }
 
-.demo-icon .icon-preview{
+.demo- .-preview{
 	font-size: 1.8rem;
 	margin-right: 10px;
 	line-height: 1;
 	color: #333439;
 }
 
-body[data-background-color="dark"] .demo-icon .icon-preview {
+body[data-background-color="dark"] .demo- .-preview {
 	color: #969696;
 }
 
-.demo-icon .icon-class{
+.demo- .-class{
 	font-weight: 300;
 	font-size: 13px;
 	color: #777;
 }
 
-body[data-background-color="dark"] .demo-icon .icon-class {
+body[data-background-color="dark"] .demo- .-class {
 	color: #a9a8a8;
 }
 

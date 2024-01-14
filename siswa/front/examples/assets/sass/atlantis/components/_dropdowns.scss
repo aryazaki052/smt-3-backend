@@ -29,7 +29,7 @@
       background: #fafafa;
       transition: all .2s;
     }
-    .notif-icon {
+    .notif- {
       display: inline-flex;
       width: 40px;
       height: 40px;
@@ -54,7 +54,7 @@
         border-radius: 50%;
       }
     }
-    .notif-icon {
+    .notif- {
       &.notif-default, &.notif-primary, &.notif-secondary, &.notif-info, &.notif-success, &.notif-warning, &.notif-danger {
         color: $white-color !important;
       }

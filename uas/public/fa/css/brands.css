@@ -1,7 +1,7 @@
 /*!
  * Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- * Copyright 2023 Fonticons, Inc.
+ * License - https://fontawesome.com/license/free (s: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ * Copyright 2023 Fonts, Inc.
  */
 :root, :host {
   --fa-style-family-brands: 'Font Awesome 6 Brands';
@@ -279,7 +279,7 @@
 .fa-watchman-monitoring:before {
   content: "\e087"; }
 
-.fa-fonticons:before {
+.fa-fonts:before {
   content: "\f280"; }
 
 .fa-weixin:before {
@@ -387,7 +387,7 @@
 .fa-ioxhost:before {
   content: "\f208"; }
 
-.fa-fonticons-fi:before {
+.fa-fonts-fi:before {
   content: "\f3a2"; }
 
 .fa-app-store:before {
@@ -504,7 +504,7 @@
 .fa-dochub:before {
   content: "\f394"; }
 
-.fa-accessible-icon:before {
+.fa-accessible-:before {
   content: "\f368"; }
 
 .fa-ebay:before {
