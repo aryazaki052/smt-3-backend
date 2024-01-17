@@ -43,6 +43,19 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Inter&family=Ysabeau+Infant:wght@700&display=swap"
     rel="stylesheet">
+
+
+    <?php
+include('../../class/back/TrackingClass.php');
+
+$tracking = new Tracking();
+
+// Ambil ID dari parameter URL
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+$trackingDetail = $tracking->getTrackingDetail($id);
+
+?>
+
 </head>
 
 <body>
@@ -70,6 +83,9 @@
           <li class="nav-item">
             <a class="nav-link" href="../tour/tour.php">Bali Tour</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href=""><i class="fa-regular fa-user"></i></a>
+          </li>
         </ul>
       </div>
     </div>
@@ -77,8 +93,7 @@
 
   <!-- card slider -->
   <div class="container atas">
-    <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);">Batur <span
-        style="color: rgb(168, 139, 10);">Mount</span></h1>
+    <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $trackingDetail['nama_gunung']?> </h1>
     <div class="row">
       <div class="col-12 m-auto">
         <div class="owl-carousel owl-theme">
@@ -210,20 +225,7 @@
     <div class="row">
       <div class="col-12 desk">
         <h4>Overview</h4>
-        <p>Sign up for an early morning trek of Mount Batur and stand atop the tall summit for an unforgettable view of
-          the sun rising over the sleeping island of Bali. Before leaving, savour a delicious breakfast cooked with the
-          steam of the volcano!</p>
-        <p>Whether you're Hindu or not, a trip to Mount Batur in Bali is a must!. Get picked up from your hotel and
-          embark upon a (super) early morning tour. Brace yourself for a tough climb up steep slopes to reach the
-          1717-yard summit! All the while being assisted by a professional English-speaking tour guide, pick up
-          interesting facts about this active volcano!</p>
-        <p>Once at the top, watch the sunrise over the sleeping island of Bali! Offering unmatched views, this
-          experience is a visual treat like none other. But don't head back already, stick around for a quick breakfast
-          atop Mount Batur, cooked by your mountain guide using the active volcano's steam! On your way back to the
-          hotel, get off at a traditional Bali coffee processing plant to witness how Balinese coffee is made. Gaze out
-          at the tropical plantations, sample some of the local herbal tea, coffee and the unusually-processed Coffee
-          Luwak, the most expensive coffee in the world!</p>
-
+        <p><?=  $trackingDetail['overview']; ?></p>
       </div>
     </div>
   </div>
@@ -233,20 +235,12 @@
     <div class="kegiatan1">
       <div class="highlight">
         <h5>Activities Highlight</h5>
-        <p>- Watch the sunrise from above the clouds at Mount Batur's summit</p>
-        <p>- Get unrivaled panoramic views over Bali, the ocean and volcanic landscapes in nearby Lombok island</p>
-        <p>- Explore the natural landscape with a private trek with a local expert guide from our hometown </p>
-        <p>- Enjoy perks such as included breakfast, tea, coffee</p>
-        <p>- Visit an Coffee platinum and try the famed of Luwak coffee.</p>
+        <p> <?= $trackingDetail['act_highlight'] ?></p>
+        
       </div>
-      <div class="pickup">
-        <h5>Pickup Times</h5>
-        <p>- Ubud: 02.00 AM</p>
-        <p>- Kuta: 01.00 AM</p>
-        <p>- Sanur: 01.30 AM</p>
-        <p>- Seminyak: 01.00 AM</p>
-        <p>- Canggu: 01.00 AM</p>
-
+      <div class="include">
+        <h5>Include This Packages</h5>
+        <p> <?= $trackingDetail['include'] ?></p>
       </div>
     </div>
   </div>
@@ -254,29 +248,13 @@
 
   <!-- include & prices -->
   <div class="container include_price">
-    <div class="include-price">
-      <div class="include">
-        <h5>Include This Packages</h5>
-        <p>- Entrance ticket at kintamani</p>
-        <p>- Entrance ticket at mount batur</p>
-        <p>- Private Trip</p>
-        <p>- Guide</p>
-        <p>- Breakfast</p>
-        <p>- Mineral Water</p>
-        <p>- Documentation</p>
-      </div>
+    <div class="include-price justify-content-center gy-5">
       <div class="price-wa">
-        <div class="price">
-          <h5>Price</h5>
-          <p>- IDR 950K (1 Person Trip)</p>
-          <p>- IDR 600K /person (2 Person Trip)</p>
-          <p>- IDR 450K /person (3 Person Trip)</p>
-          <p>- IDR 400K /person (4 Person Trip)</p>
-          <p>- IDR 375K /person (Min 5 Person Trip)</p>
-        </div>
+
         <div class="wa-tracking">
           <h3>Book This Package</h3>
-          <h5><a href="https://wa.me/6282359365098">Whastapp Now</a></h5>
+          <h4>Only Rp.<?= $trackingDetail['price'] ?></h4>
+          <h5><a href="pesan.php">Book Now</a></h5>
         </div>
       </div>
     </div>
@@ -363,6 +341,7 @@
 
     <script src="tracking.js"></script>
     <script src="../navbar/navbar.js"></script>
+    <script src="https://kit.fontawesome.com/5b90b4fa74.js" crossorigin="anonymous"></script>
   </div>
 
 

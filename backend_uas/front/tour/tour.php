@@ -44,13 +44,16 @@
             <a class="nav-link" href="../../index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tracking/tracking.php">Bali Tracking</a>
+            <a class="nav-link" href="../tracking/trackings.php">Bali Tracking</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Transport/transport.php">Bali Transport</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="../tour/tour.php">Bali Tour</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=""><i class="fa-regular fa-user"></i></a>
           </li>
         </ul>
       </div>
@@ -59,8 +62,8 @@
 
   <!-- carousel item -->
   <div class="carousel">
-  <img src="../gambar/card1.jpg" alt="" class="card-img-top" class="active"> 
-  <img src="../gambar/card2.jpg" alt="" class="card-img-top">
+    <img src="../gambar/card1.jpg" alt="" class="card-img-top" class="active"> 
+    <img src="../gambar/card2.jpg" alt="" class="card-img-top">
     
 
     <div class="carousel-indicators" style="display: flex; z-index: 1;">
@@ -216,6 +219,7 @@
   </script>
   <script src="../tour/tour.js"></script>
   <script src="../navbar/navbar.js"></script>
+  <script src="https://kit.fontawesome.com/5b90b4fa74.js" crossorigin="anonymous"></script>
 </div>
 </body>
 

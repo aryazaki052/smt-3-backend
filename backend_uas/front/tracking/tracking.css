@@ -102,10 +102,10 @@ body {
 }
 
 .kegiatan1 {
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   display: flex;
   flex-direction: row;
-  gap: 100px;
+  gap: 80px;
   align-items: center;
 }
 

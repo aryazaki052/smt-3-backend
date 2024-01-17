@@ -66,13 +66,40 @@
             <a class="nav-link" href="front/landingpage.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="front/tracking/tracking.php">Bali Tracking</a>
+            <a class="nav-link" href="front/tracking/trackings.php">Bali Tracking</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="front/Transport/transport.php">Bali Transport</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="front/tour/tour.php">Bali Tour</a>
+          </li>
+          
+          <li class="nav-item">
+          <ul class="dropdown-menu dropdown-user animated fadeIn">
+								<div class="dropdown-user-scroll scrollbar-outer">
+									<li>
+										<div class="user-box">
+											<div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="u-text">
+												<h4>Hizrian</h4>
+												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">My Profile</a>
+										<a class="dropdown-item" href="#">My Balance</a>
+										<a class="dropdown-item" href="#">Inbox</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Account Setting</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Logout</a>
+                    <a class="nav-link" href="front/authcust/Logincust.php"><i class="fa-regular fa-user"></i></a>
+									</li>
+								</div>
+							</ul>
           </li>
         </ul>
       </div>
@@ -341,6 +368,7 @@
     </script>
     <script src="front/landingpage/landingpage.js"></script>
     <script src="front/navbar/navbar.js"></script>
+    <script src="https://kit.fontawesome.com/5b90b4fa74.js" crossorigin="anonymous"></script>
   </div>
 </body>
 

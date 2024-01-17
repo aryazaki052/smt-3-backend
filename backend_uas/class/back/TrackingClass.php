@@ -126,12 +126,12 @@ class Tracking extends database
 
     function updatetracking($data){
       // Ambil data dari formulir
-      $nama = $data["nama"];
-      $overview = $data["overview"];
-      $actHighlight = $data["act_highlight"];
-      $include = $data["include"];
-      $harga = $data["harga"];
-      $id = $_POST['id'];
+        $nama = mysqli_real_escape_string($this->con, $data["nama"]);
+        $overview = mysqli_real_escape_string($this->con, $data["overview"]);
+        $actHighlight = mysqli_real_escape_string($this->con, $data["act_highlight"]);
+        $include = mysqli_real_escape_string($this->con, $data["include"]);
+        $harga = mysqli_real_escape_string($this->con, $data["harga"]);
+        $id = $_POST['id'];
   
       // Cek apakah ada gambar baru
       if (!empty($_FILES["gambar_gunung"]["name"])) {
@@ -225,5 +225,21 @@ class Tracking extends database
           return "ID Tracking tidak valid atau tidak tersedia.";
       }
   }
+
+  public function getTrackingDetail($id)
+  {
+      // Query untuk mendapatkan detail tracking berdasarkan ID
+      $query = "SELECT * FROM tracking WHERE id = '$id'";
+      $result = mysqli_query($this->con, $query);
+      
+      // Cek apakah query berhasil dijalankan
+      if ($result) {
+          $data = mysqli_fetch_assoc($result);
+          return $data; // Mengembalikan data tracking
+      } else {
+          return null; // Mengembalikan null jika terjadi kesalahan
+      }
+  }
+
 }
 ?>

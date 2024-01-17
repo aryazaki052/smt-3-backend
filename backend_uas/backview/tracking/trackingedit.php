@@ -586,6 +586,39 @@ if ($qry) {
 				fillColor: 'rgba(255, 165, 52, .14)'
 			});
 		</script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editorOverview'), {
+            alignment: {
+                options: ['left', 'right', 'justify']
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#editorActivity'), {
+            alignment: {
+                options: ['left', 'right', 'justify']
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#editorInclude'), {
+            alignment: {
+                options: ['left', 'right', 'justify']
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 	</div>
 
 </body>
