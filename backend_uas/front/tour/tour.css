@@ -108,7 +108,10 @@
   padding-bottom: 1rem!important;
 }
 /*card*/
-
+.card-body a{
+  text-decoration: none;
+  color: black;
+}
 .btn2{
   margin-top: 30px;
 }

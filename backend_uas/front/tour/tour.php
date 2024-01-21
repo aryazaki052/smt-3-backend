@@ -27,6 +27,18 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Inter&family=Ysabeau+Infant:wght@700&display=swap"
     rel="stylesheet">
+
+
+    <div>
+      <?php
+      include ('../../class/back/DBClass.php');
+      $con = new database;
+      $qry = mysqli_query($con ->con ,'SELECT * FROM tour');
+
+
+
+      ?>
+    </div>
 </head>
 
 <body>
@@ -52,9 +64,9 @@
           <li class="nav-item active">
             <a class="nav-link" href="../tour/tour.php">Bali Tour</a>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href=""><i class="fa-regular fa-user"></i></a>
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
@@ -99,46 +111,28 @@
   <!-- Card -->
   <section class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card">
-          <div class="ratio ratio-16x9 img-hover-zoom">
-            <img src="../gambar/L1.webp">
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Special Lempuyang Temple Gate of Heaven, Tirta Gangga, Virgin Beach Tour</h4>
-            <p class="card-text"> that we recommend for those of you who like interesting and unique places to visit in
-              Bali.</p>
-            <a href="../post/post.html" class="btn btn-primary">Visit Now!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card">
-          <div class="ratio ratio-16x9 img-hover-zoom">
-            <img src="../gambar/lagon2.jpg">
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Blue Lagoon Snorkeling Bali</h4>
-            <p class="card-text">This Bali Activity will start at 9.00 am from one of these following
-              areas: Nusa Dua, Jimbaran, Uluwatu, Kuta, Legian, Seminyak, Canggu, or
-              Sanur.</p>
-            <a href="../post/card2.html" class="btn btn-primary btn2">Visit Now!</a>
+      <?php while ($data = mysqli_fetch_assoc($qry)) : ?>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card"><a href="../post/post.php">
+            <div class="ratio ratio-16x9 img-hover-zoom">
+              <img src="../../backview/assets/uploads/tour/<?php echo $data['gambar_gunung']; ?>" alt="tour img" >
+            </div></a>
+            <div class="card-body">
+              <a href="../post/post.php" style="text-decoration:none; color:black">
+                <h4 class="card-title"><?php echo $data['nama_gunung']; ?></h4>
+              </a>
+              <p class="card-text"> 
+                <?php
+                  $things = $data['things'];
+                  $truncatedthings = (strlen($things) > 150) ? substr($things, 0, 150) . '...' : $things;
+                  echo $truncatedthings;
+                ?>
+              </p>
+              <a href="../post/post.php?id=<?php echo $data['id_tour']; ?>" class="btn btn-primary">Visit Now!</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card">
-          <div class="ratio ratio-16x9 img-hover-zoom">
-            <img src="../gambar/pen1.jpg">
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Private West Penida Tour</h4>
-            <p class="card-text">This Nusa Penida Tour includes some activity such as visiting Broken beach, Kelingking
-              beach, Angel Billabong beach, and Crystal Bay.</p>
-            <a href="../post/card3.html" class="btn btn-primary btn2">Visit Now!</a>
-          </div>
-        </div>
-      </div>
+      <?php endwhile; ?>
     </div>
   </section>
 
