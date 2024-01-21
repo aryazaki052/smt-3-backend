@@ -46,39 +46,39 @@
 
   ?>
 
-<style>
-  .guide-card {
-    width: 18rem;
-    position: relative;
-    overflow: hidden;
-  }
+  <style>
+    .guide-card {
+      width: 18rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .guide-card .img-hover-zoom img {
-    transition: transform 0.5s;
-  }
+    .guide-card .img-hover-zoom img {
+      transition: transform 0.5s;
+    }
 
-  .guide-card:hover .img-hover-zoom img {
-    transform: scale(1.1);
-  }
+    .guide-card:hover .img-hover-zoom img {
+      transform: scale(1.1);
+    }
 
-  .guide-card .card-body {
-    padding: 10px;
-  }
+    .guide-card .card-body {
+      padding: 10px;
+    }
 
-  .guide-card .select-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
+    .guide-card .select-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
 
-  .guide-card .select-btn.selected {
-    background-color: #e74c3c;
-  }
-</style>
+    .guide-card .select-btn.selected {
+      background-color: #e74c3c;
+    }
+  </style>
 </head>
 
 <body>
@@ -116,7 +116,7 @@
 
   <div style="margin-top: 100px;">
     <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $trackingDetail['nama_gunung'] ?> </h1>
-    <form action="" method="post">
+    <form action="pesanact.php" method="post">
       <div class="row">
         <div class="col-md-4">
           <div class="card shadow">
@@ -133,7 +133,6 @@
         <div class="col-md-8">
           <div class="card shadow">
             <div class="card-body">
-
               <br>
               <!-- customer detail -->
               <div class="container">
@@ -142,29 +141,27 @@
                 <div class="row rounded-corners">
                   <div class="col">
                     <label class="details">Nama Depan :</label>
-                    <input type="text" class="form-control" placeholder="Masukan Nama depan">
+                    <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama depan">
                   </div>
                   <div class="col">
                     <label class="details">Nama Belakang :</label>
-                    <input type="text" class="form-control" placeholder="Masukan Nama Belakang">
+                    <input type="text" class="form-control" name="nama_belakang" placeholder="Masukan Nama Belakang">
                   </div>
                 </div><br>
                 <div class="row">
                   <div class="col">
                     <label class="details">No. Hp :</label>
-                    <input type="number" class="form-control" placeholder="Masukan No Hp">
+                    <input type="number" class="form-control" name="no_hp" placeholder="Masukan No Hp">
                   </div>
                   <div class="col">
                     <label class="details">Email :</label>
-                    <input type="email" class="form-control" placeholder="Masukan Email">
+                    <input type="email" class="form-control" name="email" placeholder="Masukan Email">
                   </div>
                 </div>
-
               </div>
               <br>
             </div>
           </div>
-
         </div>
         <div class="container">
           <div class="row">
@@ -186,19 +183,19 @@
                     if (!empty($guides)) {
                       foreach ($guides as $guide) {
                   ?>
-                         <div class="card mb-4 guide-card" style="width: 18rem;">
-          <div class="ratio ratio-4x3 img-hover-zoom">
-            <img src="../../backview/assets/uploads/guide/<?= $guide['gambar_guide']; ?>">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><?= $guide['nama_guide'] ?></h5>
-            <p class="justify"><?= $guide['deskripsi'] ?></p>
-          </div>
-          <div class="right d-flex row justify-content-center">
-            <button type="button" class="select-btn" onclick="selectGuide(this)" data-guide-id="<?= $guide['id_guide'] ?>">Pilih</button>
-            <input type="hidden" name="selected_guide" value="">
-          </div>
-        </div>
+                        <div class="card mb-4 guide-card" style="width: 18rem;">
+                          <div class="ratio ratio-4x3 img-hover-zoom">
+                            <img src="../../backview/assets/uploads/guide/<?= $guide['gambar_guide']; ?>">
+                          </div>
+                          <div class="card-body">
+                            <h5 class="card-title text-center"><?= $guide['nama_guide'] ?></h5>
+                            <p class="justify"><?= $guide['deskripsi'] ?></p>
+                          </div>
+                          <div class="right d-flex row justify-content-center">
+                            <button type="button" class="select-btn" onclick="selectGuide(this)" data-guide-id="<?= $guide['id_guide'] ?>">Pilih</button>
+                            <input type="hidden" name="selected_guide" value="<?= $guide['id_guide'] ?>">
+                          </div>
+                        </div>
                   <?php
                       }
                     } else {
@@ -208,7 +205,6 @@
                   ?>
                 </div>
               </section>
-
             </div>
           </div>
         </div>
@@ -217,6 +213,7 @@
         <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#customerDetailModal">Simpan</button>
       </div>
     </form>
+
   </div>
 
 
@@ -298,21 +295,21 @@
   </div>
 
   <script>
-  function selectGuide(button) {
-    var guideCard = button.closest('.guide-card');
-    var hiddenInput = guideCard.querySelector('input[name="selected_guide"]');
+    function selectGuide(button) {
+      var guideCard = button.closest('.guide-card');
+      var hiddenInput = guideCard.querySelector('input[name="selected_guide"]');
 
-    // Hapus kelas 'selected' dari semua tombol guide
-    var allGuideButtons = document.querySelectorAll('.guide-card .select-btn');
-    allGuideButtons.forEach(function (btn) {
-      btn.classList.remove('selected');
-    });
+      // Hapus kelas 'selected' dari semua tombol guide
+      var allGuideButtons = document.querySelectorAll('.guide-card .select-btn');
+      allGuideButtons.forEach(function(btn) {
+        btn.classList.remove('selected');
+      });
 
-    // Tambahkan kelas 'selected' pada tombol yang dipilih
-    button.classList.add('selected');
-    
-    // Setel nilai input tersembunyi
-    hiddenInput.value = button.getAttribute('data-guide-id');
-  }
-</script>
+      // Tambahkan kelas 'selected' pada tombol yang dipilih
+      button.classList.add('selected');
+
+      // Setel nilai input tersembunyi
+      hiddenInput.value = button.getAttribute('data-guide-id');
+    }
+  </script>
 </body>
