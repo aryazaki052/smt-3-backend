@@ -240,6 +240,27 @@ class Tracking extends database
           return null; // Mengembalikan null jika terjadi kesalahan
       }
   }
+  public function getGuidesByDate($selectedDate, $categoryId)
+  {
+      // Lakukan query untuk mengambil daftar guide berdasarkan tanggal
+      $query = "SELECT guide.*
+      FROM guide
+      INNER JOIN jadwal_guide ON guide.id_guide = jadwal_guide.id_guide
+      WHERE jadwal_guide.tangal = '$selectedDate' AND jadwal_guide.id_kategori = $categoryId";
+
+
+      $result = mysqli_query($this->con, $query);
+  
+      if ($result) {
+          $guides = mysqli_fetch_all($result, MYSQLI_ASSOC);
+          return $guides;
+      } else {
+          return null;
+      }
+  }
+  
+  
+  
 
 }
 ?>

@@ -82,7 +82,7 @@
 
 
   <div style="margin-top: 100px;">
-  <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $trackingDetail['nama_gunung'] ?> </h1>
+    <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $trackingDetail['nama_gunung'] ?> </h1>
     <form action="" method="post">
       <div class="row">
         <div class="col-md-4">
@@ -91,7 +91,7 @@
               <img src="../../backview/assets/uploads/tracking/<?php echo $trackingDetail['gambar_gunung']; ?>" alt="ini gambar" width="90%">
               <hr>
               <div class="box mt-4">
-                <input type="date">
+                <input type="date" name="selected_date" onchange="this.form.submit()">
               </div>
             </div>
           </div>
@@ -128,10 +128,6 @@
                 </div>
 
               </div>
-              <!-- Pop-up modal for customer detail -->
-
-
-
               <br>
             </div>
           </div>
@@ -148,50 +144,45 @@
               <section class="container">
                 <div class="d-flex row justify-content-center guide">
                   <!-- card1 -->
-                  <div class="card mb-4" style="width: 18rem;">
-                    <div class="ratio ratio-4x3 img-hover-zoom">
-                      <img src="https://st2.depositphotos.com/3662505/5821/i/450/depositphotos_58212589-stock-photo-tourists.jpg">
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title text-center">Mr. Agung Juliansyah</h5>
-                      <p class="justify">
-                        As an experienced tour guide, I have been in this profession for more than ten years, My language skills include English, Spanish and French.
-                      </p>
-                    </div>
-                    <div class="right">
-                      <button type="submit" class="btn btn-light right-align">Book Now!</button>
-                    </div>
-                  </div>
-                  <!-- card2 -->
-                  <div class="card mb-4" style="width: 18rem;">
-                    <div class="ratio ratio-4x3 img-hover-zoom">
-                      <img src="https://panduasia.com/www/assets/blog_images/tips-lengkap-tour-guide-membangun-personal-branding-di-era-digital.jpg">
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title text-center">Mrs. Saputri Yanti</h5>
-                      <p class="justify">
-                        As an experienced tour guide, I have been in this profession for more than two years, my language skills include English and Korean.
-                      </p>
-                    </div>
-                    <div class="right">
-                      <button type="submit" class="btn btn-light right-align">Book Now!</button>
-                    </div>
-                  </div>
-                  <!-- card3 -->
-                  <div class="card mb-4" style="width: 18rem;">
-                    <div class="ratio ratio-4x3 img-hover-zoom">
-                      <img src="https://qph.cf2.quoracdn.net/main-qimg-ed9942be4e62a37bf8f20e0be130eb40-lq">
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title text-center ">Mrs. Sukma Larasati</h5>
-                      <p class="justify">
-                        As an experienced tour guide, I have been in this profession for approximately 1 year, my language skills include English and French.
-                      </p>
-                    </div>
-                    <div class="right">
-                      <button type="submit" class="btn btn-light right-align">Book Now!</button>
-                    </div>
-                  </div>
+                  <?php
+                  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $selectedDate = $_POST["selected_date"];
+                    $convertedDate = date("Y-m-d", strtotime($selectedDate));
+                    $categoryId = 1; // Sesuaikan dengan id_kategori yang diinginkan
+                    $guides = $tracking->getGuidesByDate($convertedDate, $categoryId);
+                    
+
+                    if (!empty($guides)) {
+                      foreach ($guides as $guide) {
+                  ?>
+                        <div class="card mb-4" style="width: 18rem;">
+                          <div class="ratio ratio-4x3 img-hover-zoom">
+                            <img src="../../backview/assets/uploads/guide/<?= $guide['gambar_guide']; ?>">
+                          </div>
+                          <div class="card-body">
+                            <h5 class="card-title text-center"> <?= $guide['nama_guide'] ?></h5>
+                            <p class="justify"> <?= $guide['deskripsi'] ?></p>
+                          </div>
+                          <div class="right">
+                            <button type="submit" class="btn btn-light right-align">Book Now!</button>
+                          </div>
+                        </div>
+                  <?php
+                      }
+                    } else {
+                      echo "No guides available for the selected date.";
+                    }
+                  }
+                  ?>
+
+
+
+
+
+
+
+
+
                 </div>
               </section>
             </div>
@@ -199,8 +190,8 @@
         </div>
       </div>
       <div class="mt-3 d-flex justify-content-center">
-                  <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#customerDetailModal">Simpan</button>
-                </div>
+        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#customerDetailModal">Simpan</button>
+      </div>
     </form>
   </div>
 
