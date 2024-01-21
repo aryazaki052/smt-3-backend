@@ -104,6 +104,7 @@ class tour extends database
         $inclusions = $data["inclusions"];
         $exclusions = $data["exclusions"];
         $brings = $data["brings"];
+        $price = $data["price"];
 
         // Proses upload gambar
         $targetDir = "../../backview/assets/uploads/tour/"; // Folder untuk menyimpan gambar
@@ -114,7 +115,7 @@ class tour extends database
         move_uploaded_file($_FILES["gambar_gunung"]["tmp_name"], $targetFilePath);
 
         // Masukkan data ke database
-        $query = "INSERT INTO tour (nama_gunung, highlight, things, itinerary, inclusions, exclusions, brings, gambar_gunung) VALUES ('$nama', '$highlight', '$things', '$itinerary', '$inclusions', '$exclusions', '$brings', '$gambarName')";
+        $query = "INSERT INTO tour (nama_gunung, highlight, things, itinerary, inclusions, exclusions, brings, gambar_gunung, price) VALUES ('$nama', '$highlight', '$things', '$itinerary', '$inclusions', '$exclusions', '$brings', '$gambarName', '$price')";
         $result = mysqli_query($this->con, $query);
 
         if ($result) {
@@ -135,6 +136,7 @@ class tour extends database
         $inclusions = mysqli_real_escape_string($this->con, $data["inclusions"]);
         $exclusions = mysqli_real_escape_string($this->con, $data["exclusions"]);
         $brings = mysqli_real_escape_string($this->con, $data["brings"]);
+        $price = mysqli_real_escape_string($this->con, $data["price"]);
         $id_tour = $_POST['id'];
   
       // Cek apakah ada gambar baru
@@ -163,7 +165,7 @@ class tour extends database
               move_uploaded_file($_FILES["gambar_gunung"]["tmp_name"], $targetFilePath);
   
               // Perbarui data ke database dengan gambar baru
-              $queryUpdate = "UPDATE tour SET nama_gunung='$nama', highlight='$highlight', things='$things', itinerary='$itinerary', inclusions='$inclusions', exclusions='$exclusions', brings='$brings' gambar_gunung='$gambarName' WHERE id_tour=$id_tour";
+              $queryUpdate = "UPDATE tour SET nama_gunung='$nama', highlight='$highlight', things='$things', itinerary='$itinerary', inclusions='$inclusions', exclusions='$exclusions', brings='$brings' gambar_gunung='$gambarName', price='$price' WHERE id_tour=$id_tour";
 
               $resultUpdate = mysqli_query($this->con, $queryUpdate);
   
@@ -179,7 +181,7 @@ class tour extends database
           }
       } else {
           // Jika tidak ada gambar baru, perbarui data kecuali gambar
-          $queryUpdate = "UPDATE tour SET nama_gunung='$nama', highlight='$highlight', things='$things', itinerary='$itinerary', inclusions='$inclusions', exclusions='$exclusions', brings='$brings' WHERE id_tour=$id_tour";
+          $queryUpdate = "UPDATE tour SET nama_gunung='$nama', highlight='$highlight', things='$things', itinerary='$itinerary', inclusions='$inclusions', exclusions='$exclusions', brings='$brings', price='$price' WHERE id_tour=$id_tour";
           $resultUpdate = mysqli_query($this->con, $queryUpdate);
   
           if ($resultUpdate) {

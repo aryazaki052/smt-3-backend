@@ -417,6 +417,7 @@
 													<th>Exclusions</th>
 													<th>What to brings</th>
 													<th>Gambar</th> <!-- Tambahkan kolom ini -->
+													<th>Price</th> <!-- Tambahkan kolom ini -->
 													<th width="150px">Action</th>
 												</tr>
 											</thead>
@@ -434,6 +435,7 @@
 													echo "<td>" . $data['inclusions'] . "</td>";
 													echo "<td>" . $data['exclusions'] . "</td>";
 													echo "<td>" . $data['brings'] . "</td>";
+													echo "<td>" . $data['price'] . "</td>";
 													echo "<td><img src='../assets/uploads/tour/" . $data['gambar_gunung'] . "' alt='Gambar Gunung' style='width: 50px; height: 50px;'></td>"; // Tampilkan gambar
 													echo "<td class='text-center'>
 																		<a href='touredit.php?id=" . $data['id_tour'] . "'><i class='fa fa-pencil primary' aria-hidden='true'></i></a> 

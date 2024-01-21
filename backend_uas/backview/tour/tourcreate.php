@@ -429,6 +429,10 @@ verif();
                                 <label for="gambar">Gambar Gunung</label>
                                 <input type="file" name="gambar_gunung" class="form-control">
                             </div>
+							<div class="form-group" id="gambarFormGroup">
+                                <label for="gambar">Harga</label>
+                                <input type="number" name="price" class="form-control" placeholder="Harga">
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-sm" type="submit">Save</button>
                                 <button class="btn btn-danger btn-sm" type="reset">Reset</button>

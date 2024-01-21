@@ -50,13 +50,13 @@
             <div class="container-lg collapse navbar-collapse justify-content-end navbara" id="navbarNavDropdown">
                 <ul class="navbar-nav navbarb">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Home</a>
+                        <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../tracking/tracking.html">Bali Tracking</a>
+                        <a class="nav-link" href="../tracking/tracking.php">Bali Tracking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bali Transport</a>
+                        <a class="nav-link" href="../Transport/transport.php">Bali Transport</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="../tour/tour.php">Bali Tour</a>
@@ -83,8 +83,7 @@
             <div class="card-body" style="background-color: #E3E6DB;">
                 <small>Special Price</small>
                 <br>
-                <small style="text-decoration: line-through;">USD 90</small>
-                <b>USD 75</b>/Person
+                <p><b><?= $tourDetail['price'] ?>.000</b> /Person</p>
             </div>
         </div>
         <hr>
