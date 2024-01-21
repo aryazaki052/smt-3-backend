@@ -46,6 +46,39 @@
 
   ?>
 
+<style>
+  .guide-card {
+    width: 18rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guide-card .img-hover-zoom img {
+    transition: transform 0.5s;
+  }
+
+  .guide-card:hover .img-hover-zoom img {
+    transform: scale(1.1);
+  }
+
+  .guide-card .card-body {
+    padding: 10px;
+  }
+
+  .guide-card .select-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .guide-card .select-btn.selected {
+    background-color: #e74c3c;
+  }
+</style>
 </head>
 
 <body>
@@ -143,30 +176,29 @@
               <hr>
               <section class="container">
                 <div class="d-flex row justify-content-center guide">
-                  <!-- card1 -->
                   <?php
                   if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $selectedDate = $_POST["selected_date"];
                     $convertedDate = date("Y-m-d", strtotime($selectedDate));
                     $categoryId = 1; // Sesuaikan dengan id_kategori yang diinginkan
                     $guides = $tracking->getGuidesByDate($convertedDate, $categoryId);
-                    
 
                     if (!empty($guides)) {
                       foreach ($guides as $guide) {
                   ?>
-                        <div class="card mb-4" style="width: 18rem;">
-                          <div class="ratio ratio-4x3 img-hover-zoom">
-                            <img src="../../backview/assets/uploads/guide/<?= $guide['gambar_guide']; ?>">
-                          </div>
-                          <div class="card-body">
-                            <h5 class="card-title text-center"> <?= $guide['nama_guide'] ?></h5>
-                            <p class="justify"> <?= $guide['deskripsi'] ?></p>
-                          </div>
-                          <div class="right">
-                            <button type="submit" class="btn btn-light right-align">Book Now!</button>
-                          </div>
-                        </div>
+                         <div class="card mb-4 guide-card" style="width: 18rem;">
+          <div class="ratio ratio-4x3 img-hover-zoom">
+            <img src="../../backview/assets/uploads/guide/<?= $guide['gambar_guide']; ?>">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center"><?= $guide['nama_guide'] ?></h5>
+            <p class="justify"><?= $guide['deskripsi'] ?></p>
+          </div>
+          <div class="right d-flex row justify-content-center">
+            <button type="button" class="select-btn" onclick="selectGuide(this)" data-guide-id="<?= $guide['id_guide'] ?>">Pilih</button>
+            <input type="hidden" name="selected_guide" value="">
+          </div>
+        </div>
                   <?php
                       }
                     } else {
@@ -174,17 +206,9 @@
                     }
                   }
                   ?>
-
-
-
-
-
-
-
-
-
                 </div>
               </section>
+
             </div>
           </div>
         </div>
@@ -273,5 +297,22 @@
     <script src="https://kit.fontawesome.com/5b90b4fa74.js" crossorigin="anonymous"></script>
   </div>
 
+  <script>
+  function selectGuide(button) {
+    var guideCard = button.closest('.guide-card');
+    var hiddenInput = guideCard.querySelector('input[name="selected_guide"]');
 
+    // Hapus kelas 'selected' dari semua tombol guide
+    var allGuideButtons = document.querySelectorAll('.guide-card .select-btn');
+    allGuideButtons.forEach(function (btn) {
+      btn.classList.remove('selected');
+    });
+
+    // Tambahkan kelas 'selected' pada tombol yang dipilih
+    button.classList.add('selected');
+    
+    // Setel nilai input tersembunyi
+    hiddenInput.value = button.getAttribute('data-guide-id');
+  }
+</script>
 </body>
