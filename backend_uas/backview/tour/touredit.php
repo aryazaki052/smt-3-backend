@@ -348,18 +348,29 @@ if ($qry) {
 							<h4 class="text-section">MENU</h4>
 						</li>
 						<li class="nav-item active ">
-						<a href="TrackingView.php">
+						<a href="tracking/TrackingView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tracking</p>
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="tour/TourView.php">
+							<a href="../tour/TourView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tour</p>
 							</a>
 						</li>
-
+						<li class="nav-item ">
+                <a href="../guide/GuideView.php">
+								<i class="fas fa-desktop"></i>
+								<p>Guide</p>
+							</a>
+						</li>
+						<li class="nav-item ">
+                <a href="../guidetersedia/TersediaView.php">
+								<i class="fas fa-desktop"></i>
+								<p>Guide Tersedia</p>
+							</a>
+						</li>
 						<li class="nav-item">
 							<a href="../authadm/Logout.php">
 									<i class="fas fa-undo"></i>

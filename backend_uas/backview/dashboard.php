@@ -345,7 +345,7 @@ verifdashboard();
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="tour/TourView.php">
+                <a href="../backview/tour/TourView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tour</p>
 							</a>

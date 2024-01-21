@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Admin</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Admin</title>
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<script src="../assets/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Fonts and icons -->
-<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-<script>
-    WebFont.load({
-        google: {"families":["Lato:300,400,700,900"]},
-        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
-        active: function() {
-            sessionStorage.fonts = true;
-        }
-    });
-</script>
+	<!-- Fonts and icons -->
+	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {
+				"families": ["Lato:300,400,700,900"]
+			},
+			custom: {
+				"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+				urls: ['../assets/css/fonts.min.css']
+			},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
 
-<!-- CSS Files -->
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/atlantis.min.css">
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
 
-<!-- CSS Just for demo purpose, don't include it in your project -->
-<link rel="stylesheet" href="../assets/css/demo.css">
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="../assets/css/demo.css">
 </head>
-<body>
-<!-- session -->
-<div>
-	<?php
-include ('../../class/function.php');
-verif();
 
-include ('../../class/back/DBClass.php');
-$con = new Database;
+<body>
+	<!-- session -->
+	<div>
+		<?php
+		include('../../class/function.php');
+		verif();
+
+		include('../../class/back/DBClass.php');
+		$con = new Database;
+		?>
+
+	</div>
+	<!-- end session -->
+
+
+	<?php
+
 	?>
 
-</div>
-<!-- end session -->
-
-
-<?php
-
-?>
-
-<!-- header -->
-<div class="wrapper">
+	<!-- header -->
+	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
-				
+
 				<!-- <a href="index.html" class="logo" style="display: flex; justify-content:center; align-items:center;">
 					<img src="../back/css/logo1.png" width="70px">
 					<p style="margin-top: 20px; color:black;"><b>ITB STIKOM BALI</b></p>
@@ -86,7 +93,7 @@ $con = new Database;
 							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
 								<li>
 									<div class="dropdown-title d-flex justify-content-between align-items-center">
-										Messages 									
+										Messages
 										<a href="#" class="small">Mark all as read</a>
 									</div>
 								</li>
@@ -94,7 +101,7 @@ $con = new Database;
 									<div class="message-notif-scroll scrollbar-outer">
 										<div class="notif-center">
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/jm_denis.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -102,11 +109,11 @@ $con = new Database;
 													<span class="block">
 														How are you ?
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/chadengle.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -114,11 +121,11 @@ $con = new Database;
 													<span class="block">
 														Ok, Thanks !
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/mlane.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -126,11 +133,11 @@ $con = new Database;
 													<span class="block">
 														Ready for the meeting today...
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/talha.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -138,7 +145,7 @@ $con = new Database;
 													<span class="block">
 														Hi, Apa Kabar ?
 													</span>
-													<span class="time">17 minutes ago</span> 
+													<span class="time">17 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -167,7 +174,7 @@ $con = new Database;
 													<span class="block">
 														New user registered
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
@@ -176,18 +183,18 @@ $con = new Database;
 													<span class="block">
 														Rahmad commented on Admin
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/profile2.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
 														Reza send messages to you
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
@@ -196,7 +203,7 @@ $con = new Database;
 													<span class="block">
 														Farrah liked Admin
 													</span>
-													<span class="time">17 minutes ago</span> 
+													<span class="time">17 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -295,10 +302,10 @@ $con = new Database;
 			</nav>
 			<!-- End Navbar -->
 		</div>
-	<!-- end header -->
+		<!-- end header -->
 
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">			
+		<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -307,21 +314,21 @@ $con = new Database;
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-									<span>
+								<span>
 									<?php
-										
-										// Escape string untuk mencegah SQL injection
-										$email_admin = mysqli_real_escape_string($con->con, $_SESSION['email_admin']);
-										// Selanjutnya, Anda bisa menggunakan $con dalam kueri atau operasi database lainnya.
-										$qry = mysqli_query($con->con, "SELECT * FROM admin_user WHERE email_admin='$email_admin'");
 
-										if ($data = mysqli_fetch_assoc($qry)) {
-												// Menampilkan Nama dan ID dari data user
-												echo $data['nama_admin']; // Gantilah 'nama_admin' dengan nama kolom yang sesuai di database
-												echo "<span class='user-level'>" . "admin" . "</span>";
-										}
-										?>
-									</span>
+									// Escape string untuk mencegah SQL injection
+									$email_admin = mysqli_real_escape_string($con->con, $_SESSION['email_admin']);
+									// Selanjutnya, Anda bisa menggunakan $con dalam kueri atau operasi database lainnya.
+									$qry = mysqli_query($con->con, "SELECT * FROM admin_user WHERE email_admin='$email_admin'");
+
+									if ($data = mysqli_fetch_assoc($qry)) {
+										// Menampilkan Nama dan ID dari data user
+										echo $data['nama_admin']; // Gantilah 'nama_admin' dengan nama kolom yang sesuai di database
+										echo "<span class='user-level'>" . "admin" . "</span>";
+									}
+									?>
+								</span>
 							</a>
 							<div class="clearfix"></div>
 						</div>
@@ -339,19 +346,30 @@ $con = new Database;
 							</span>
 							<h4 class="text-section">MENU</h4>
 						</li>
-						<li class="nav-item ">
+						<li class="nav-item  ">
 						<a href="../tracking/TrackingView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tracking</p>
 							</a>
 						</li>
-						<li class="nav-item active">
-                <a href="tour/TourView.php">
+						<li class="nav-item active ">
+							<a href="../tour/TourView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tour</p>
 							</a>
 						</li>
-
+						<li class="nav-item ">
+                <a href="../guide/GuideView.php">
+								<i class="fas fa-desktop"></i>
+								<p>Guide</p>
+							</a>
+						</li>
+						<li class="nav-item ">
+                <a href="../guidetersedia/TersediaView.php">
+								<i class="fas fa-desktop"></i>
+								<p>Guide Tersedia</p>
+							</a>
+						</li>
 						<li class="nav-item">
 							<a href="../authadm/Logout.php">
 									<i class="fas fa-undo"></i>
@@ -370,70 +388,70 @@ $con = new Database;
 		<!-- content -->
 		<div class="main-panel">
 			<div class="content">
-        <div class="panel-header bg-primary-gradient">
-          <div class="page-inner py-5">
-            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-            </div>
-          </div>
-        </div>
-        <div class="page-inner mt--5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card full-height">
-                <div class="card-header">
-                <div class="card-head-row">
-						<div class="card-title">Data Tour</div>
-            <a href="tourcreate.php" class="btn btn-primary btn-sm ml-auto">Tambah</a>
+				<div class="panel-header bg-primary-gradient">
+					<div class="page-inner py-5">
+						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+						</div>
 					</div>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-									<table class="table table-bordered">
-										<thead>
+				</div>
+				<div class="page-inner mt--5">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card full-height">
+								<div class="card-header">
+									<div class="card-head-row">
+										<div class="card-title">Data Tour</div>
+										<a href="tourcreate.php" class="btn btn-primary btn-sm ml-auto">Tambah</a>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered">
+											<thead>
 												<tr class="text-center">
-														<th>Nama Gunung</th>
-														<th>Highlight</th>
-														<th>Things to do</th>
-														<th>Itinerary</th>
-														<th>Inclusions</th>
-														<th>Exclusions</th>
-														<th>What to brings</th>
-														<th>Gambar</th> <!-- Tambahkan kolom ini -->
-														<th width="150px">Action</th>
+													<th>Nama Gunung</th>
+													<th>Highlight</th>
+													<th>Things to do</th>
+													<th>Itinerary</th>
+													<th>Inclusions</th>
+													<th>Exclusions</th>
+													<th>What to brings</th>
+													<th>Gambar</th> <!-- Tambahkan kolom ini -->
+													<th width="150px">Action</th>
 												</tr>
-										</thead>
-										<tbody>
+											</thead>
+											<tbody>
 												<?php
 												// include('../../class/back/DBClass.php');
 												// $con = new database;
 												$qry = mysqli_query($con->con, 'SELECT * FROM tour');
 												while ($data = mysqli_fetch_assoc($qry)) {
-														echo "<tr>";
-														echo "<td>" . $data['nama_gunung'] . "</td>";
-														echo "<td>" . $data['highlight'] . "</td>";
-														echo "<td>" . $data['things'] . "</td>";
-														echo "<td>" . $data['itinerary'] . "</td>";
-														echo "<td>" . $data['inclusions'] . "</td>";
-														echo "<td>" . $data['exclusions'] . "</td>";
-														echo "<td>" . $data['brings'] . "</td>";
-														echo "<td><img src='../assets/uploads/tour/" . $data['gambar_gunung'] . "' alt='Gambar Gunung' style='width: 50px; height: 50px;'></td>"; // Tampilkan gambar
-														echo "<td class='text-center'>
+													echo "<tr>";
+													echo "<td>" . $data['nama_gunung'] . "</td>";
+													echo "<td>" . $data['highlight'] . "</td>";
+													echo "<td>" . $data['things'] . "</td>";
+													echo "<td>" . $data['itinerary'] . "</td>";
+													echo "<td>" . $data['inclusions'] . "</td>";
+													echo "<td>" . $data['exclusions'] . "</td>";
+													echo "<td>" . $data['brings'] . "</td>";
+													echo "<td><img src='../assets/uploads/tour/" . $data['gambar_gunung'] . "' alt='Gambar Gunung' style='width: 50px; height: 50px;'></td>"; // Tampilkan gambar
+													echo "<td class='text-center'>
 																		<a href='touredit.php?id=" . $data['id_tour'] . "'><i class='fa fa-pencil primary' aria-hidden='true'></i></a> 
 																		<a href='delete.php?id=" . $data['id_tour'] . "' onclick=\"return confirm('Apakah Anda yakin ingin menghapus data ini?');\"><i class='fa fa-trash ml-2 text-danger' aria-hidden='true'></i></a>
 																	</td>";
-														echo "</tr>";
+													echo "</tr>";
 												}
 												?>
-										</tbody>
-								</table>
+											</tbody>
+										</table>
 
-                  </div>
+									</div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 		</div>
@@ -445,143 +463,144 @@ $con = new Database;
 
 
 
-	<!--   Core JS Files   -->
-	<div>
-		<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
-		<script src="../assets/js/core/popper.min.js"></script>
-		<script src="../assets/js/core/bootstrap.min.js"></script>
+		<!--   Core JS Files   -->
+		<div>
+			<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+			<script src="../assets/js/core/popper.min.js"></script>
+			<script src="../assets/js/core/bootstrap.min.js"></script>
 
-		<!-- jQuery UI -->
-		<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-		<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+			<!-- jQuery UI -->
+			<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+			<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-		<!-- jQuery Scrollbar -->
-		<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+			<!-- jQuery Scrollbar -->
+			<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
-		<!-- Chart JS -->
-		<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+			<!-- Chart JS -->
+			<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
 
-		<!-- jQuery Sparkline -->
-		<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+			<!-- jQuery Sparkline -->
+			<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-		<!-- Chart Circle -->
-		<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+			<!-- Chart Circle -->
+			<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
 
-		<!-- Datatables -->
-		<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+			<!-- Datatables -->
+			<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
 
-		<!-- Bootstrap Notify -->
-		<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+			<!-- Bootstrap Notify -->
+			<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
-		<!-- jQuery Vector Maps -->
-		<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-		<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+			<!-- jQuery Vector Maps -->
+			<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+			<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
-		<!-- Sweet Alert -->
-		<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+			<!-- Sweet Alert -->
+			<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
-		<!-- Atlantis JS -->
-		<script src="../assets/js/atlantis.min.js"></script>
+			<!-- Atlantis JS -->
+			<script src="../assets/js/atlantis.min.js"></script>
 
-		<!-- Atlantis DEMO methods, don't include it in your project! -->
-		<script src="../assets/js/setting-demo.js"></script>
-		<script src="../assets/js/demo.js"></script>
-		<script>
-			Circles.create({
-				id:'circles-1',
-				radius:45,
-				value:60,
-				maxValue:100,
-				width:7,
-				text: 5,
-				colors:['#f1f1f1', '#FF9E27'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+			<!-- Atlantis DEMO methods, don't include it in your project! -->
+			<script src="../assets/js/setting-demo.js"></script>
+			<script src="../assets/js/demo.js"></script>
+			<script>
+				Circles.create({
+					id: 'circles-1',
+					radius: 45,
+					value: 60,
+					maxValue: 100,
+					width: 7,
+					text: 5,
+					colors: ['#f1f1f1', '#FF9E27'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			Circles.create({
-				id:'circles-2',
-				radius:45,
-				value:70,
-				maxValue:100,
-				width:7,
-				text: 36,
-				colors:['#f1f1f1', '#2BB930'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+				Circles.create({
+					id: 'circles-2',
+					radius: 45,
+					value: 70,
+					maxValue: 100,
+					width: 7,
+					text: 36,
+					colors: ['#f1f1f1', '#2BB930'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			Circles.create({
-				id:'circles-3',
-				radius:45,
-				value:40,
-				maxValue:100,
-				width:7,
-				text: 12,
-				colors:['#f1f1f1', '#F25961'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+				Circles.create({
+					id: 'circles-3',
+					radius: 45,
+					value: 40,
+					maxValue: 100,
+					width: 7,
+					text: 12,
+					colors: ['#f1f1f1', '#F25961'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+				var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
 
-			var mytotalIncomeChart = new Chart(totalIncomeChart, {
-				type: 'bar',
-				data: {
-					labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-					datasets : [{
-						label: "Total Income",
-						backgroundColor: '#ff9e27',
-						borderColor: 'rgb(23, 125, 255)',
-						data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-					}],
-				},
-				options: {
-					responsive: true,
-					maintainAspectRatio: false,
-					legend: {
-						display: false,
-					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								display: false //this will remove only the label
-							},
-							gridLines : {
-								drawBorder: false,
-								display : false
-							}
+				var mytotalIncomeChart = new Chart(totalIncomeChart, {
+					type: 'bar',
+					data: {
+						labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+						datasets: [{
+							label: "Total Income",
+							backgroundColor: '#ff9e27',
+							borderColor: 'rgb(23, 125, 255)',
+							data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
 						}],
-						xAxes : [ {
-							gridLines : {
-								drawBorder: false,
-								display : false
-							}
-						}]
 					},
-				}
-			});
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						legend: {
+							display: false,
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									display: false //this will remove only the label
+								},
+								gridLines: {
+									drawBorder: false,
+									display: false
+								}
+							}],
+							xAxes: [{
+								gridLines: {
+									drawBorder: false,
+									display: false
+								}
+							}]
+						},
+					}
+				});
 
-			$('#lineChart').sparkline([105,103,123,100,95,105,115], {
-				type: 'line',
-				height: '70',
-				width: '100%',
-				lineWidth: '2',
-				lineColor: '#ffa534',
-				fillColor: 'rgba(255, 165, 52, .14)'
-			});
-		</script>
-	</div>
+				$('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
+					type: 'line',
+					height: '70',
+					width: '100%',
+					lineWidth: '2',
+					lineColor: '#ffa534',
+					fillColor: 'rgba(255, 165, 52, .14)'
+				});
+			</script>
+		</div>
 
 </body>
+
 </html>
