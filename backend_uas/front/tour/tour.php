@@ -64,9 +64,6 @@
           <li class="nav-item active">
             <a class="nav-link" href="../tour/tour.php">Bali Tour</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href=""><i class="fa-regular fa-user"></i></a>
-          </li>
         </ul>
       </div>
     </div>

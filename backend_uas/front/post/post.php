@@ -50,10 +50,10 @@
             <div class="container-lg collapse navbar-collapse justify-content-end navbara" id="navbarNavDropdown">
                 <ul class="navbar-nav navbarb">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Home</a>
+                        <a class="nav-link" href="../../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../tracking/tracking.php">Bali Tracking</a>
+                        <a class="nav-link" href="../tracking/trackings.php">Bali Tracking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Transport/transport.php">Bali Transport</a>
