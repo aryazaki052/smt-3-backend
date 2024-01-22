@@ -81,6 +81,7 @@
   </style>
 </head>
 
+
 <body>
 
   <!--navbar  -->
@@ -125,7 +126,7 @@
               <img src="../../backview/assets/uploads/tracking/<?php echo $trackingDetail['gambar_gunung']; ?>" alt="ini gambar" width="90%">
               <hr>
               <div class="box mt-4">
-                <input type="date" name="selected_date" onchange="this.form.submit()">
+                <input type="date" name="selected_date" onchange="this.form.submit()" required>
               </div>
             </div>
           </div>
@@ -151,21 +152,21 @@
                 <div class="row rounded-corners">
                   <div class="col">
                     <label class="details">Nama Depan :</label>
-                    <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama depan">
+                    <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama depan" required >
                   </div>
                   <div class="col">
                     <label class="details">Nama Belakang :</label>
-                    <input type="text" class="form-control" name="nama_belakang" placeholder="Masukan Nama Belakang">
+                    <input type="text" class="form-control" name="nama_belakang" placeholder="Masukan Nama Belakang" required>
                   </div>
                 </div><br>
                 <div class="row">
                   <div class="col">
                     <label class="details">No. Hp :</label>
-                    <input type="number" class="form-control" name="no_hp" placeholder="Masukan No Hp">
+                    <input type="number" class="form-control" name="no_hp" placeholder="Masukan No Hp" required>
                   </div>
                   <div class="col">
                     <label class="details">Email :</label>
-                    <input type="email" class="form-control" name="email" placeholder="Masukan Email">
+                    <input type="email" class="form-control" name="email" placeholder="Masukan Email" required>
                   </div>
                 </div>
 
@@ -201,7 +202,7 @@
                   </div>
                   <div class="right d-flex row justify-content-center">
                     <button type="button" class="select-btn" onclick="selectGuide(this)" data-guide-id="<?= $guide['id_guide'] ?>">Pilih</button>
-                    <input type="hidden" name="selected_guide" value="<?= $guide['id_guide'] ?>">
+                    <input type="hidden" name="selected_guide" value="<?= $guide['id_guide'] ?>" required>
 
                   </div>
                 </div>
