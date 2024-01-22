@@ -116,9 +116,10 @@
 
   <div style="margin-top: 100px;">
     <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $trackingDetail['nama_gunung'] ?> </h1>
-    <form action="pesanact.php" method="post">
-      <div class="row">
-        <div class="col-md-4">
+    <div class="row">
+
+      <div class="col-md-4">
+        <form action="" method="post">
           <div class="card shadow">
             <div class="card-body d-flex row justify-content-center">
               <img src="../../backview/assets/uploads/tracking/<?php echo $trackingDetail['gambar_gunung']; ?>" alt="ini gambar" width="90%">
@@ -128,16 +129,25 @@
               </div>
             </div>
           </div>
-        </div>
+        </form>
+      </div>
 
-        <div class="col-md-8">
-          <div class="card shadow">
-            <div class="card-body">
-              <br>
-              <!-- customer detail -->
-              <div class="container">
-                <h2 class="text-center">Customer Detail</h2>
-                <hr>
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <!-- customer detail -->
+            <div class="container">
+              <h2 class="text-center">Customer Detail</h2>
+              <hr>
+              <form action="pesanact.php" method="post">
+                <input type="number" value="<?php echo $id; ?>" name="id_tracking" hidden>
+
+                <?php
+                // Ambil data tanggal dari form sebelumnya
+                $selectedDate = isset($_POST['selected_date']) ? $_POST['selected_date'] : '';
+                ?>
+                <input type="hidden" name="selected_date" value="<?= $selectedDate ?>">
+
                 <div class="row rounded-corners">
                   <div class="col">
                     <label class="details">Nama Depan :</label>
@@ -158,63 +168,61 @@
                     <input type="email" class="form-control" name="email" placeholder="Masukan Email">
                   </div>
                 </div>
-              </div>
-              <br>
+
+
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <!-- guide -->
-              <div class="text-center">
-                <h2>Available Guide</h2>
-              </div>
-              <hr>
-              <section class="container">
-                <div class="d-flex row justify-content-center guide">
-                  <?php
-                  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $selectedDate = $_POST["selected_date"];
-                    $convertedDate = date("Y-m-d", strtotime($selectedDate));
-                    $categoryId = 1; // Sesuaikan dengan id_kategori yang diinginkan
-                    $guides = $tracking->getGuidesByDate($convertedDate, $categoryId);
+      </div>
+      <!-- guide -->
+      <div class="text-center">
+        <h2>Available Guide</h2>
+      </div>
+      <hr>
+      <section class="container">
+        <div class="d-flex row justify-content-center guide">
+          <?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $selectedDate = $_POST["selected_date"];
+            $convertedDate = date("Y-m-d", strtotime($selectedDate));
+            $categoryId = 1; // Sesuaikan dengan id_kategori yang diinginkan
+            $guides = $tracking->getGuidesByDate($convertedDate, $categoryId);
 
-                    if (!empty($guides)) {
-                      foreach ($guides as $guide) {
-                  ?>
-                        <div class="card mb-4 guide-card" style="width: 18rem;">
-                          <div class="ratio ratio-4x3 img-hover-zoom">
-                            <img src="../../backview/assets/uploads/guide/<?= $guide['gambar_guide']; ?>">
-                          </div>
-                          <div class="card-body">
-                            <h5 class="card-title text-center"><?= $guide['nama_guide'] ?></h5>
-                            <p class="justify"><?= $guide['deskripsi'] ?></p>
-                          </div>
-                          <div class="right d-flex row justify-content-center">
-                            <button type="button" class="select-btn" onclick="selectGuide(this)" data-guide-id="<?= $guide['id_guide'] ?>">Pilih</button>
-                            <input type="hidden" name="selected_guide" value="<?= $guide['id_guide'] ?>">
-                          </div>
-                        </div>
-                  <?php
-                      }
-                    } else {
-                      echo "No guides available for the selected date.";
-                    }
-                  }
-                  ?>
+            if (!empty($guides)) {
+              foreach ($guides as $guide) {
+          ?>
+                <div class="card mb-4 guide-card" style="width: 18rem;">
+                  <div class="ratio ratio-4x3 img-hover-zoom">
+                    <img src="../../backview/assets/uploads/guide/<?= $guide['gambar_guide']; ?>">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><?= $guide['nama_guide'] ?></h5>
+                    <p class="justify"><?= $guide['deskripsi'] ?></p>
+                  </div>
+                  <div class="right d-flex row justify-content-center">
+                    <button type="button" class="select-btn" onclick="selectGuide(this)" data-guide-id="<?= $guide['id_guide'] ?>">Pilih</button>
+                    <input type="hidden" name="selected_guide" value="<?= $guide['id_guide'] ?>">
+
+                  </div>
                 </div>
-              </section>
-            </div>
-          </div>
+          <?php
+              }
+            } else {
+              echo "No guides available for the selected date.";
+            }
+          }
+          ?>
         </div>
-      </div>
-      <div class="mt-3 d-flex justify-content-center">
-        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#customerDetailModal">Simpan</button>
-      </div>
-    </form>
+      </section>
 
+      <!-- Tombol Simpan -->
+      <div class="mt-3 d-flex justify-content-center">
+        <button type="submit">Simpan</button>
+      </div>
+      </form>
+    </div>
   </div>
+
 
 
   <!-- jarak -->

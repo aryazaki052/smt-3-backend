@@ -16,14 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $selectedGuide = $_POST["selected_guide"];
 
   // Mendapatkan ID Tracking, sesuaikan dengan cara Anda mendapatkan ID Tracking
-  $idTracking = 1; // Ganti dengan cara Anda mendapatkan ID Tracking
+  $idTracking = $_POST["id_tracking"]; // Ganti dengan cara Anda mendapatkan ID Tracking
 
   // Memasukkan data ke dalam tabel keranjang
   $result = $keranjang->uploadKeranjang($idTracking, $namaDepan, $namaBelakang, $noHp, $email, $convertedDate, $selectedGuide);
 
   if ($result) {
     // Redirect kembali ke halaman tracking.php atau halaman lainnya
-    header("Location: ../../backview/guidetersedia/TersediaView.php");
+    header("Location: ../../index.php");
     exit(); // Penting untuk menghentikan eksekusi skrip setelah melakukan redirect
   } else {
     echo "Error: " . mysqli_error($keranjang->con);
