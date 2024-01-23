@@ -19,6 +19,10 @@ class Keranjang extends database
 
     return $result;
   }
+  public function uploadKeranjangTour($idTracking, $namaDepan, $namaBelakang, $noHp, $email, $tanggalPesan, $idGuide)
+  {
+   
+  }
 
 
 

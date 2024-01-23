@@ -38,11 +38,11 @@
   include('../../class/function.php');
   sessionpesan();
 
-  $tracking = new Tracking();
+  $tracking = new Tracking(); //ubah ke tour class
 
   // Ambil ID dari parameter URL
   $id = isset($_GET['id']) ? $_GET['id'] : null;
-  $trackingDetail = $tracking->getTrackingDetail($id);
+  $trackingDetail = $tracking->getTrackingDetail($id); //ubah ke gettourdetail
 
   ?>
 
@@ -150,8 +150,9 @@
             <div class="container">
               <h2 class="text-center">Customer Detail</h2>
               <hr>
-              <form action="pesanact.php" method="post">
-                <input type="number" value="<?php echo $id; ?>" name="id_tracking" hidden>
+              <form action="pesanact.php" method="post"> 
+                <input type="number" value="<?php echo $id; ?>" name="id_tracking" hidden> 
+                <!-- nanti diatas ubah ke id tour -->
 
                 <?php
                 // Ambil data tanggal dari form sebelumnya
@@ -196,8 +197,8 @@
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $selectedDate = $_POST["selected_date"];
             $convertedDate = date("Y-m-d", strtotime($selectedDate));
-            $categoryId = 1; // Sesuaikan dengan id_kategori yang diinginkan
-            $guides = $tracking->getGuidesByDate($convertedDate, $categoryId);
+            $categoryId = 1; // ini ubah ke 2 buat tour
+            $guides = $tracking->getGuidesByDate($convertedDate, $categoryId); //ubah ini ke tour
 
             if (!empty($guides)) {
               foreach ($guides as $guide) {
