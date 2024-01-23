@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRACKING</title>
+  <title>Tour Order</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <link rel="stylesheet" href="../navbar/navbar.css">
   <!-- <link rel="stylesheet" href="tracking.css"> -->
   <link rel="stylesheet" href="../footer/footer.css">
-  <link rel="stylesheet" href="pesan.css">
+  <link rel="stylesheet" href="order.css">
 
   <!-- owl carousel -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
@@ -34,15 +34,15 @@
 
 
   <?php
-  include('../../class/back/TrackingClass.php');
+  include('../../class/back/tourclass.php');
   include('../../class/function.php');
   sessionpesan();
 
-  $tracking = new Tracking(); //ubah ke tour class
+  $tour = new tour(); //ubah ke tour class
 
   // Ambil ID dari parameter URL
-  $id = isset($_GET['id']) ? $_GET['id'] : null;
-  $trackingDetail = $tracking->getTrackingDetail($id); //ubah ke gettourdetail
+  $id_tour = isset($_GET['id_tour']) ? $_GET['id_tour'] : null;
+  $tourDetail = $tour->gettourDetail($id_tour); //ubah ke gettourdetail
 
   ?>
 
@@ -126,14 +126,14 @@
 
 
   <div style="margin-top: 100px;">
-    <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $trackingDetail['nama_gunung'] ?> </h1>
+    <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $tourDetail['nama_gunung'] ?> </h1>
     <div class="row">
 
       <div class="col-md-4">
         <form action="" method="post">
           <div class="card shadow">
             <div class="card-body d-flex row justify-content-center">
-              <img src="../../backview/assets/uploads/tracking/<?php echo $trackingDetail['gambar_gunung']; ?>" alt="ini gambar" width="90%">
+              <img src="../../backview/assets/uploads/tour/<?php echo $tourDetail['gambar_gunung']; ?>" alt="ini gambar" width="90%">
               <hr>
               <div class="box mt-4">
                 <input type="date" name="selected_date" onchange="this.form.submit()" required>
@@ -150,8 +150,8 @@
             <div class="container">
               <h2 class="text-center">Customer Detail</h2>
               <hr>
-              <form action="pesanact.php" method="post"> 
-                <input type="number" value="<?php echo $id; ?>" name="id_tracking" hidden> 
+              <form action="orderact.php" method="post"> 
+                <input type="number" value="<?php echo $id; ?>" name="id_tour" hidden> 
                 <!-- nanti diatas ubah ke id tour -->
 
                 <?php
@@ -197,8 +197,8 @@
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $selectedDate = $_POST["selected_date"];
             $convertedDate = date("Y-m-d", strtotime($selectedDate));
-            $categoryId = 1; // ini ubah ke 2 buat tour
-            $guides = $tracking->getGuidesByDate($convertedDate, $categoryId); //ubah ini ke tour
+            $categoryId = 2; // ini ubah ke 2 buat tour
+            $guides = $tour->getGuidesByDate($convertedDate, $categoryId); //ubah ini ke tour
 
             if (!empty($guides)) {
               foreach ($guides as $guide) {
@@ -231,7 +231,7 @@
 
       <!-- Tombol Simpan -->
       <div class="mt-3 d-flex justify-content-center">
-        <button type="submit">Simpan</button>
+        <button type="submit btn btn-primary">Simpan</button>
       </div>
       </form>
     </div>
@@ -312,7 +312,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
 
     <script src="../navbar/navbar.js"></script>
-    <script src="detail.js"></script>
+    <script src="order.js"></script>
     <script src="https://kit.fontawesome.com/5b90b4fa74.js" crossorigin="anonymous"></script>
   </div>
 
