@@ -1,55 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Admin</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <script src="assets/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Admin</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<script src="assets/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Fonts and icons -->
-<script src="assets/js/plugin/webfont/webfont.min.js"></script>
-<script>
-    WebFont.load({
-        google: {"families":["Lato:300,400,700,900"]},
-        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['assets/css/fonts.min.css']},
-        active: function() {
-            sessionStorage.fonts = true;
-        }
-    });
-</script>
+	<!-- Fonts and icons -->
+	<script src="assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {
+				"families": ["Lato:300,400,700,900"]
+			},
+			custom: {
+				"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+				urls: ['assets/css/fonts.min.css']
+			},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
 
-<!-- CSS Files -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/atlantis.min.css">
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/atlantis.min.css">
 
-<!-- CSS Just for demo purpose, don't include it in your project -->
-<link rel="stylesheet" href="assets/css/demo.css">
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="assets/css/demo.css">
+
+	<style>
+
+    .btn-group {
+        display: flex;
+        gap: 20px;
+    }
+
+    .btn {
+        /* Gaya umum untuk tombol */
+        padding: 5px 10px;
+        text-decoration: none;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+				background-color: gray;
+    }
+
+    .actives{
+			background-color: #0B60B0;
+		}
+</style>
+
+
 </head>
+
 <body>
-<!-- session -->
-<div>
+	<!-- session -->
+	<div>
+		<?php
+		include('../class/function.php');
+		verifdashboard();
+		include('../class/back/DBClass.php');
+		$con = new Database;
+
+		$qry_tracking = mysqli_query($con->con, 'SELECT keranjang_tracking.*, tracking.nama_gunung, guide.nama_guide FROM keranjang_tracking
+    LEFT JOIN tracking ON keranjang_tracking.id_tracking = tracking.id
+    LEFT JOIN guide ON keranjang_tracking.id_guide = guide.id_guide');
+
+		?>
+
+	</div>
+	<!-- end session -->
+
+
 	<?php
-include ('../class/function.php');
-verifdashboard();
 
 	?>
 
-</div>
-<!-- end session -->
-
-
-<?php
-
-?>
-
-<!-- header -->
-<div class="wrapper">
+	<!-- header -->
+	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
-				
+
 				<!-- <a href="index.html" class="logo" style="display: flex; justify-content:center; align-items:center;">
 					<img src="../back/css/logo1.png" width="70px">
 					<p style="margin-top: 20px; color:black;"><b>ITB STIKOM BALI</b></p>
@@ -84,7 +121,7 @@ verifdashboard();
 							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
 								<li>
 									<div class="dropdown-title d-flex justify-content-between align-items-center">
-										Messages 									
+										Messages
 										<a href="#" class="small">Mark all as read</a>
 									</div>
 								</li>
@@ -92,7 +129,7 @@ verifdashboard();
 									<div class="message-notif-scroll scrollbar-outer">
 										<div class="notif-center">
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="assets/img/jm_denis.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -100,11 +137,11 @@ verifdashboard();
 													<span class="block">
 														How are you ?
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="assets/img/chadengle.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -112,11 +149,11 @@ verifdashboard();
 													<span class="block">
 														Ok, Thanks !
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="assets/img/mlane.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -124,11 +161,11 @@ verifdashboard();
 													<span class="block">
 														Ready for the meeting today...
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="assets/img/talha.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -136,7 +173,7 @@ verifdashboard();
 													<span class="block">
 														Hi, Apa Kabar ?
 													</span>
-													<span class="time">17 minutes ago</span> 
+													<span class="time">17 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -165,7 +202,7 @@ verifdashboard();
 													<span class="block">
 														New user registered
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
@@ -174,18 +211,18 @@ verifdashboard();
 													<span class="block">
 														Rahmad commented on Admin
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="assets/img/profile2.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
 														Reza send messages to you
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
@@ -194,7 +231,7 @@ verifdashboard();
 													<span class="block">
 														Farrah liked Admin
 													</span>
-													<span class="time">17 minutes ago</span> 
+													<span class="time">17 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -293,10 +330,10 @@ verifdashboard();
 			</nav>
 			<!-- End Navbar -->
 		</div>
-	<!-- end header -->
+		<!-- end header -->
 
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">			
+		<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -305,29 +342,28 @@ verifdashboard();
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-									<span>
+								<span>
 									<?php
-										include ('../class/back/DBClass.php');
-										$con = new Database;
-										// Escape string untuk mencegah SQL injection
-										$email_admin = mysqli_real_escape_string($con->con, $_SESSION['email_admin']);
-										// Selanjutnya, Anda bisa menggunakan $con dalam kueri atau operasi database lainnya.
-										$qry = mysqli_query($con->con, "SELECT * FROM admin_user WHERE email_admin='$email_admin'");
 
-										if ($data = mysqli_fetch_assoc($qry)) {
-												// Menampilkan Nama dan ID dari data user
-												echo $data['nama_admin']; // Gantilah 'nama_admin' dengan nama kolom yang sesuai di database
-												echo "<span class='user-level'>" . "admin" . "</span>";
-										}
-										?>
-									</span>
+									// Escape string untuk mencegah SQL injection
+									$email_admin = mysqli_real_escape_string($con->con, $_SESSION['email_admin']);
+									// Selanjutnya, Anda bisa menggunakan $con dalam kueri atau operasi database lainnya.
+									$qry = mysqli_query($con->con, "SELECT * FROM admin_user WHERE email_admin='$email_admin'");
+
+									if ($data = mysqli_fetch_assoc($qry)) {
+										// Menampilkan Nama dan ID dari data user
+										echo $data['nama_admin']; // Gantilah 'nama_admin' dengan nama kolom yang sesuai di database
+										echo "<span class='user-level'>" . "admin" . "</span>";
+									}
+									?>
+								</span>
 							</a>
 							<div class="clearfix"></div>
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-					<li class="nav-item active">
-               <a href="">
+						<li class="nav-item active">
+							<a href="">
 								<i class="fas fa-desktop"></i>
 								<p>Dashboard</p>
 							</a>
@@ -339,25 +375,25 @@ verifdashboard();
 							<h4 class="text-section">MENU</h4>
 						</li>
 						<li class="nav-item ">
-						<a href="tracking/TrackingView.php">
+							<a href="tracking/TrackingView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tracking</p>
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="../backview/tour/TourView.php">
+							<a href="../backview/tour/TourView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tour</p>
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="guide/GuideView.php">
+							<a href="guide/GuideView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Guide</p>
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="guidetersedia/TersediaView.php">
+							<a href="guidetersedia/TersediaView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Guide Tersedia</p>
 							</a>
@@ -365,13 +401,13 @@ verifdashboard();
 
 						<li class="nav-item">
 							<a href="authadm/Logout.php">
-									<i class="fas fa-undo"></i>
-									<p>Logout</p>
+								<i class="fas fa-undo"></i>
+								<p>Logout</p>
 							</a>
-					</li>
+						</li>
 
 
-						
+
 					</ul>
 				</div>
 			</div>
@@ -379,65 +415,74 @@ verifdashboard();
 		<!-- End Sidebar -->
 
 		<!-- content -->
-		<!-- <div class="main-panel">
+		<div class="main-panel">
 			<div class="content">
-        <div class="panel-header bg-primary-gradient">
-          <div class="page-inner py-5">
-            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-            </div>
-          </div>
-        </div>
-        <div class="page-inner mt--5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card full-height">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                  <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>NIM</th>
-                            <th>Nama Mahasiswa</th>
-                            <th>Email</th>
-                            <th>No Tlp.</th>
-                            <th>Program Studi</th>
-                            <th>Kelas</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                  <?php
-                  // while ($data = mysqli_fetch_assoc($exec)) {
-                  //     echo "<tr>";
-                  //     echo "<td>" . $data['NIM'] . "</td>";
-                  //     echo "<td>" . $data['nama'] . "</td>";
-                  //     echo "<td>" . $data['email'] . "</td>";
-                  //     echo "<td>" . $data['no_telp'] . "</td>";
-                  //     echo "<td>" . $data['nama_jurusan'] . "</td>";
-                  //     echo "<td>" . $data['kelas'] . "</td>";
-                  //     echo "<td  class='text-center'>
-                  //     <a href='edit.php?NIM=" . $data['NIM'] . "'><i class='fa fa-pencil primary' aria-hidden='true'></i></a> 
-                  //     <a href='delete.php?NIM=" . $data['NIM'] . "' onclick=\"return confirm('Apakah Anda yakin ingin menghapus data ini?');\"><i class='fa fa-trash ml-2 text-danger' aria-hidden='true'></i></a>
-                  //   </td>";
-                  //     echo "</tr>";
-                  // }
-                  ?>
-                  
+				<div class="panel-header bg-primary-gradient">
+					<div class="page-inner py-5">
+						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+						</div>
+					</div>
+				</div>
+				<div class="page-inner mt--5">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card full-height">
+								<div class="card-header">
+									<div class="card-head-row" style="justify-content: space-between;">
+										<div class="card-title">Pesanan</div>
+										<div class="d-flex mx-5" style="gap: 20px;">
+											<a href="dashboard.php" class="btn btn-sm ml-auto actives"> Tracking</a>
+											<a href="trackingcreate.php" class="btn btn-sm ml-auto">Tour</a>
+											<a href="trackingcreate.php" class="btn btn-sm ml-auto">Driver</a>
 
-                    </tbody>
-                </table>
-                  </div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th>Id</th>
+													<th>Nama Customer</th>
+													<th>Email</th>
+													<th>No Tlp.</th>
+													<th>Tracking</th>
+													<th>Guide</th>
+													<th>Tanggal</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php
+												while ($data = mysqli_fetch_assoc($qry_tracking)) {
+													echo "<tr>";
+													echo "<td>" . $data['id_keranjang'] . "</td>";
+													echo "<td>" . $data['nama_depan'] . " " .$data['nama_belakang'] . "</td>";
+													echo "<td>" . $data['email'] . "</td>";
+													echo "<td>" . $data['no_hp'] . "</td>";
+													echo "<td>" . $data['nama_gunung'] . "</td>"; // Menampilkan nama_gunung dari tabel tracking
+													echo "<td>" . $data['nama_guide'] . "</td>"; // Menampilkan nama_guide dari tabel guide
+													echo "<td>" . $data['tanggal_pesan'] . "</td>";
+													echo "<td class='text-center'>
+                <!-- Tambahkan tombol atau tautan untuk action -->
+            </td>";
+													echo "</tr>";
+												}
+												?>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-		</div> -->
+		</div>
 		<!-- End content -->
 
 
@@ -446,143 +491,144 @@ verifdashboard();
 
 
 
-	<!--   Core JS Files   -->
-	<div>
-		<script src="assets/js/core/jquery.3.2.1.min.js"></script>
-		<script src="assets/js/core/popper.min.js"></script>
-		<script src="assets/js/core/bootstrap.min.js"></script>
+		<!--   Core JS Files   -->
+		<div>
+			<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+			<script src="assets/js/core/popper.min.js"></script>
+			<script src="assets/js/core/bootstrap.min.js"></script>
 
-		<!-- jQuery UI -->
-		<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-		<script src="assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+			<!-- jQuery UI -->
+			<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+			<script src="assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-		<!-- jQuery Scrollbar -->
-		<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+			<!-- jQuery Scrollbar -->
+			<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
-		<!-- Chart JS -->
-		<script src="assets/js/plugin/chart.js/chart.min.js"></script>
+			<!-- Chart JS -->
+			<script src="assets/js/plugin/chart.js/chart.min.js"></script>
 
-		<!-- jQuery Sparkline -->
-		<script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+			<!-- jQuery Sparkline -->
+			<script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-		<!-- Chart Circle -->
-		<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+			<!-- Chart Circle -->
+			<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
 
-		<!-- Datatables -->
-		<script src="assets/js/plugin/datatables/datatables.min.js"></script>
+			<!-- Datatables -->
+			<script src="assets/js/plugin/datatables/datatables.min.js"></script>
 
-		<!-- Bootstrap Notify -->
-		<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+			<!-- Bootstrap Notify -->
+			<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
-		<!-- jQuery Vector Maps -->
-		<script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-		<script src="assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+			<!-- jQuery Vector Maps -->
+			<script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+			<script src="assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
-		<!-- Sweet Alert -->
-		<script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+			<!-- Sweet Alert -->
+			<script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
-		<!-- Atlantis JS -->
-		<script src="assets/js/atlantis.min.js"></script>
+			<!-- Atlantis JS -->
+			<script src="assets/js/atlantis.min.js"></script>
 
-		<!-- Atlantis DEMO methods, don't include it in your project! -->
-		<script src="assets/js/setting-demo.js"></script>
-		<script src="assets/js/demo.js"></script>
-		<script>
-			Circles.create({
-				id:'circles-1',
-				radius:45,
-				value:60,
-				maxValue:100,
-				width:7,
-				text: 5,
-				colors:['#f1f1f1', '#FF9E27'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+			<!-- Atlantis DEMO methods, don't include it in your project! -->
+			<script src="assets/js/setting-demo.js"></script>
+			<script src="assets/js/demo.js"></script>
+			<script>
+				Circles.create({
+					id: 'circles-1',
+					radius: 45,
+					value: 60,
+					maxValue: 100,
+					width: 7,
+					text: 5,
+					colors: ['#f1f1f1', '#FF9E27'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			Circles.create({
-				id:'circles-2',
-				radius:45,
-				value:70,
-				maxValue:100,
-				width:7,
-				text: 36,
-				colors:['#f1f1f1', '#2BB930'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+				Circles.create({
+					id: 'circles-2',
+					radius: 45,
+					value: 70,
+					maxValue: 100,
+					width: 7,
+					text: 36,
+					colors: ['#f1f1f1', '#2BB930'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			Circles.create({
-				id:'circles-3',
-				radius:45,
-				value:40,
-				maxValue:100,
-				width:7,
-				text: 12,
-				colors:['#f1f1f1', '#F25961'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+				Circles.create({
+					id: 'circles-3',
+					radius: 45,
+					value: 40,
+					maxValue: 100,
+					width: 7,
+					text: 12,
+					colors: ['#f1f1f1', '#F25961'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+				var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
 
-			var mytotalIncomeChart = new Chart(totalIncomeChart, {
-				type: 'bar',
-				data: {
-					labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-					datasets : [{
-						label: "Total Income",
-						backgroundColor: '#ff9e27',
-						borderColor: 'rgb(23, 125, 255)',
-						data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-					}],
-				},
-				options: {
-					responsive: true,
-					maintainAspectRatio: false,
-					legend: {
-						display: false,
-					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								display: false //this will remove only the label
-							},
-							gridLines : {
-								drawBorder: false,
-								display : false
-							}
+				var mytotalIncomeChart = new Chart(totalIncomeChart, {
+					type: 'bar',
+					data: {
+						labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+						datasets: [{
+							label: "Total Income",
+							backgroundColor: '#ff9e27',
+							borderColor: 'rgb(23, 125, 255)',
+							data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
 						}],
-						xAxes : [ {
-							gridLines : {
-								drawBorder: false,
-								display : false
-							}
-						}]
 					},
-				}
-			});
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						legend: {
+							display: false,
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									display: false //this will remove only the label
+								},
+								gridLines: {
+									drawBorder: false,
+									display: false
+								}
+							}],
+							xAxes: [{
+								gridLines: {
+									drawBorder: false,
+									display: false
+								}
+							}]
+						},
+					}
+				});
 
-			$('#lineChart').sparkline([105,103,123,100,95,105,115], {
-				type: 'line',
-				height: '70',
-				width: '100%',
-				lineWidth: '2',
-				lineColor: '#ffa534',
-				fillColor: 'rgba(255, 165, 52, .14)'
-			});
-		</script>
-	</div>
+				$('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
+					type: 'line',
+					height: '70',
+					width: '100%',
+					lineWidth: '2',
+					lineColor: '#ffa534',
+					fillColor: 'rgba(255, 165, 52, .14)'
+				});
+			</script>
+		</div>
 
 </body>
+
 </html>
