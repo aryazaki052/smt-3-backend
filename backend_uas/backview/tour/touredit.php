@@ -408,7 +408,7 @@
 							<div class="card full-height">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Form Tambah Jalur Tracking</div>
+										<div class="card-title">Form Tambah Tour</div>
 										<a href="TrackingView.php" class="btn btn-primary btn-sm ml-auto btn-warning">Back</a>
 									</div>
 								</div>
