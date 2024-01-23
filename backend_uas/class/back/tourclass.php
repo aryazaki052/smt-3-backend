@@ -165,7 +165,7 @@ class tour extends database
               move_uploaded_file($_FILES["gambar_gunung"]["tmp_name"], $targetFilePath);
   
               // Perbarui data ke database dengan gambar baru
-              $queryUpdate = "UPDATE tour SET nama_gunung='$nama', highlight='$highlight', things='$things', itinerary='$itinerary', inclusions='$inclusions', exclusions='$exclusions', brings='$brings' gambar_gunung='$gambarName', price='$price' WHERE id_tour=$id_tour";
+              $queryUpdate = "UPDATE tour SET nama_gunung='$nama', highlight='$highlight', things='$things', itinerary='$itinerary', inclusions='$inclusions', exclusions='$exclusions', brings='$brings', gambar_gunung='$gambarName', price='$price' WHERE id_tour=$id_tour";
 
               $resultUpdate = mysqli_query($this->con, $queryUpdate);
   

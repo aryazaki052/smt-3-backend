@@ -455,7 +455,7 @@
 										</div>
 										<div class="form-group" id="gambarFormGroup">
 											<label for="gambar">Harga</label>
-											<input type="number" name="price" class="form-control" placeholder="Harga">
+											<input type="number" name="price" class="form-control" placeholder="Harga"  value="<?= $data_sebelumnya['price'] ?? ''; ?>">
 										</div>
 										<div class="form-group">
 											<button class="btn btn-primary btn-sm" type="submit">Save</button>
@@ -629,7 +629,7 @@
 					});
 
 				ClassicEditor
-					.create(document.querySelector('#editorItinerary'), {
+					.create(document.querySelector('#editorThings'), {
 						alignment: {
 							options: ['left', 'right', 'justify']
 						}
@@ -658,6 +658,15 @@
 					});
 				ClassicEditor
 					.create(document.querySelector('#editorBrings'), {
+						alignment: {
+							options: ['left', 'right', 'justify']
+						}
+					})
+					.catch(error => {
+						console.error(error);
+					});
+				ClassicEditor
+					.create(document.querySelector('#editorItinerary'), {
 						alignment: {
 							options: ['left', 'right', 'justify']
 						}
