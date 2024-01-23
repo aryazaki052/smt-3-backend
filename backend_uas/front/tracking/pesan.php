@@ -78,6 +78,16 @@
     .guide-card .select-btn.selected {
       background-color: #e74c3c;
     }
+
+    .select-btn {
+      cursor: pointer;
+    }
+
+    .select-btn.selected {
+      background-color: #e74c3c;
+      /* Ganti dengan warna yang diinginkan */
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -152,7 +162,7 @@
                 <div class="row rounded-corners">
                   <div class="col">
                     <label class="details">Nama Depan :</label>
-                    <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama depan" required >
+                    <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama depan" required>
                   </div>
                   <div class="col">
                     <label class="details">Nama Belakang :</label>
@@ -201,10 +211,12 @@
                     <p class="justify"><?= $guide['deskripsi'] ?></p>
                   </div>
                   <div class="right d-flex row justify-content-center">
-                    <button type="button" class="select-btn" onclick="selectGuide(this)" data-guide-id="<?= $guide['id_guide'] ?>">Pilih</button>
-                    <input type="hidden" name="selected_guide" value="<?= $guide['id_guide'] ?>" required>
-
+                    <label class="select-btn text-center" for="guide_radio_<?= $guide['id_guide'] ?>" onclick="selectGuide(this)">
+                      <input type="radio" name="selected_guide" id="guide_radio_<?= $guide['id_guide'] ?>" value="<?= $guide['id_guide'] ?>" hidden>
+                      Pilih
+                    </label>
                   </div>
+
                 </div>
           <?php
               }
@@ -305,11 +317,8 @@
 
   <script>
     function selectGuide(button) {
-      var guideCard = button.closest('.guide-card');
-      var hiddenInput = guideCard.querySelector('input[name="selected_guide"]');
-
       // Hapus kelas 'selected' dari semua tombol guide
-      var allGuideButtons = document.querySelectorAll('.guide-card .select-btn');
+      var allGuideButtons = document.querySelectorAll('.select-btn');
       allGuideButtons.forEach(function(btn) {
         btn.classList.remove('selected');
       });
@@ -317,8 +326,10 @@
       // Tambahkan kelas 'selected' pada tombol yang dipilih
       button.classList.add('selected');
 
-      // Setel nilai input tersembunyi
-      hiddenInput.value = button.getAttribute('data-guide-id');
+      // Ambil input radio terkait dan tandai sebagai terpilih
+      var radioId = button.getAttribute('for');
+      var radioInput = document.getElementById(radioId);
+      radioInput.checked = true;
     }
   </script>
 </body>

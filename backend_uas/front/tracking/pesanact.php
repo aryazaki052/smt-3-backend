@@ -20,14 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Memasukkan data ke dalam tabel keranjang
   $result = $keranjang->uploadKeranjang($idTracking, $namaDepan, $namaBelakang, $noHp, $email, $convertedDate, $selectedGuide);
-  var_dump($_POST);
 
-  // if ($result) {
-  //   // Redirect kembali ke halaman tracking.php atau halaman lainnya
-  //   header("Location: ../../index.php");
-  //   exit(); // Penting untuk menghentikan eksekusi skrip setelah melakukan redirect
-  // } else {
-  //   echo "Error: " . mysqli_error($keranjang->con);
-  // }
+  if ($result) {
+    // Redirect kembali ke halaman tracking.php atau halaman lainnya
+    header("Location: ../../index.php");
+    exit(); // Penting untuk menghentikan eksekusi skrip setelah melakukan redirect
+  } else {
+    echo "Error: " . mysqli_error($keranjang->con);
+  }
 }
 ?>
