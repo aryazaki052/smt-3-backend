@@ -126,8 +126,8 @@
     </section>
     <div class="text-center mt-4">
         <h3>Book Now!</h3>
-        <a id="bookWa" href="https://wa.me/6282359365098?text=I want to book Private West Penida: Broken Beach, Kelingking Beach, Angel Billabong Beach, Crystal Bay package." data-id="91" target="_blank" rel="nofollow noreferrer noindex" class="btn btn-book btn-outline-success">
-            Whatsapp
+        <a id="bookWa" href="../tour/order.php" data-id="91" target="_blank" rel="nofollow noreferrer noindex" class="btn btn-book btn-outline-success">
+            Next Order
             <i>(recommended)</i>
         </a>
     </div>
