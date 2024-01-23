@@ -126,10 +126,14 @@
     </section>
     <div class="text-center mt-4">
         <h3>Book Now!</h3>
-        <a id="bookWa" href="../tour/order.php" data-id="91" target="_blank" rel="nofollow noreferrer noindex" class="btn btn-book btn-outline-success">
-            Next Order
-            <i>(recommended)</i>
-        </a>
+        <?php
+        if ($tourDetail) {
+            echo '<h5><a href="../tour/order.php?id=' . $tourDetail['id_tour'] . '">Book Now</a></h5>';
+            // echo '<a id="bookWa" href="../tour/order.php?id=' . $tourDetail['id_tour'] . '" data-id="' . $tourDetail['id_tour'] . '" target="_blank" rel="nofollow noreferrer noindex" class="btn btn-book btn-outline-success">';
+            // echo 'Next Order <i>(recommended)</i>';
+            // echo '</a>';
+        }
+        ?>
     </div>
     </div>
 
