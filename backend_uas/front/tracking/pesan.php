@@ -150,8 +150,11 @@
             <div class="container">
               <h2 class="text-center">Customer Detail</h2>
               <hr>
-              <form action="pesanact.php" method="post"> 
-                <input type="number" value="<?php echo $id; ?>" name="id_tracking" hidden> 
+              <form action="pesanact.php" method="post">
+                <!-- Tambahkan input hidden untuk menyimpan harga tracking -->
+                <input type="hidden" name="price" value="<?= $trackingDetail['price']; ?>">
+
+                <input type="number" value="<?php echo $id; ?>" name="id_tracking" hidden>
                 <!-- nanti diatas ubah ke id tour -->
 
                 <?php

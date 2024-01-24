@@ -34,26 +34,25 @@
 	<link rel="stylesheet" href="assets/css/demo.css">
 
 	<style>
+		.btn-group {
+			display: flex;
+			gap: 20px;
+		}
 
-    .btn-group {
-        display: flex;
-        gap: 20px;
-    }
+		.btn {
+			/* Gaya umum untuk tombol */
+			padding: 5px 10px;
+			text-decoration: none;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			background-color: gray;
+		}
 
-    .btn {
-        /* Gaya umum untuk tombol */
-        padding: 5px 10px;
-        text-decoration: none;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-				background-color: gray;
-    }
-
-    .actives{
+		.actives {
 			background-color: #0B60B0;
 		}
-</style>
+	</style>
 
 
 </head>
@@ -451,23 +450,40 @@
 													<th>Tracking</th>
 													<th>Guide</th>
 													<th>Tanggal</th>
+													<th>Status</th>
 													<th>Action</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
+
 												while ($data = mysqli_fetch_assoc($qry_tracking)) {
 													echo "<tr>";
 													echo "<td>" . $data['id_keranjang'] . "</td>";
-													echo "<td>" . $data['nama_depan'] . " " .$data['nama_belakang'] . "</td>";
+													echo "<td>" . $data['nama_depan'] . " " . $data['nama_belakang'] . "</td>";
 													echo "<td>" . $data['email'] . "</td>";
 													echo "<td>" . $data['no_hp'] . "</td>";
 													echo "<td>" . $data['nama_gunung'] . "</td>"; // Menampilkan nama_gunung dari tabel tracking
 													echo "<td>" . $data['nama_guide'] . "</td>"; // Menampilkan nama_guide dari tabel guide
 													echo "<td>" . $data['tanggal_pesan'] . "</td>";
+
+													// Menampilkan status pembayaran berdasarkan nilai status_pembayaran
+													$status_pembayaran = $data['status_pembayaran'];
+													$status_text = '';
+
+													if ($status_pembayaran == 1) {
+														$status_text = 'Not Paid';
+													} elseif ($status_pembayaran == 2) {
+														$status_text = 'Pending';
+													} elseif ($status_pembayaran == 3) {
+														$status_text = 'Success';
+													}
+
+													echo "<td>" . $status_text . "</td>";
+
 													echo "<td class='text-center'>
-                <!-- Tambahkan tombol atau tautan untuk action -->
-            </td>";
+																	<!-- Tambahkan tombol atau tautan untuk action -->
+															</td>";
 													echo "</tr>";
 												}
 												?>

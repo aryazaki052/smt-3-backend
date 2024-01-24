@@ -11,10 +11,10 @@ class Keranjang extends database
     parent::__construct();
   }
 
-  public function uploadKeranjang($idTracking, $namaDepan, $namaBelakang, $noHp, $email, $tanggalPesan, $idGuide)
+  public function uploadKeranjang($idTracking, $namaDepan, $namaBelakang, $noHp, $email, $tanggalPesan, $idGuide, $price)
   {
-    // Masukkan data ke dalam database
-    $query = "INSERT INTO keranjang_tracking (id_tracking, nama_depan, nama_belakang, no_hp, email, tanggal_pesan, id_guide) VALUES ('$idTracking', '$namaDepan', '$namaBelakang', '$noHp', '$email', '$tanggalPesan', '$idGuide')";
+    // Masukkan data ke dalam databas
+    $query = "INSERT INTO keranjang_tracking (id_tracking, nama_depan, nama_belakang, no_hp, email, tanggal_pesan, id_guide, price) VALUES ('$idTracking', '$namaDepan', '$namaBelakang', '$noHp', '$email', '$tanggalPesan', '$idGuide', '$price')";
     $result = mysqli_query($this->con, $query);
 
     return $result;
