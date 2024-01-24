@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $idtour = $_POST["id_tour"]; // Ganti dengan cara Anda mendapatkan ID tour
 
   // Memasukkan data ke dalam tabel keranjang
-  $result = $keranjang->uploadKeranjang($idTracking, $namaDepan, $namaBelakang, $noHp, $email, $convertedDate, $selectedGuide); //uploadKeranjangTour
+  $result = $keranjang->uploadKeranjangTour($idtour, $namaDepan, $namaBelakang, $noHp, $email, $convertedDate, $selectedGuide); //uploadKeranjangTour
 
   if ($result) {
     // Redirect kembali ke halaman tracking.php atau halaman lainnya

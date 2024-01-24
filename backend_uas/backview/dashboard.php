@@ -432,7 +432,7 @@
 										<div class="card-title">Pesanan</div>
 										<div class="d-flex mx-5" style="gap: 20px;">
 											<a href="dashboard.php" class="btn btn-sm ml-auto actives"> Tracking</a>
-											<a href="trackingcreate.php" class="btn btn-sm ml-auto">Tour</a>
+											<a href="keranjang_tour.php" class="btn btn-sm ml-auto">Tour</a>
 											<a href="trackingcreate.php" class="btn btn-sm ml-auto">Driver</a>
 
 

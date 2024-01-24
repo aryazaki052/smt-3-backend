@@ -41,7 +41,7 @@
   $tour = new tour(); //ubah ke tour class
 
   // Ambil ID dari parameter URL
-  $id_tour = isset($_GET['id_tour']) ? $_GET['id_tour'] : null;
+  $id_tour = isset($_GET['id']) ? $_GET['id'] : null;
   $tourDetail = $tour->gettourDetail($id_tour); //ubah ke gettourdetail
 
   ?>
@@ -107,13 +107,13 @@
           <li class="nav-item">
             <a class="nav-link" href="../../index.php">Home</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="trackings.php">Bali Tracking</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Transport/transport.php">Bali Transport</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="../tour/tour.php">Bali Tour</a>
           </li>
           <!-- <li class="nav-item">
@@ -151,7 +151,7 @@
               <h2 class="text-center">Customer Detail</h2>
               <hr>
               <form action="orderact.php" method="post"> 
-                <input type="number" value="<?php echo $id; ?>" name="id_tour" hidden> 
+                <input type="number" value="<?php echo $id_tour; ?>" name="id_tour" hidden> 
                 <!-- nanti diatas ubah ke id tour -->
 
                 <?php

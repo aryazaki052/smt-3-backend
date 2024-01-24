@@ -19,9 +19,12 @@ class Keranjang extends database
 
     return $result;
   }
-  public function uploadKeranjangTour($idTracking, $namaDepan, $namaBelakang, $noHp, $email, $tanggalPesan, $idGuide)
+  public function uploadKeranjangTour($idtour, $namaDepan, $namaBelakang, $noHp, $email, $tanggalPesan, $idGuide)
   {
-   
+    $query = "INSERT INTO keranjang_tour (id_tour, nama_depan, nama_belakang, no_hp, email, tanggal_pesan, id_guide) VALUES ('$idtour', '$namaDepan', '$namaBelakang', '$noHp', '$email', '$tanggalPesan', '$idGuide')";
+    $result = mysqli_query($this->con, $query);
+
+    return $result;
   }
 
 
