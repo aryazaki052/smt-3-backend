@@ -1,89 +1,6 @@
 <?php
 
 include('DBClass.php');
-// class transport extends database {
-//     public $con;
-
-//     public function __construct()
-//     {
-//       parent::__construct();
-//     }
-
-//     public function uploadtransport($postData, $fileData)
-//     {
-//         // Ambil data dari $postData
-//         $nama = mysqli_real_escape_string($this->con, $postData['nama']);
-//         $overview = mysqli_real_escape_string($this->con, $postData['overview']);
-//         $act_highlight = mysqli_real_escape_string($this->con, $postData['act_highlight']);
-//         $include = mysqli_real_escape_string($this->con, $postData['include']);
-//         $harga = mysqli_real_escape_string($this->con, $postData['harga']);
-
-//         // Proses upload gambar
-//         $targetDir = "../../backview/assets/uploads/transport/";
-//         $gambarPath = $this->uploadGambar($fileData['gambar_mobil'], $targetDir);
-
-//         // Lakukan pengecekan, misalnya jika uploadGambar mengembalikan null, hentikan proses
-//         if ($gambarPath === null) {
-//             echo "Upload gambar gagal.";
-//             return;
-//         }
-
-//         // Query untuk menyimpan data ke database
-//         $query = "INSERT INTO transport (nama_gunung, overview, act_highlight, include, price, gambar_mobil) 
-//                   VALUES ('$nama', '$overview', '$act_highlight', '$include', '$harga', '$gambarPath')";
-
-//         // Eksekusi query
-//         $result = mysqli_query($this->con, $query);
-
-//         if ($result) {
-//             echo "Data transport berhasil diupload.";
-//         } else {
-//             echo "Gagal mengupload data transport: " . mysqli_error($this->con);
-//         }
-//     }
-
-//     private function uploadGambar($file, $targetDir)
-//     {
-//         $targetFile = $targetDir . basename($file["name"]);
-//         $uploadOk = 1;
-//         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-//         // Cek apakah file gambar atau bukan
-//         if (getimagesize($file["tmp_name"]) === false) {
-//             echo "File bukan gambar.";
-//             $uploadOk = 0;
-//         }
-
-//         // Cek apakah file sudah ada
-//         if (file_exists($targetFile)) {
-//             echo "File sudah ada.";
-//             $uploadOk = 0;
-//         }
-
-//         // Batasi ukuran file
-//         if ($file["size"] > 500000) {
-//             echo "Ukuran file terlalu besar.";
-//             $uploadOk = 0;
-//         }
-
-//         // Hanya izinkan beberapa tipe file gambar tertentu
-//         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-//             echo "Hanya izinkan file JPG, JPEG, PNG, dan GIF.";
-//             $uploadOk = 0;
-//         }
-
-//         // Cek nilai uploadOk sebelum menyimpan file
-//         if ($uploadOk == 1) {
-//             if (move_uploaded_file($file["tmp_name"], $targetFile)) {
-//                 return $targetFile; // Kembalikan path file gambar yang sudah diupload
-//             } else {
-//                 echo "Gagal menyimpan file.";
-//             }
-//         }
-
-//         return null; // Kembalikan null jika proses upload gagal
-//     }
-// }
 
 class Transport extends database
 {
@@ -98,6 +15,8 @@ class Transport extends database
     {
         // Ambil data dari formulir
         $nama_mobil = $data["nama_mobil"];
+        $tranmisi = $data["transmisi"];
+        $kategori = $data["kategori"];
         $highlight = $data["highlight"];
         $price = $data["price"];
         $price_2 = $data["price_2"];
@@ -112,7 +31,7 @@ class Transport extends database
         move_uploaded_file($_FILES["gambar_mobil"]["tmp_name"], $targetFilePath);
 
         // Masukkan data ke database
-        $query = "INSERT INTO transport (nama_mobil, highlight, price , price_2, price_3 , gambar_mobil) VALUES ('$nama_mobil', '$highlight', '$price', '$price_2', '$price_3', '$gambarName')";
+        $query = "INSERT INTO transport (nama_mobil, id_kategori, highlight, price , price_2, price_3 , gambar_mobil, Transmisi) VALUES ('$nama_mobil', '$kategori', '$highlight', '$price', '$price_2', '$price_3', '$gambarName', '$tranmisi')";
         $result = mysqli_query($this->con, $query);
 
         if ($result) {

@@ -105,41 +105,54 @@
 
   <div class="container">
     <div class="row border gy-4 gx-5" style="display: flex; justify-content:center;">
-      <div class="col-md-6 border">
-        <div class="row card-mobil ">
-          <h2> <?= $transportDetail['nama_mobil'] ?></h2>
-          <div class="col-md-5">
-            <div class="">
-              <div class="">
-                <div class="">
-                  <img src="../../backview/assets/img/uploads/<?= $trackingDetail['gambar_mobil'] ?>" alt="" width="200px" />
-                </div>
-              </div>
+    <?php
+// Mendapatkan data transport dengan kategori_id 1
+$query_transport = mysqli_query($con->con, 'SELECT * FROM transport WHERE id_kategori = 2');
+
+// Menampilkan data transport menggunakan while loop
+while ($transport = mysqli_fetch_assoc($query_transport)) {
+?>
+  <div class="col-md-6">
+    <div class="row card-mobil">
+      <div style="display: flex;  align-items:center">
+        <h2 style="margin-right: 10px"><?= $transport['nama_mobil'] ?></h2>
+        <span style="background-color:rgb(0, 0, 0); width:20px; height:3px; "></span>
+        <h2 style="margin-left: 10px"><?= $transport['Transmisi'] ?></h2>
+      </div>
+      <div class="col-md-5">
+        <div>
+          <div>
+            <div>
+            <img src="../../backview/assets/uploads/transport/<?= $transport['gambar_mobil'] ?>" alt="" width="200px" />
             </div>
-          </div>
-          <div class="col-md-7">
-            <div div class="keterangan">
-              <div class="harga1">
-                <p>1 – 6 Days : <?= $transportDetail['price'] ?> / Day</p>
-              </div>
-              <div class="harga2">
-                <p>Day7 – 13 Days : <?= $transportDetail['price_2'] ?>/ Day14</p>
-              </div>
-              <div class="harga3">
-                <p>14 + Days : <?= $transportDetail['price_3'] ?> / Day</p>
-              </div>
-              <div class="deskripsi">
-                <p>
-                  <?= $transportDetail['highlight'] ?>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="book-wa">
-            <a href="order_trans.php">BOOK NOW</a>
           </div>
         </div>
       </div>
+      <div class="col-md-7">
+        <div class="keterangan">
+          <div class="harga1">
+            <p>1 – 6 Days : US $<?= $transport['price'] ?> / Day</p>
+          </div>
+          <div class="harga2">
+            <p>Day7 – 13 Days : US $<?= $transport['price_2'] ?> / Day</p>
+          </div>
+          <div class="harga3">
+            <p>14 + Days : US $<?= $transport['price_3'] ?> / Day</p>
+          </div>
+          <div class="deskripsi">
+            <p><?= $transport['highlight'] ?></p>
+          </div>
+        </div>
+      </div>
+      <div class="book-wa">
+        <a href="https://wa.me/6282359365098">BOOK NOW</a>
+      </div>
+    </div>
+  </div>
+<?php
+}
+?>
+
 
       <!-- syarat ketentuan -->
       <div class="container sk">

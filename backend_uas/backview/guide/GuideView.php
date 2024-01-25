@@ -358,6 +358,12 @@
                 <p>Bali Tour</p>
               </a>
             </li>
+            <li class="nav-item ">
+							<a href="../transport/TransportView.php">
+								<i class="fas fa-desktop"></i>
+								<p>Bali Transport</p>
+							</a>
+						</li>
             <li class="nav-item active">
               <a href="">
                 <i class="fas fa-desktop"></i>

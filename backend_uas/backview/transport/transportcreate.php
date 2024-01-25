@@ -1,53 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Admin</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Admin</title>
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<script src="../assets/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Fonts and icons -->
-<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-<script>
-    WebFont.load({
-        google: {"families":["Lato:300,400,700,900"]},
-        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
-        active: function() {
-            sessionStorage.fonts = true;
-        }
-    });
-</script>
+	<!-- Fonts and icons -->
+	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {
+				"families": ["Lato:300,400,700,900"]
+			},
+			custom: {
+				"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+				urls: ['../assets/css/fonts.min.css']
+			},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
 
-<!-- CSS Files -->
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/atlantis.min.css">
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
 
-<!-- CSS Just for demo purpose, don't include it in your project -->
-<link rel="stylesheet" href="../assets/css/demo.css">
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="../assets/css/demo.css">
 </head>
+
 <body>
-<!-- session -->
-<div>
+	<!-- session -->
+	<div>
+		<?php
+		include('../../class/function.php');
+		verif();
+
+		include('../../class/back/DBClass.php');
+		$con = new database;
+		$query = mysqli_query($con->con, 'SELECT * FROM kategori_trans');
+
+		?>
+	</div>
+	<!-- end session -->
+
+
 	<?php
-include ('../../class/function.php');
-verif();
+
 	?>
-</div>
-<!-- end session -->
 
-
-<?php
-
-?>
-
-<!-- header -->
-<div class="wrapper">
+	<!-- header -->
+	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
-				
+
 				<!-- <a href="index.html" class="logo" style="display: flex; justify-content:center; align-items:center;">
 					<img src="../back/css/logo1.png" width="70px">
 					<p style="margin-top: 20px; color:black;"><b>ITB STIKOM BALI</b></p>
@@ -82,7 +94,7 @@ verif();
 							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
 								<li>
 									<div class="dropdown-title d-flex justify-content-between align-items-center">
-										Messages 									
+										Messages
 										<a href="#" class="small">Mark all as read</a>
 									</div>
 								</li>
@@ -90,7 +102,7 @@ verif();
 									<div class="message-notif-scroll scrollbar-outer">
 										<div class="notif-center">
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/jm_denis.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -98,11 +110,11 @@ verif();
 													<span class="block">
 														How are you ?
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/chadengle.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -110,11 +122,11 @@ verif();
 													<span class="block">
 														Ok, Thanks !
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/mlane.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -122,11 +134,11 @@ verif();
 													<span class="block">
 														Ready for the meeting today...
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/talha.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
@@ -134,7 +146,7 @@ verif();
 													<span class="block">
 														Hi, Apa Kabar ?
 													</span>
-													<span class="time">17 minutes ago</span> 
+													<span class="time">17 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -163,7 +175,7 @@ verif();
 													<span class="block">
 														New user registered
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
@@ -172,18 +184,18 @@ verif();
 													<span class="block">
 														Rahmad commented on Admin
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
-												<div class="notif-img"> 
+												<div class="notif-img">
 													<img src="../assets/img/profile2.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
 														Reza send messages to you
 													</span>
-													<span class="time">12 minutes ago</span> 
+													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
@@ -192,7 +204,7 @@ verif();
 													<span class="block">
 														Farrah liked Admin
 													</span>
-													<span class="time">17 minutes ago</span> 
+													<span class="time">17 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -291,10 +303,10 @@ verif();
 			</nav>
 			<!-- End Navbar -->
 		</div>
-	<!-- end header -->
+		<!-- end header -->
 
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">			
+		<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -303,29 +315,28 @@ verif();
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-									<span>
+								<span>
 									<?php
-										include ('../../class/back/DBClass.php');
-										$con = new Database;
-										// Escape string untuk mencegah SQL injection
-										$email_admin = mysqli_real_escape_string($con->con, $_SESSION['email_admin']);
-										// Selanjutnya, Anda bisa menggunakan $con dalam kueri atau operasi database lainnya.
-										$qry = mysqli_query($con->con, "SELECT * FROM admin_user WHERE email_admin='$email_admin'");
 
-										if ($data = mysqli_fetch_assoc($qry)) {
-												// Menampilkan Nama dan ID dari data user
-												echo $data['nama_admin']; // Gantilah 'nama_admin' dengan nama kolom yang sesuai di database
-												echo "<span class='user-level'>" . "admin" . "</span>";
-										}
-										?>
-									</span>
+									// Escape string untuk mencegah SQL injection
+									$email_admin = mysqli_real_escape_string($con->con, $_SESSION['email_admin']);
+									// Selanjutnya, Anda bisa menggunakan $con dalam kueri atau operasi database lainnya.
+									$qry = mysqli_query($con->con, "SELECT * FROM admin_user WHERE email_admin='$email_admin'");
+
+									if ($data = mysqli_fetch_assoc($qry)) {
+										// Menampilkan Nama dan ID dari data user
+										echo $data['nama_admin']; // Gantilah 'nama_admin' dengan nama kolom yang sesuai di database
+										echo "<span class='user-level'>" . "admin" . "</span>";
+									}
+									?>
+								</span>
 							</a>
 							<div class="clearfix"></div>
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-					<li class="nav-item ">
-               <a href="../dashboard.php">
+						<li class="nav-item ">
+							<a href="../dashboard.php">
 								<i class="fas fa-desktop"></i>
 								<p>Dashboard</p>
 							</a>
@@ -337,31 +348,31 @@ verif();
 							<h4 class="text-section">MENU</h4>
 						</li>
 						<li class="nav-item ">
-						<a href="../tracking/TrackingView.php">
+							<a href="../tracking/TrackingView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tracking</p>
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="../tour/TourView.php">
+							<a href="../tour/TourView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Tour</p>
 							</a>
 						</li>
 						<li class="nav-item active">
-				<a href="../transport/TransportView.php">
+							<a href="../transport/TransportView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Bali Transport</p>
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="../guide/GuideView.php">
+							<a href="../guide/GuideView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Guide</p>
 							</a>
 						</li>
 						<li class="nav-item ">
-                <a href="../guidetersedia/TersediaView.php">
+							<a href="../guidetersedia/TersediaView.php">
 								<i class="fas fa-desktop"></i>
 								<p>Guide Tersedia</p>
 							</a>
@@ -369,13 +380,13 @@ verif();
 
 						<li class="nav-item">
 							<a href="../authadm/Logout.php">
-									<i class="fas fa-undo"></i>
-									<p>Logout</p>
+								<i class="fas fa-undo"></i>
+								<p>Logout</p>
 							</a>
-					</li>
+						</li>
 
 
-						
+
 					</ul>
 				</div>
 			</div>
@@ -385,58 +396,82 @@ verif();
 		<!-- content -->
 		<div class="main-panel">
 			<div class="content">
-      <div class="panel-header bg-primary-gradient">
-    <div class="page-inner py-5">
-        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-        </div>
-    </div>
-    </div>
-    <div class="page-inner mt--5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card full-height">
-                    <div class="card-header">
-                        <div class="card-head-row">
-                            <div class="card-title">Form Tambah Jalur Transport</div>
-                            <a href="TransportView.php" class="btn btn-primary btn-sm ml-auto btn-warning">Back</a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <form action="create.php" method="POST" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="judul">Nama Transport</label>
-                                <input type="text" name="nama" class="form-control" id="text" placeholder="Masukan Judul">
-                            </div>
-                            <div class="form-group">
-                                <label for="body">Highlight</label>
-                                <textarea name="highlight" id="editorOverview" class="form-control" placeholder="Berikan Deskripsi Singkat"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="body">Harga</label>
-                                <input name="price" class="form-control" placeholder="harga"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="body">Harga 2</label>
-                                <input name="price_2" class="form-control" placeholder="harga 2"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="body">Harga 3</label>
-                                <input name="price_3" class="form-control" placeholder="harga_3"></input>
-                            </div>
-                            <div class="form-group" id="gambarFormGroup">
-                                <label for="gambar">Gambar Mobil</label>
-                                <input type="file" name="gambar_mobil" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-sm" type="submit">Save</button>
-                                <button class="btn btn-danger btn-sm" type="reset">Reset</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+				<div class="panel-header bg-primary-gradient">
+					<div class="page-inner py-5">
+						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+						</div>
+					</div>
+				</div>
+				<div class="page-inner mt--5">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card full-height">
+								<div class="card-header">
+									<div class="card-head-row">
+										<div class="card-title">Form Tambah Jalur Transport</div>
+										<a href="TransportView.php" class="btn btn-primary btn-sm ml-auto btn-warning">Back</a>
+									</div>
+								</div>
+								<div class="card-body">
+									<form action="create.php" method="POST" enctype="multipart/form-data">
+										<div class="form-group">
+											<label for="judul">Nama Mobil</label>
+											<input type="text" name="nama_mobil" class="form-control" id="text" placeholder="Masukan Judul">
+										</div>
+										<div class="form-group">
+											<label for="judul">Transmisi</label>
+											<br>
+											<select name="transmisi" id="">
+												<option value="Manual Transmision">Manual Transmision</option>
+												<option value="Automatic Transmision">Automatic Transmision</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="kategori">Kategori</label>
+											<br>
+											<select name="kategori" id="kategori">
+												<?php
+												// Mendapatkan data kategori dari database
+												$query_kategori = mysqli_query($con->con, 'SELECT * FROM kategori_trans');
+
+												while ($row = mysqli_fetch_assoc($query_kategori)) {
+													$id_kategori = $row['id_kategori']; // Ubah variabel untuk value menjadi id_kategori
+													$nama_kategori = $row['nama_kategori'];
+													echo "<option value=\"$id_kategori\">$nama_kategori</option>";
+												}
+												?>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="body">Highlight</label>
+											<textarea name="highlight" id="editorOverview" class="form-control" placeholder="Berikan Deskripsi Singkat"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="body">Harga</label>
+											<input name="price" class="form-control" placeholder="harga"></input>
+										</div>
+										<div class="form-group">
+											<label for="body">Harga 2</label>
+											<input name="price_2" class="form-control" placeholder="harga 2"></input>
+										</div>
+										<div class="form-group">
+											<label for="body">Harga 3</label>
+											<input name="price_3" class="form-control" placeholder="harga_3"></input>
+										</div>
+										<div class="form-group" id="gambarFormGroup">
+											<label for="gambar">Gambar Mobil</label>
+											<input type="file" name="gambar_mobil" class="form-control">
+										</div>
+										<div class="form-group">
+											<button class="btn btn-primary btn-sm" type="submit">Save</button>
+											<button class="btn btn-danger btn-sm" type="reset">Reset</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 		</div>
@@ -448,176 +483,199 @@ verif();
 
 
 
-	<!--   Core JS Files   -->
-	<div>
-		<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
-		<script src="../assets/js/core/popper.min.js"></script>
-		<script src="../assets/js/core/bootstrap.min.js"></script>
+		<!--   Core JS Files   -->
+		<div>
+			<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+			<script src="../assets/js/core/popper.min.js"></script>
+			<script src="../assets/js/core/bootstrap.min.js"></script>
 
-		<!-- jQuery UI -->
-		<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-		<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+			<!-- jQuery UI -->
+			<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+			<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-		<!-- jQuery Scrollbar -->
-		<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+			<!-- jQuery Scrollbar -->
+			<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
-		<!-- Chart JS -->
-		<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+			<!-- Chart JS -->
+			<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
 
-		<!-- jQuery Sparkline -->
-		<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+			<!-- jQuery Sparkline -->
+			<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-		<!-- Chart Circle -->
-		<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+			<!-- Chart Circle -->
+			<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
 
-		<!-- Datatables -->
-		<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+			<!-- Datatables -->
+			<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
 
-		<!-- Bootstrap Notify -->
-		<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+			<!-- Bootstrap Notify -->
+			<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
-		<!-- jQuery Vector Maps -->
-		<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-		<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+			<!-- jQuery Vector Maps -->
+			<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+			<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
-		<!-- Sweet Alert -->
-		<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+			<!-- Sweet Alert -->
+			<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
-		<!-- Atlantis JS -->
-		<script src="../assets/js/atlantis.min.js"></script>
+			<!-- Atlantis JS -->
+			<script src="../assets/js/atlantis.min.js"></script>
 
-		<!-- Atlantis DEMO methods, don't include it in your project! -->
-		<script src="../assets/js/setting-demo.js"></script>
-		<script src="../assets/js/demo.js"></script>
-		<script>
-			Circles.create({
-				id:'circles-1',
-				radius:45,
-				value:60,
-				maxValue:100,
-				width:7,
-				text: 5,
-				colors:['#f1f1f1', '#FF9E27'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+			<!-- Atlantis DEMO methods, don't include it in your project! -->
+			<script src="../assets/js/setting-demo.js"></script>
+			<script src="../assets/js/demo.js"></script>
+			<script>
+				Circles.create({
+					id: 'circles-1',
+					radius: 45,
+					value: 60,
+					maxValue: 100,
+					width: 7,
+					text: 5,
+					colors: ['#f1f1f1', '#FF9E27'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			Circles.create({
-				id:'circles-2',
-				radius:45,
-				value:70,
-				maxValue:100,
-				width:7,
-				text: 36,
-				colors:['#f1f1f1', '#2BB930'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+				Circles.create({
+					id: 'circles-2',
+					radius: 45,
+					value: 70,
+					maxValue: 100,
+					width: 7,
+					text: 36,
+					colors: ['#f1f1f1', '#2BB930'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			Circles.create({
-				id:'circles-3',
-				radius:45,
-				value:40,
-				maxValue:100,
-				width:7,
-				text: 12,
-				colors:['#f1f1f1', '#F25961'],
-				duration:400,
-				wrpClass:'circles-wrp',
-				textClass:'circles-text',
-				styleWrapper:true,
-				styleText:true
-			})
+				Circles.create({
+					id: 'circles-3',
+					radius: 45,
+					value: 40,
+					maxValue: 100,
+					width: 7,
+					text: 12,
+					colors: ['#f1f1f1', '#F25961'],
+					duration: 400,
+					wrpClass: 'circles-wrp',
+					textClass: 'circles-text',
+					styleWrapper: true,
+					styleText: true
+				})
 
-			var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+				var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
 
-			var mytotalIncomeChart = new Chart(totalIncomeChart, {
-				type: 'bar',
-				data: {
-					labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-					datasets : [{
-						label: "Total Income",
-						backgroundColor: '#ff9e27',
-						borderColor: 'rgb(23, 125, 255)',
-						data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-					}],
-				},
-				options: {
-					responsive: true,
-					maintainAspectRatio: false,
-					legend: {
-						display: false,
-					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								display: false //this will remove only the label
-							},
-							gridLines : {
-								drawBorder: false,
-								display : false
-							}
+				var mytotalIncomeChart = new Chart(totalIncomeChart, {
+					type: 'bar',
+					data: {
+						labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+						datasets: [{
+							label: "Total Income",
+							backgroundColor: '#ff9e27',
+							borderColor: 'rgb(23, 125, 255)',
+							data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
 						}],
-						xAxes : [ {
-							gridLines : {
-								drawBorder: false,
-								display : false
-							}
-						}]
 					},
-				}
-			});
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						legend: {
+							display: false,
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									display: false //this will remove only the label
+								},
+								gridLines: {
+									drawBorder: false,
+									display: false
+								}
+							}],
+							xAxes: [{
+								gridLines: {
+									drawBorder: false,
+									display: false
+								}
+							}]
+						},
+					}
+				});
 
-			$('#lineChart').sparkline([105,103,123,100,95,105,115], {
-				type: 'line',
-				height: '70',
-				width: '100%',
-				lineWidth: '2',
-				lineColor: '#ffa534',
-				fillColor: 'rgba(255, 165, 52, .14)'
-			});
-		</script>
+				$('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
+					type: 'line',
+					height: '70',
+					width: '100%',
+					lineWidth: '2',
+					lineColor: '#ffa534',
+					fillColor: 'rgba(255, 165, 52, .14)'
+				});
+			</script>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editorOverview'), {
-            alignment: {
-                options: ['left', 'right', 'justify']
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
+			<!-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+			<script>
+				ClassicEditor
+					.create(document.querySelector('#editorOverview'), {
+						alignment: {
+							options: ['left', 'right', 'justify']
+						}
+					})
+					.catch(error => {
+						console.error(error);
+					});
 
-    ClassicEditor
-        .create(document.querySelector('#editorActivity'), {
-            alignment: {
-                options: ['left', 'right', 'justify']
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
+				ClassicEditor
+					.create(document.querySelector('#editorActivity'), {
+						alignment: {
+							options: ['left', 'right', 'justify']
+						}
+					})
+					.catch(error => {
+						console.error(error);
+					});
 
-    ClassicEditor
-        .create(document.querySelector('#editorInclude'), {
-            alignment: {
-                options: ['left', 'right', 'justify']
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-	</div>
+				ClassicEditor
+					.create(document.querySelector('#editorInclude'), {
+						alignment: {
+							options: ['left', 'right', 'justify']
+						}
+					})
+					.catch(error => {
+						console.error(error);
+					});
+			</script> -->
+			<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+			<script>
+				$(document).ready(function() {
+					// Sembunyikan dropdown driver awalnya
+					$('#driver-section').hide();
+
+					// Tangani perubahan pada dropdown kategori
+					$('#kategori').change(function() {
+						var selectedValue = $(this).val();
+
+						// Jika kategori yang dipilih adalah 'self drive', sembunyikan dropdown driver
+						if (selectedValue === 'self drive') {
+							$('#driver-section').hide();
+						} else {
+							// Jika kategori yang dipilih bukan 'self drive', tampilkan dropdown driver
+							$('#driver-section').show();
+						}
+					});
+				});
+			</script>
+
+		</div>
 
 </body>
+
 </html>

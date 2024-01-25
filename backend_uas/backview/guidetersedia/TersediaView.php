@@ -365,6 +365,12 @@
               </a>
             </li>
             <li class="nav-item ">
+							<a href="../transport/TransportView.php">
+								<i class="fas fa-desktop"></i>
+								<p>Bali Transport</p>
+							</a>
+						</li>
+            <li class="nav-item ">
               <a href="../guide/GuideView.php">
                 <i class="fas fa-desktop"></i>
                 <p>Guide</p>
