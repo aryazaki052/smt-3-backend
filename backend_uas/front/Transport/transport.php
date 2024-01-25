@@ -145,7 +145,7 @@
               </div>
             </div>
             <div class="book-wa">
-              <a href="https://wa.me/6282359365098">BOOK NOW</a>
+              <a href="order_trans.php?id=<?php echo $transport['id_trans']; ?>" >Order Now!</a>
             </div>
           </div>
         </div>
@@ -188,10 +188,10 @@
     <!-- sk 2 -->
     <div class="container">
 
-    <div class="entry-content">
-      <h2 class="text-center">Available Car With Driver :</h2>
+      <div class="entry-content">
+        <h2 class="text-center">Available Car With Driver :</h2>
+      </div>
     </div>
-  </div>
     <div class="row border gy-4 gx-5" style="display: flex; justify-content:center;">
       <?php
       // Mendapatkan data transport dengan kategori_id 1
@@ -233,7 +233,7 @@
               </div>
             </div>
             <div class="book-wa">
-              <a href="https://wa.me/6282359365098">BOOK NOW</a>
+              <a href="order_trans.php">BOOK NOW</a>
             </div>
           </div>
         </div>
@@ -244,24 +244,24 @@
 
       <!-- syarat ketentuan -->
       <div class="container sk">
-       
-        <div class="sk">
-      <h3>RENTAL CONDITIONS WITH DRIVER :</h3>
-      <div class="sk3">
-        <p>1. Cost of petrol is included on the above rate quoted..</p>
-        <p>
-          2. Rental rate for use up to 10-hours a day, extra hours available @
-          US $4. 50/hour
-        </p>
-        <p>3. Rental rate inclusive Government Tax and Service Charge</p>
-        <p>4. Rental rate inclusive of vehicle insurance</p>
-      </div>
-    </div>
-  </div>
-      </div>
 
+        <div class="sk">
+          <h3>RENTAL CONDITIONS WITH DRIVER :</h3>
+          <div class="sk3">
+            <p>1. Cost of petrol is included on the above rate quoted..</p>
+            <p>
+              2. Rental rate for use up to 10-hours a day, extra hours available @
+              US $4. 50/hour
+            </p>
+            <p>3. Rental rate inclusive Government Tax and Service Charge</p>
+            <p>4. Rental rate inclusive of vehicle insurance</p>
+          </div>
+        </div>
+      </div>
     </div>
-    
+
+  </div>
+
   <!-- jarak -->
   <div>
     <br />
