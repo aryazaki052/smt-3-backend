@@ -66,9 +66,9 @@
         include('../class/back/DBClass.php');
         $con = new Database;
 
-        $qry_transport = mysqli_query($con->con, 'SELECT keranjang_trans.*, transport.nama_mobil FROM keranjang_trans
-    LEFT JOIN transport ON keranjang_trans.id_trans = transport.id_trans');
-
+        $qry_transport = mysqli_query($con->con, 'SELECT keranjang_trans.*, transport.nama_mobil, kategori_trans.nama_kategori FROM keranjang_trans
+    LEFT JOIN transport ON keranjang_trans.id_trans = transport.id_trans
+    LEFT JOIN kategori_trans ON transport.id_kategori = kategori_trans.id_kategori');
         ?>
 
     </div>
@@ -452,7 +452,8 @@
                                                     <th>Nama Customer</th>
                                                     <th>Email</th>
                                                     <th>No Tlp.</th>
-                                                    <th>Transport</th>
+                                                    <th>Mobil</th>
+                                                    <th>Kategori</th>
                                                     <th>Tanggal</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -465,11 +466,12 @@
                                                     echo "<td>" . $data['nama_depan'] . " " . $data['nama_belakang'] . "</td>";
                                                     echo "<td>" . $data['email'] . "</td>";
                                                     echo "<td>" . $data['no_hp'] . "</td>";
-                                                    echo "<td>" . $data['nama_mobil'] . "</td>"; // Menampilkan nama_gunung dari tabel tracking
+                                                    echo "<td>" . $data['nama_mobil'] . "</td>"; // Menampilkan nama_mobil dari tabel transport
+                                                    echo "<td>" . $data['nama_kategori'] . "</td>"; // Menampilkan nama_kategori dari tabel kategori_trans
                                                     echo "<td>" . $data['tanggal_pesan'] . "</td>";
                                                     echo "<td class='text-center'>
-                <!-- Tambahkan tombol atau tautan untuk action -->
-            </td>";
+                    <!-- Tambahkan tombol atau tautan untuk action -->
+                </td>";
                                                     echo "</tr>";
                                                 }
                                                 ?>
