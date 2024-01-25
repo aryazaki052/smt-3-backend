@@ -126,7 +126,7 @@
 
 
   <div style="margin-top: 100px;">
-    <h1 class="text-center fw-bold display-1 mb-5" style="color: rgb(0, 0, 0);"><?= $tourDetail['nama_gunung'] ?> </h1>
+    <h1 class="text-center fw-bold mb-5" style="color: rgb(0, 0, 0);"><?= $tourDetail['nama_gunung'] ?> </h1>
     <div class="row">
 
       <div class="col-md-4">
