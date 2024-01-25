@@ -105,53 +105,53 @@
 
   <div class="container">
     <div class="row border gy-4 gx-5" style="display: flex; justify-content:center;">
-    <?php
-// Mendapatkan data transport dengan kategori_id 1
-$query_transport = mysqli_query($con->con, 'SELECT * FROM transport WHERE id_kategori = 2');
+      <?php
+      // Mendapatkan data transport dengan kategori_id 1
+      $query_transport = mysqli_query($con->con, 'SELECT * FROM transport WHERE id_kategori = 2');
 
-// Menampilkan data transport menggunakan while loop
-while ($transport = mysqli_fetch_assoc($query_transport)) {
-?>
-  <div class="col-md-6">
-    <div class="row card-mobil">
-      <div style="display: flex;  align-items:center">
-        <h2 style="margin-right: 10px"><?= $transport['nama_mobil'] ?></h2>
-        <span style="background-color:rgb(0, 0, 0); width:20px; height:3px; "></span>
-        <h2 style="margin-left: 10px"><?= $transport['Transmisi'] ?></h2>
-      </div>
-      <div class="col-md-5">
-        <div>
-          <div>
-            <div>
-            <img src="../../backview/assets/uploads/transport/<?= $transport['gambar_mobil'] ?>" alt="" width="200px" />
+      // Menampilkan data transport menggunakan while loop
+      while ($transport = mysqli_fetch_assoc($query_transport)) {
+      ?>
+        <div class="col-md-6">
+          <div class="row card-mobil">
+            <div style="display: flex;  align-items:center">
+              <h2 style="margin-right: 10px"><?= $transport['nama_mobil'] ?></h2>
+              <span style="background-color:rgb(0, 0, 0); width:20px; height:3px; "></span>
+              <h2 style="margin-left: 10px"><?= $transport['Transmisi'] ?></h2>
+            </div>
+            <div class="col-md-5">
+              <div>
+                <div>
+                  <div>
+                    <img src="../../backview/assets/uploads/transport/<?= $transport['gambar_mobil'] ?>" alt="" width="200px" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="keterangan">
+                <div class="harga1">
+                  <p>1 – 6 Days : US $<?= $transport['price'] ?> / Day</p>
+                </div>
+                <div class="harga2">
+                  <p>Day7 – 13 Days : US $<?= $transport['price_2'] ?> / Day</p>
+                </div>
+                <div class="harga3">
+                  <p>14 + Days : US $<?= $transport['price_3'] ?> / Day</p>
+                </div>
+                <div class="deskripsi">
+                  <p><?= $transport['highlight'] ?></p>
+                </div>
+              </div>
+            </div>
+            <div class="book-wa">
+              <a href="https://wa.me/6282359365098">BOOK NOW</a>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-7">
-        <div class="keterangan">
-          <div class="harga1">
-            <p>1 – 6 Days : US $<?= $transport['price'] ?> / Day</p>
-          </div>
-          <div class="harga2">
-            <p>Day7 – 13 Days : US $<?= $transport['price_2'] ?> / Day</p>
-          </div>
-          <div class="harga3">
-            <p>14 + Days : US $<?= $transport['price_3'] ?> / Day</p>
-          </div>
-          <div class="deskripsi">
-            <p><?= $transport['highlight'] ?></p>
-          </div>
-        </div>
-      </div>
-      <div class="book-wa">
-        <a href="https://wa.me/6282359365098">BOOK NOW</a>
-      </div>
-    </div>
-  </div>
-<?php
-}
-?>
+      <?php
+      }
+      ?>
 
 
       <!-- syarat ketentuan -->
@@ -181,8 +181,71 @@ while ($transport = mysqli_fetch_assoc($query_transport)) {
     </div>
 
     <hr />
+
+
+
+
     <!-- sk 2 -->
-    <div class="sk">
+    <div class="container">
+
+    <div class="entry-content">
+      <h2 class="text-center">Available Car With Driver :</h2>
+    </div>
+  </div>
+    <div class="row border gy-4 gx-5" style="display: flex; justify-content:center;">
+      <?php
+      // Mendapatkan data transport dengan kategori_id 1
+      $query_transport = mysqli_query($con->con, 'SELECT * FROM transport WHERE id_kategori = 1');
+
+      // Menampilkan data transport menggunakan while loop
+      while ($transport = mysqli_fetch_assoc($query_transport)) {
+      ?>
+        <div class="col-md-6">
+          <div class="row card-mobil">
+            <div style="display: flex;  align-items:center">
+              <h2 style="margin-right: 10px"><?= $transport['nama_mobil'] ?></h2>
+              <span style="background-color:rgb(0, 0, 0); width:20px; height:3px; "></span>
+              <h2 style="margin-left: 10px"><?= $transport['Transmisi'] ?></h2>
+            </div>
+            <div class="col-md-5">
+              <div>
+                <div>
+                  <div>
+                    <img src="../../backview/assets/uploads/transport/<?= $transport['gambar_mobil'] ?>" alt="" width="200px" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="keterangan">
+                <div class="harga1">
+                  <p>1 – 6 Days : US $<?= $transport['price'] ?> / Day</p>
+                </div>
+                <div class="harga2">
+                  <p>Day7 – 13 Days : US $<?= $transport['price_2'] ?> / Day</p>
+                </div>
+                <div class="harga3">
+                  <p>14 + Days : US $<?= $transport['price_3'] ?> / Day</p>
+                </div>
+                <div class="deskripsi">
+                  <p><?= $transport['highlight'] ?></p>
+                </div>
+              </div>
+            </div>
+            <div class="book-wa">
+              <a href="https://wa.me/6282359365098">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+      <?php
+      }
+      ?>
+
+
+      <!-- syarat ketentuan -->
+      <div class="container sk">
+       
+        <div class="sk">
       <h3>RENTAL CONDITIONS WITH DRIVER :</h3>
       <div class="sk3">
         <p>1. Cost of petrol is included on the above rate quoted..</p>
@@ -195,6 +258,10 @@ while ($transport = mysqli_fetch_assoc($query_transport)) {
       </div>
     </div>
   </div>
+      </div>
+
+    </div>
+    
   <!-- jarak -->
   <div>
     <br />
